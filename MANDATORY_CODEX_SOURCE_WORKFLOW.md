@@ -22,18 +22,21 @@ EP20 관련 출력 전에는 아래 파일을 먼저 기준으로 삼는다.
 1. FIXED_DIRECTOR_GENERATION_RULES.md
 2. episode20_director_acting_image_guide.md
 3. episode20_cut01_revised_official.md   ← CUT-01 전용 최신 수정본, CUT-01 작업 시 최우선
-4. episode20_character_reference_shen_bochuan.md
-5. episode20_background_reference_old_house_gate.md
-6. episode20_precision_self_check_rules.md
-7. visual_split_expert_decision_tree.md
-8. acting_split_reference_format_rules.md
-9. acting_split_vs_shot_script_workflow.md
-10. episode19_acting_split_timing_rules.md
+4. episode20_execution_prompt_pack.md    ← EP20 실행용 Prompt Pack, 이미지 키프레임/영상 Prompt/대사 시간/연속성 앵커 기준
+5. episode20_character_reference_shen_bochuan.md
+6. episode20_background_reference_old_house_gate.md
+7. episode20_precision_self_check_rules.md
+8. visual_split_expert_decision_tree.md
+9. acting_split_reference_format_rules.md
+10. acting_split_vs_shot_script_workflow.md
+11. episode19_acting_split_timing_rules.md
 ```
 
 기억, 이전 대화, 생성 이미지 결과보다 위 파일들이 우선이다.
 
 특히 CUT-01은 `episode20_cut01_revised_official.md`가 기존 `episode20_director_acting_image_guide.md` 안의 CUT-01보다 우선한다.
+
+영상 실행 프롬프트, 이미지 키프레임, 대사 시간, 연속성 앵커는 `episode20_execution_prompt_pack.md`를 우선 참조한다.
 
 ---
 
@@ -53,6 +56,10 @@ EP20 관련 출력 전에는 아래 파일을 먼저 기준으로 삼는다.
 다음 CUT 연결 상태:
 도구/소품 연결:
 카메라 기능:
+이미지 키프레임:
+영상 실행 Prompt:
+대사 시간:
+연속성 앵커:
 ```
 
 이 항목 중 하나라도 Codex 기준과 맞지 않으면 바로 프롬프트를 출력하지 않는다.
