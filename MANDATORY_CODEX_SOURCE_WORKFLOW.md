@@ -21,14 +21,19 @@ EP20 관련 출력 전에는 아래 파일을 먼저 기준으로 삼는다.
 ```text
 1. FIXED_DIRECTOR_GENERATION_RULES.md
 2. episode20_director_acting_image_guide.md
-3. episode20_character_reference_shen_bochuan.md
-4. episode20_background_reference_old_house_gate.md
-5. episode20_precision_self_check_rules.md
-6. visual_split_expert_decision_tree.md
-7. episode19_acting_split_timing_rules.md
+3. episode20_cut01_revised_official.md   ← CUT-01 전용 최신 수정본, CUT-01 작업 시 최우선
+4. episode20_character_reference_shen_bochuan.md
+5. episode20_background_reference_old_house_gate.md
+6. episode20_precision_self_check_rules.md
+7. visual_split_expert_decision_tree.md
+8. acting_split_reference_format_rules.md
+9. acting_split_vs_shot_script_workflow.md
+10. episode19_acting_split_timing_rules.md
 ```
 
 기억, 이전 대화, 생성 이미지 결과보다 위 파일들이 우선이다.
+
+특히 CUT-01은 `episode20_cut01_revised_official.md`가 기존 `episode20_director_acting_image_guide.md` 안의 CUT-01보다 우선한다.
 
 ---
 
@@ -93,27 +98,33 @@ Codex 기준 판정：PASS / MINOR PASS / FAIL / DISCARD
 
 ## 5. CUT-01 특별 강제 규칙
 
-CUT-01은 한 장 2분할 생성에서 오류가 커질 수 있다.
-특히 4人 + 黑七 + 沈泊川 + 摩托车를 한 화면에 넣으면 인물 구분과 자리배치가 무너지기 쉽다.
-
-따라서 CUT-01은 Codex 기준을 유지하되 제작 안정성을 위해 아래 방식으로 판단한다.
+CUT-01은 반드시 `episode20_cut01_revised_official.md`를 기준으로 한다.
 
 ```text
 공식 CUT：CUT-01｜沈泊川入场｜12秒
 공식 구조：0-4秒 静止死寂 / 4-12秒 沈泊川入场
-분할 판단：공식상 2분할
-제작 안정화：필요 시 CUT-01-A, CUT-01-B 두 장으로 나누어 생성 가능
+분할 판단：공식상 2段
+제작 안정화：필요 시 CUT-01-A, CUT-01-B 참고 이미지로 나누어 생성 가능
 최종 영상：하나의 12초 CUT으로 합친다
 ```
 
-CUT-01 배경은 다음을 따른다.
+CUT-01 배경은 최신 수정본을 따른다.
 
 ```text
-不是纯昆仑荒地。
-不是老宅门前。
-不是城南老城区铁门。
-是第十九集昆仑离别余韵后的现代城市外缘过渡地带。
-沈泊川骑摩托车入场时，现代城市外缘和可行驶道路必须被带入画面。
+格1（0-4秒）：完整昆仑旷野，无任何现实城市痕迹。
+格2（4-12秒）：沈泊川骑摩托车入场时，沈泊川所在区域背景渐渐叠入城市轮廓。
+城市元素包括：路灯、老旧楼房、柏油路面。
+城市与昆仑旷野形成左右过渡边界。
+昆仑还未消失，城市正在覆盖进来。
+```
+
+CUT-01 黑七规则：
+
+```text
+黑七必须是狐狸形态。
+应依偎陆沉舟身侧或靠近陆沉舟低位。
+不得人形站立。
+不得狗化、狼化、怪物化。
 ```
 
 ---
@@ -155,4 +166,3 @@ Codex 먼저 확인.
 틀리면 문제 하나만 수정.
 맞으면 더 이상 불필요하게 돌리지 않는다.
 ```
-
