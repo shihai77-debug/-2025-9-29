@@ -29,6 +29,7 @@ Voice bases:
 2. Approved storyboard boards only control visual framing, blocking, camera path, prop placement, and spatial continuity.
 3. Never infer no-dialogue/no-audio from a silent storyboard board.
 4. Never invent, rewrite, summarize, shorten, merge, or replace dialogue.
+5. Character appearance always follows turnaround sheets / 三面图, not storyboard board faces.
 ```
 
 ## CUT-01
@@ -71,25 +72,29 @@ Continuity:
 
 ## CUT-02
 
-Duration: 11 seconds.
+Original storyboard duration: 11 seconds.
+
+Jimeng voice+video safe duration: 15 seconds.
 
 Function: Shen Bochuan breaks the silence, takes documents from backpack, introduces the commission.
 
 Segments:
 
-- 0-5s: fixed medium close. Shen bends to take documents from backpack, then straightens with documents ready.
-- 5-11s: fixed. Shen holds/gestures documents while explaining the old house case. No handoff yet.
+- Original split: 0-5s / 5-11s.
+- Voice-safe split: 0-6s / 6-15s.
+- 0-6s: fixed medium close. Shen bends to take documents from backpack, then straightens with documents ready.
+- 6-15s: fixed. Shen holds/gestures documents while explaining the old house case. No handoff yet.
 
 Dialogue:
 
 ```text
-0.6-4.8s @沈泊川：
+0.8-5.6s @沈泊川：
 “看你们几个这脸色，跟天塌了半截似的。不过我今天不是来探你们私事的，有个棘手的委托。”
 Voice: normal speed, relaxed surface tone, not probing. Short breath before speaking, slight shift into seriousness at “棘手的委托”.
 
-5.2-10.6s @沈泊川：
+6.3-14.2s @沈泊川：
 “城南老城区一栋老旧民宅，接连几个保洁工人进去打扫，全都莫名窒息心慌，拼了命从屋里冲出来，没人敢再踏进一步。”
-Voice: slightly faster, compact narration, urgent breath but not panicked. Hand with documents pauses briefly at “窒息心慌”.
+Voice: slightly faster, compact narration, urgent breath but not panicked. Hand with documents pauses briefly at “窒息心慌”. Do not compress the line into 11 seconds when generating voice inside video.
 ```
 
 BGM:
@@ -126,6 +131,7 @@ Invalid CUT-02 lines:
 ```text
 Do not use: “委托人只说，让我把这份情况带给你们。文件不外借。”
 Do not use: BGM 无 / SFX 无 / 环境声无.
+Do not force both dialogue blocks into 11 seconds when generating voice and lip sync together.
 ```
 
 ## CUT-03
