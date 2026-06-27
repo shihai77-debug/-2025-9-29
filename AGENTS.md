@@ -29,12 +29,33 @@ Do not rely only on this default-branch bootstrap file if the full branch files 
 ```text
 对白 / BGM / SFX / 情绪 / 声音 / 时长 = source index 优先。
 构图 / 站位 / 动线 / 镜头 / 道具空间 = approved storyboard board 参考。
-人物脸 / 发型 / 服装 / 体型 / 气质 = 三面图 / 角色参考图优先。
+人物脸 / 发型 / 服装 / 体型 / 气质 = 三面图 / 角色参考图 优先。
 镜头拆分 = cinematic shot grammar 优先。
 脸部不稳定时的分镜参考图 = faceless style reference mode 优先。
 ```
 
 Never infer no dialogue, no BGM, no SFX, or no environment sound from a visually silent storyboard board. Always check the source index.
+
+## Reference Tag Rule
+
+Use Chinese character reference tags. Do not use English alias tags for character references.
+
+```text
+必须使用：@沈泊川角色参考图
+禁止使用：@Shen角色参考图
+```
+
+Standard EP20 reference material header:
+
+```text
+参考素材：@陆沉舟三面图、@黑七狐狸参考图、@檀缺三面图、@韩知玄三面图、@沈泊川角色参考图、@第20集CUT-XX批准 storyboard reference board。
+```
+
+沈泊川 character description must use:
+
+```text
+沈泊川：严格参考@沈泊川角色参考图，黑色皮夹克，黑色裤子，黑色靴子，黑色背包，黑色摩托车头盔或手持头盔。
+```
 
 ## Faceless Style Reference Mode
 
@@ -105,6 +126,7 @@ Before outputting any storyboard prompt, clean keyframe prompt, or Jimeng / Seed
 
 ```text
 [ ] Did I read the full source index from the working branch?
+[ ] Did I use @沈泊川角色参考图 and avoid @Shen角色参考图?
 [ ] Did I judge master/dialogue/reaction/cutaway/action/speaking function?
 [ ] Did I avoid multi-person wide shot plus long dialogue?
 [ ] Did I use 三面图 for identity, not storyboard board faces?
