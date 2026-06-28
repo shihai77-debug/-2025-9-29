@@ -22,6 +22,8 @@ outputs/director_intelligence_layer_rules.md
 outputs/stable_character_video_prompt_template.md
 outputs/exact_face_style_mode_rules.md
 outputs/faceless_style_reference_mode_rules.md
+outputs/character_positioning_image_usage_rules.md
+outputs/character_positioning_prompt_snippets.md
 ```
 
 Do not rely only on this default-branch bootstrap file if the full branch files are available.
@@ -85,7 +87,7 @@ Standard EP20 reference material header:
 沈泊川 character description must use:
 
 ```text
-沈泊川：严格参考@沈泊川角色参考图，黑色皮夹克，黑色裤子，黑色靴子，黑色背包，黑色摩托车头盔或手持头盔。
+沈泊川：严格参考@沈泊川角色参考图，清洁服务公司年轻老板/现场负责人，灰绿或深灰工作衬衫外套，深灰T恤，棕色工装裤，棕色工作靴，卡其色实用双肩包/工具包；摩托车和头盔只作为交通/入场道具，不是黑皮骑手。
 ```
 
 ## Faceless Style Reference Mode
