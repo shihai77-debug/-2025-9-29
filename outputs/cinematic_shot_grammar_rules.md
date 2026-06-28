@@ -19,6 +19,48 @@ Real filming separates functions:
 
 This is a quality upgrade, not a downgrade.
 
+## Multi-Character Generation Limit｜多人画面生成限制
+
+One generated storyboard panel, clean keyframe, or video node should contain at most two clear human faces.
+
+If the source CUT has three or more people, do not ask the model to render all faces clearly in one frame. Split the CUT with camera/editing grammar so the story remains continuous while each generated image stays stable.
+
+Hard rule:
+
+```text
+3+ clear human faces in one generated frame = high face-break risk.
+Use max 2 clear human faces per dialogue/keyframe/video node.
+Use 3+ character frames only as faceless/blocking master shots.
+```
+
+Recommended split:
+
+```text
+5 characters -> 2-person dialogue/action shot + 2-person reaction shot + fox/prop/environment cutaway.
+4 characters -> 2-person shot + 2-person shot.
+3 characters -> 2-person shot + 1-person reaction, or a faceless 3-person master shot.
+```
+
+When the original CUT requires a group sense, preserve it with continuity anchors instead of forcing all faces:
+
+```text
+same background direction.
+same prop state.
+same eye-line direction.
+same screen geography.
+same audio bed.
+same BGM/SFX continuation.
+```
+
+If a group frame is necessary:
+
+```text
+Use faceless style reference mode.
+Do not draw clear eyes, nose, or mouth.
+Keep hairstyle, outfit, body shape, posture, position, and movement direction exact.
+The image is for blocking only, not final face reference.
+```
+
 ## Shot Function Types
 
 ### Master Shot｜关系场面
@@ -130,6 +172,7 @@ Before writing a Jimeng / Seedance video prompt, output this judgment internally
 These combinations must not be forced into one video node:
 
 - three or more characters in one wide frame + long dialogue.
+- three or more clear human faces in one generated frame.
 - complex movement + long dialogue.
 - small distant speaker face + required lip sync.
 - action entry + emotional close performance.
@@ -237,6 +280,7 @@ Before sending any final storyboard or video prompt, check:
 ```text
 [ ] Did I judge shot function first?
 [ ] Did I avoid multi-person wide shot with long dialogue?
+[ ] Did I keep clear human faces to at most two per generated frame/node?
 [ ] Did important dialogue get a stable dialogue shot?
 [ ] Did action and speaking get split when needed?
 [ ] Did reaction/cutaway carry emotion or clue when safer?
