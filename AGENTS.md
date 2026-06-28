@@ -10,7 +10,7 @@ The complete EP20 rule set currently lives on this branch:
 codex/refactor-shot-sequence-for-continuity
 ```
 
-When the user asks about EP20, CUTs, storyboard boards, approved boards, Jimeng, Seedance, video prompts, clean keyframes, face stability, or prompt extraction, first read the full files from that branch:
+When the user asks about EP20, CUTs, storyboard boards, approved boards, Jimeng, Seedance, video prompts, clean keyframes, face stability, pacing, dead air, pass/skip decisions, or prompt extraction, first read the full files from that branch:
 
 ```text
 outputs/episode20_final_cut_source_index.md
@@ -19,6 +19,7 @@ outputs/episode20_jimeng_video_prompt_contract.md
 outputs/smart_prompt_execution_protocol.md
 outputs/cinematic_shot_grammar_rules.md
 outputs/director_intelligence_layer_rules.md
+outputs/flow_pacing_edit_decision_rules.md
 outputs/stable_character_video_prompt_template.md
 outputs/exact_face_style_mode_rules.md
 outputs/faceless_style_reference_mode_rules.md
@@ -37,6 +38,7 @@ Do not rely only on this default-branch bootstrap file if the full branch files 
 智能执行顺序 / 自修流程 = smart prompt execution protocol 优先。
 镜头拆分 = cinematic shot grammar 优先。
 导演诊断 / 更聪明的拍法建议 = director intelligence layer 优先。
+节奏空白 / 压缩合并 / 替换cutaway / 跳过建议 = flow pacing edit decision rules 优先。
 脸部不稳定时的分镜参考图 = faceless style reference mode 优先。
 ```
 
@@ -51,9 +53,9 @@ Before writing any storyboard prompt, clean keyframe prompt, Jimeng prompt, or S
 2. Board extraction：board只读构图、站位、动线、镜头、道具位置、空间连续。
 3. Reference lock：用三面图/角色参考图锁脸、发型、服装、体型、气质。
 4. Viewer-first diagnosis：观众会看懂吗？情绪会活吗？该切还是该停？
-5. Risk diagnosis：台词密度、脸部稳定、3人以上清晰脸、动作+台词、音频层级、配角木偶风险。
-6. Filming decision：keep and hold / smart adjustment / split or extend。
-7. Self-repair：漏对白、音频、角色数量、道具状态、演员式读法、continuity时，先修正再输出。
+5. Risk diagnosis：台词密度、脸部稳定、3人以上清晰脸、动作+台词、音频层级、配角木偶风险、无意义空白、节奏破坏。
+6. Filming decision：keep and hold / smart adjustment / split or extend / compress / merge / replace / pass proposal。
+7. Self-repair：漏对白、音频、角色数量、道具状态、演员式读法、continuity、节奏判断时，先修正再输出。
 ```
 
 Do not be a mechanical prompt copier.
@@ -63,10 +65,32 @@ Do not be a mechanical prompt copier.
 拍法要聪明。
 不要为了分镜而分镜。
 该切才切，该停就停。
+保留有用的沉默。
+剪掉无用的空白，但跳过必须先说明理由并请求确认。
 表演要像人。
 镜头要能剪。
 声音要能听。
 观众要想继续看。
+```
+
+## Flow Pacing Rule
+
+When a CUT, sub-shot, board panel, silence, movement, or empty beat may damage rhythm, classify it:
+
+```text
+KEEP：承载情绪、悬念、反应、空间、道具或continuity。
+COMPRESS：动作/移动有用但时长过长。
+MERGE：与前后CUT重复，可自然合并。
+REPLACE：原镜头弱，但需要用手、资料、门、灰尘、风声等cutaway保留连接。
+PASS_PROPOSAL：无对白、无情绪、无信息、无位置/道具变化、无continuity价值，建议跳过但必须用户确认。
+```
+
+Never skip automatically.
+
+```text
+提出跳过时必须说明原因。
+必须说明保留或转移哪些continuity anchor。
+必须等用户确认后才能最终删除/跳过。
 ```
 
 ## Reference Tag Rule
@@ -177,8 +201,9 @@ Before outputting any storyboard prompt, clean keyframe prompt, or Jimeng / Seed
 ```text
 [ ] Did I read the full source index from the working branch?
 [ ] Did I read smart_prompt_execution_protocol.md from the working branch?
+[ ] Did I read flow_pacing_edit_decision_rules.md from the working branch when pacing/empty-beat risk exists?
 [ ] Did I use @沈泊川角色参考图 and avoid @Shen角色参考图?
-[ ] Did I ask viewer-first questions: should this hold, adjust, split, or extend?
+[ ] Did I ask viewer-first questions: should this hold, adjust, split, extend, compress, merge, replace, or pass-propose?
 [ ] Did I judge master/dialogue/reaction/cutaway/action/speaking function?
 [ ] Did I avoid multi-person wide shot plus long dialogue?
 [ ] Did I keep clear human faces to at most two per generated frame/node?
@@ -187,4 +212,5 @@ Before outputting any storyboard prompt, clean keyframe prompt, or Jimeng / Seed
 [ ] Did I preserve exact dialogue, BGM, SFX, environment sound?
 [ ] Did I include actor-style voice directions and audio mixing?
 [ ] Did I prevent duplicate characters and character confusion?
+[ ] Did I avoid silent pass/skip without user approval?
 ```
