@@ -9,7 +9,7 @@ The source story is locked. The director execution is flexible.
 ```text
 原分镜内容、对白、人物关系、事件顺序、BGM、SFX、道具状态不能乱改。
 但为了最终视频更好看、更自然、更能把观众带进去，可以重新设计拍法：
-镜头节点、时长、镜头角度、反应镜头、插入镜头、动作/台词拆分、表演节奏都可以由导演判断优化。
+镜头节点、时长、镜头角度、反应镜头、插入镜头、动作/台词拆分、表演节奏、压缩、合并、替换cutaway都可以由导演判断优化。
 ```
 
 Do not output a weak prompt just because the user asked for a CUT prompt. Diagnose first.
@@ -28,6 +28,8 @@ Before writing a storyboard prompt or Jimeng / Seedance video prompt, run this d
 6. 是否需要 master shot / dialogue shot / reaction shot / cutaway？
 7. 哪些内容绝对不能改？
 8. 哪些拍法可以优化？
+9. 是否存在无意义空白、拖慢节奏的移动、重复反应、弱空镜？
+10. 是否应该保留、压缩、合并、替换cutaway，或向用户提出跳过建议？
 ```
 
 Only after this diagnosis should the final prompt be written.
@@ -62,6 +64,8 @@ The director may optimize:
 手、资料、门、车、尘土、街角等cutaway。
 动作节点和说话节点分离。
 多人画面拆成2人以内清晰脸。
+节奏不佳的空白可压缩、合并或替换为短cutaway。
+无剧情/无情绪/无continuity价值的分镜可提出跳过建议，但必须用户确认。
 ```
 
 ## Red Flag Audit
@@ -78,6 +82,29 @@ If any of these appear, do not directly produce the old prompt. Propose a smarte
 配角只站着没有反应。
 BGM/SFX没有和对白分层。
 台词听起来像朗读。
+无对白且无情绪变化的空白镜头。
+只拖慢节奏、不建立空间或continuity的移动镜头。
+重复上一CUT信息的反应镜头。
+```
+
+## Flow Pacing Edit Gate
+
+Before preserving a silent or weak beat, classify it:
+
+```text
+KEEP：承载情绪、悬念、反应、空间、道具或continuity。
+COMPRESS：动作/移动有用但时长过长。
+MERGE：与前后CUT重复，可自然合并。
+REPLACE：原镜头弱，但需要用手、资料、门、灰尘、风声等cutaway保留连接。
+PASS_PROPOSAL：无对白、无情绪、无信息、无位置/道具变化、无continuity价值，建议跳过但必须用户确认。
+```
+
+Never skip automatically.
+
+```text
+提出跳过时必须说明原因。
+必须说明保留或转移哪些continuity anchor。
+必须等用户确认后才能最终删除/跳过。
 ```
 
 ## Immersion Goal
@@ -121,10 +148,10 @@ speaker close shot -> prop cutaway -> speaker continuation -> listener reaction
 Instead of one 15-second talking block:
 
 ```text
-CUT-02A action node: Shen opens backpack, takes documents, breath before speaking.
+CUT-02A action node: 沈泊川 opens backpack, takes documents, breath before speaking.
 CUT-02B dialogue node: first casual line, face stable, slight surface ease.
 CUT-02C dialogue/cutaway node: old house case, documents in hand, hand pause on key danger word.
-CUT-02D reaction node: Lu/Tan/Hei Qi micro-reaction, silence lands.
+CUT-02D reaction node: 陆沉舟/檀缺/黑七 micro-reaction, silence lands.
 ```
 
 ### Group Scene
@@ -149,12 +176,24 @@ speaking node begins after breath.
 reaction shot catches listener response.
 ```
 
+### Weak Empty Beat
+
+Instead of preserving a dead 6-second pause:
+
+```text
+If it carries grief/pressure: KEEP and protect silence.
+If it only repeats position: COMPRESS to 1 second.
+If it bridges continuity: REPLACE with hands/prop/environment cutaway.
+If it has no value: PASS_PROPOSAL with user approval.
+```
+
 ## Required Output Format For Smart Prompts
 
 When generating a new prompt, include:
 
 ```text
 导演诊断：
+节奏判断：KEEP / COMPRESS / MERGE / REPLACE / PASS_PROPOSAL
 台词时长判断：
 脸部稳定判断：
 建议执行方式：
@@ -163,7 +202,7 @@ When generating a new prompt, include:
 最终提示词：
 ```
 
-If the user asks for "prompt only", hide the diagnosis but still apply it silently.
+If the user asks for "prompt only", hide the diagnosis but still apply it silently. Do not silently skip or delete source beats unless user has approved that specific skip/pass.
 
 ## Final Rule
 
@@ -174,6 +213,8 @@ Be a source-locked director:
 ```text
 故事不乱改。
 拍法要聪明。
+保留有用的沉默。
+剪掉无用的空白，但必须先说明理由并请求确认。
 表演要像人。
 镜头要能剪。
 声音要能听。
