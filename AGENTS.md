@@ -20,6 +20,7 @@ outputs/smart_prompt_execution_protocol.md
 outputs/cinematic_shot_grammar_rules.md
 outputs/director_intelligence_layer_rules.md
 outputs/flow_pacing_edit_decision_rules.md
+outputs/dialogue_timing_fit_audit_rules.md
 outputs/faceless_style_reference_mode_rules.md
 outputs/exact_face_style_mode_rules.md
 outputs/stable_character_video_prompt_template.md
@@ -49,6 +50,7 @@ outputs/legacy_prompt_files_do_not_use.md
 镜头拆分 / master-dialogue-reaction-cutaway 判断 = cinematic shot grammar。
 导演诊断 / 更聪明的拍法建议 = director intelligence layer。
 节奏空镜 / 压缩合并 / 跳过建议 = flow pacing edit decision rules。
+台词时长适配 / 延长 / 拆节点 / 后期配音判断 = dialogue timing fit audit rules。
 最终视频源图 = clean keyframe，不直接用带字board。
 脸部不稳定时的分镜参考图 = faceless style reference mode。
 角色定位图 = 分镜草图 / storyboard board 的外形、发型、服装、体型、姿态、轮廓、方向参考。
@@ -87,7 +89,7 @@ SHEN ENTER
 最终输出必须写沈泊川、@沈泊川角色参考图。
 禁止输出@Shen角色参考图。
 禁止恢复旧黑皮骑手沈泊川。
-禁止让旧derived prompt覆盖AGENTS、source index、master rules、smart protocol、director rules、flow pacing rules、current turnaround sheets。
+禁止让旧derived prompt覆盖AGENTS、source index、master rules、smart protocol、director rules、flow pacing rules、timing audit rules、current turnaround sheets。
 ```
 
 ---
@@ -102,10 +104,13 @@ SHEN ENTER
 3. Reference lock：用三面图/角色参考图锁定脸、发型、服装、体型、气质。
 4. Risk diagnosis：诊断台词密度、脸部稳定、3人以上风险、动作+台词冲突、道具交接、音频层级、配角木偶风险、重复人物、身份混淆、空镜拖节奏。
 5. Flow pacing diagnosis：KEEP / COMPRESS / MERGE / REPLACE / PASS_PROPOSAL。
-6. Filming decision：决定是否原时长、延长、拆节点、master/dialogue/reaction/cutaway、faceless/blocking master、clean keyframe。
-7. Prompt writing：再写最终提示词。
-8. Self-repair：如果漏了对白、BGM、SFX、角色数量、道具状态、continuity anchor、演员式读法、音频层级、脸部稳定或节奏判断，必须先修正再输出。
+6. Dialogue timing fit audit：逐句检查自然语速、呼吸、停顿、口型、听者反应是否能放进指定秒数。
+7. Filming decision：决定是否原时长、延长、拆节点、master/dialogue/reaction/cutaway、faceless/blocking master、clean keyframe、cutaway support 或后期配音。
+8. Prompt writing：再写最终提示词。
+9. Self-repair：如果漏了对白、BGM、SFX、角色数量、道具状态、continuity anchor、演员式读法、音频层级、脸部稳定、节奏判断或台词时长适配，必须先修正再输出。
 ```
+
+如果台词时长不适配，禁止继续输出原始危险时间轴；必须延长、拆节点、使用cutaway support，或建议后期配音/TTS。
 
 如果用户只要“프롬만”, 可以隐藏诊断，但仍必须应用诊断结果。
 
@@ -134,7 +139,38 @@ SHEN ENTER
 
 ---
 
-## 6. Flow Pacing Gate
+## 6. Dialogue Timing Fit Gate
+
+每次有对白时必须输出或内部执行：
+
+```text
+台词时长适配：
+原分镜时长：
+自然表演所需时长：
+判断：可用 / 不可用
+处理：原时长 / 延长到X秒 / 拆成X个视频节点 / 建议后期配音
+```
+
+判断标准：
+
+```text
+short line: 1.5-3 seconds plus breath/pause.
+medium line: 3-6 seconds plus breath/pause.
+long line: 6-10 seconds plus breath/pause.
+information-heavy exposition: 8-12 seconds or split into multiple nodes.
+two exposition lines in one CUT: usually 14-18 seconds, or split into two video nodes.
+```
+
+Known risk:
+
+```text
+CUT-10有两段专业判断台词。原10秒单视频不适合自然表演。
+默认处理：CUT-10A 7秒 + CUT-10B 8秒，或延长到15-16秒。
+```
+
+---
+
+## 7. Flow Pacing Gate
 
 无对白或弱镜头不能盲目保留。必须分类：
 
@@ -150,9 +186,7 @@ PASS_PROPOSAL：无对白、无情绪、无信息、无位置/道具变化、无
 
 ---
 
-## 7. 多人脸稳定规则
-
-硬规则：
+## 8. 多人脸稳定规则
 
 ```text
 一个生成用 storyboard panel、clean keyframe、video node 里最多两个清晰真人脸。
@@ -169,20 +203,9 @@ PASS_PROPOSAL：无对白、无情绪、无信息、无位置/道具变化、无
 3 characters -> 2-person shot + 1-person reaction，或 faceless 3-person master。
 ```
 
-多人同场必须靠 continuity anchor 保持关系：
-
-```text
-same background direction.
-same prop state.
-same eye-line direction.
-same screen geography.
-same audio bed.
-same BGM/SFX continuation.
-```
-
 ---
 
-## 8. 角色锁定
+## 9. 角色锁定
 
 固定语音/角色标签必须使用：
 
@@ -211,25 +234,12 @@ same BGM/SFX continuation.
 沈泊川 = young cleaning-service company boss / on-site lead, gray-olive work shirt jacket, dark gray T-shirt, brown cargo work pants, brown work boots, khaki practical backpack/tool bag, can use motorcycle/helmet only as transport props, not a black-leather biker, not 韩知玄.
 ```
 
-CUT-01 至 CUT-07：
-
-```text
-只允许五个角色：陆沉舟、黑七、檀缺、韩知玄、沈泊川。
-每个角色只出现一次。
-禁止第二个陆沉舟、第二个沈泊川、第二个韩知玄、第二个檀缺、第二只黑七。
-```
-
-CUT-08 至 CUT-15：
-
-```text
-只允许四个角色：陆沉舟、黑七、檀缺、沈泊川。
-韩知玄已经离场，不再出现。
-每个角色只出现一次。
-```
+CUT-01 至 CUT-07：只允许陆沉舟、黑七、檀缺、韩知玄、沈泊川，每个角色只出现一次。
+CUT-08 至 CUT-15：只允许陆沉舟、黑七、檀缺、沈泊川，韩知玄已经离场。
 
 ---
 
-## 9. Storyboard / Clean Keyframe
+## 10. Storyboard / Clean Keyframe
 
 Storyboard reference board：
 
@@ -250,7 +260,7 @@ Clean keyframe：
 
 ---
 
-## 10. 声音与表演
+## 11. 声音与表演
 
 每句对白必须包含：
 
@@ -288,36 +298,16 @@ Clean keyframe：
 
 ---
 
-## 11. 绝对禁止
-
-```text
-禁止创作对白。
-禁止改写对白。
-禁止删减对白。
-禁止把 board 的 CASE BRIEFING / NO HANDOFF / DOCS WITH SHEN 当成台词。
-禁止把 board 没写声音理解成无对白/无BGM/无SFX。
-禁止把参考图上的文字、箭头、编号、边框生成到最终视频。
-禁止把角色定位图的白底背景复制进分镜画面。
-禁止把角色定位图直接贴进画面。
-禁止把檀缺写成白清檀。
-禁止把黑七生成成黑狼、狗、人、怪物。
-禁止把韩知玄胸前标识写成“辑灵司”；必须是“镇灵司”。
-禁止把沈泊川写回旧黑皮骑手或@Shen角色参考图。
-禁止把多人远景 + 长台词 + 复杂动作硬塞进一个视频节点。
-禁止在 faceless style reference board 中画清楚眼睛、鼻子、嘴巴。
-```
-
----
-
 ## 12. Final Self-Check
 
 输出前必须检查：
 
 ```text
 [ ] Did I read source index first?
-[ ] Did I read smart / cinematic / director / flow / positioning / legacy rules?
+[ ] Did I read smart / cinematic / director / flow / timing / positioning / legacy rules?
 [ ] Did I preserve exact dialogue, BGM, SFX, environment sound?
-[ ] Did I run director diagnosis and flow pacing diagnosis?
+[ ] Did I run director diagnosis, flow pacing diagnosis, and dialogue timing fit audit?
+[ ] Did I avoid unsafe original timing after finding dialogue overflow?
 [ ] Did I avoid 3+ clear human faces with long dialogue?
 [ ] Did I use turnaround sheets / role references for identity?
 [ ] Is 沈泊川 the current cleaning-service company boss, not old black leather biker?
