@@ -83,15 +83,19 @@ Before writing the final prompt, complete this order:
    For every visible character, compare start position, end position, screen percentage, depth layer, body direction, gaze direction, movement path, locked status, and next-node continuity.
    If unsafe, do not keep vague blocking; add 人物位置连续表, 人物移动表, 镜头与人物运动关系, or split the shot.
 
-8. Filming decision
+8. Storyboard-video timing bridge
+   Separate storyboard panel / visual beat duration, source CUT duration, and final video node duration.
+   If they differ, state KEEP_SOURCE / COMPRESS / EXTEND / SPLIT_NODES / MERGE / REPLACE / PASS_PROPOSAL before writing the prompt.
+
+9. Filming decision
    Decide whether to keep original duration, compress, merge, propose pass/skip with user approval, extend duration, split into multiple video nodes, use master/dialogue/reaction/cutaway, use faceless/blocking master, or request missing source material.
 
-9. Prompt writing
+10. Prompt writing
    Write the final prompt only after the filming decision.
    Preserve story, but optimize filming execution.
 
-10. Self-repair
-   If any dialogue, BGM, SFX, character count, prop state, continuity anchor, actor delivery, timing fit, movement path, position table, face stability, flow pacing, or audio mix layer is missing, fix the prompt before output.
+11. Self-repair
+   If any dialogue, BGM, SFX, character count, prop state, continuity anchor, actor delivery, timing fit, timing bridge, movement path, position table, face stability, flow pacing, or audio mix layer is missing, fix the prompt before output.
 ```
 
 ## Locked Content
@@ -158,6 +162,7 @@ identity confusion.
 dead air with no emotion/story/continuity value.
 empty shot that breaks rhythm or atmosphere.
 unsafe dialogue timing.
+storyboard seconds treated as final video seconds without bridge judgment.
 ```
 
 Instead, propose and execute a smarter filming plan.
@@ -183,6 +188,31 @@ Mandatory output when movement/position matters:
 ```
 
 If these are missing from a video prompt, the prompt is incomplete.
+
+## Timing Bridge Intelligence
+
+Storyboard board seconds and final video node seconds are different layers.
+
+```text
+分镜图秒数 = visual beat / blocking reference time.
+原文CUT秒数 = source story timing.
+视频节点秒数 = final generation duration.
+```
+
+Mandatory output when a video prompt is made from a storyboard board:
+
+```text
+分镜-视频时间桥接表：
+原文CUT时长：
+分镜图标注时长：
+分镜图秒数性质：visual beat only / approved video duration
+台词自然表演所需时长：
+最终视频节点时长：
+采用原因：
+是否改变原文时长：否 / 是，原因
+```
+
+If a board says 3-4s but the source says 6s, keep 6s unless compression is explicitly approved by flow pacing and dialogue timing audits.
 
 ## Flow And Pacing Intelligence
 
@@ -268,6 +298,7 @@ Before final output, silently verify:
 [ ] I checked if the original duration can carry the dialogue.
 [ ] I split or extended if needed.
 [ ] I did not preserve unsafe original timing after finding dialogue overflow.
+[ ] I separated storyboard visual beat seconds from source CUT duration and final video node duration.
 [ ] I ran movement position continuity audit.
 [ ] I included every visible character's start/end position and movement status.
 [ ] I separated camera path from character path.
@@ -294,6 +325,7 @@ If the user asks for diagnosis, show:
 观众体验判断：
 节奏判断：KEEP / COMPRESS / MERGE / REPLACE / PASS_PROPOSAL
 台词时长适配：
+分镜-视频时间桥接表：
 人物位置连续判断：
 风险点：
 执行判定：keep and hold / smart adjustment / split or extend / compress / merge / replace / pass proposal
