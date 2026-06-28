@@ -383,23 +383,36 @@ Continuity:
 
 ## CUT-10
 
-Duration: 10 seconds.
+Original storyboard duration: 10 seconds.
+Jimeng voice+video safe execution: split into CUT-10A 10 seconds + CUT-10B 8 seconds.
+Do not generate CUT-10 as one 10-second video if dialogue is spoken inside the video.
 
 Function: 陆沉舟 performs first feng-shui diagnosis: dust pattern and stagnant air.
 
 Segments:
 
-- 0-5s: 陆沉舟 bends to inspect dust.
-- 5-10s: 陆沉舟 raises gaze toward inner corridor.
+- Original split: 0-5s / 5-10s.
+- Voice-safe split: CUT-10A 10s / CUT-10B 8s.
+- CUT-10A: 陆沉舟 bends to inspect dust and speaks the first line in a stable close/medium close shot.
+- CUT-10B: 陆沉舟 raises gaze toward inner corridor and speaks the second line, ending with 0.5s quiet air.
+
+Voice-safe execution:
+
+```text
+CUT-10A: 10 seconds. 陆沉舟 bends to inspect dust and says the first line in a stable close/medium close shot. End with 0.5s low alley ambience.
+CUT-10B: 8 seconds. 陆沉舟 raises gaze toward the inner corridor and says the second line, ending with 0.5s quiet air.
+Alternative: one extended 18-second clip only if the platform supports stable 18s generation.
+If platform limit is 15s, split into CUT-10A and CUT-10B.
+```
 
 Dialogue:
 
 ```text
-0.5-4.8s @陆沉舟：
+CUT-10A｜0.8-9.2s @陆沉舟：
 “你看地上的积灰。正常闲置房屋的灰尘，都会堆积在门内角落，但这里的灰尘，全是从屋内被推扫到了门外。”
-Voice: steady professional explanation, not fast.
+Voice: steady professional explanation, not fast. Pause after “积灰”, and make a clear contrast pause before “但这里的灰尘”.
 
-5.3-9.8s @陆沉舟：
+CUT-10B｜0.7-7.2s @陆沉舟：
 “天光能够照进屋内，却没有半点穿堂风。空气凝滞不动，完全不符合常理。”
 Voice: slightly heavier on "不符合常理", brief pause before final phrase.
 ```
