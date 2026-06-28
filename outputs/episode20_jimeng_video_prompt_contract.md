@@ -16,6 +16,7 @@ outputs/cinematic_shot_grammar_rules.md
 outputs/director_intelligence_layer_rules.md
 outputs/flow_pacing_edit_decision_rules.md
 outputs/dialogue_timing_fit_audit_rules.md
+outputs/movement_position_continuity_audit_rules.md
 outputs/faceless_style_reference_mode_rules.md
 outputs/exact_face_style_mode_rules.md
 outputs/stable_character_video_prompt_template.md
@@ -31,6 +32,7 @@ If the user provides a final CUT text in the current request, that pasted final 
 ```text
 Dialogue / BGM / SFX / timing / emotion / voice = final CUT source index.
 Framing / blocking / camera path / prop placement / spatial continuity = approved storyboard board.
+Character start/end screen position / movement path / no-teleport check = movement position continuity audit rules.
 Face / hair / outfit / body / silhouette / identity = character turnaround sheets / role reference images.
 Shot splitting = cinematic shot grammar.
 Director diagnosis = director intelligence layer.
@@ -116,12 +118,13 @@ Before writing the final video prompt:
 1. Source extraction: exact dialogue, speaker, BGM, SFX, environment, timing, props, emotion, continuity anchors.
 2. Board extraction: only blocking, camera, prop placement, movement direction, spatial continuity.
 3. Reference lock: turnaround sheets for face/hair/outfit/body/silhouette/identity.
-4. Risk diagnosis: dialogue density, face stability, 3+ character risk, action plus speech conflict, prop handoff risk, audio balance, wooden supporting-actor risk, duplicate-character risk, identity-confusion risk.
+4. Risk diagnosis: dialogue density, face stability, 3+ character risk, action plus speech conflict, prop handoff risk, audio balance, wooden supporting-actor risk, duplicate-character risk, identity-confusion risk, position drift risk.
 5. Flow pacing diagnosis: KEEP / COMPRESS / MERGE / REPLACE / PASS_PROPOSAL for weak/silent beats.
 6. Dialogue timing fit audit: verify every spoken line fits its assigned seconds with natural speech, breath, pause, lip-sync, and listener reaction.
-7. Filming decision: keep, compress, merge, replace cutaway, pass proposal, extend, split, master/dialogue/reaction/cutaway, faceless master, clean keyframe, or separate dubbing.
-8. Prompt writing.
-9. Self-repair: missing dialogue, BGM/SFX, character count, prop state, continuity, timing fit, face stability, actor delivery, audio mix, or pacing must be fixed before output.
+7. Movement position continuity audit: verify every visible character's start position, end position, screen percentage, depth layer, body direction, gaze direction, movement path, locked status, and next-node continuity.
+8. Filming decision: keep, compress, merge, replace cutaway, pass proposal, extend, split, master/dialogue/reaction/cutaway, faceless master, clean keyframe, or separate dubbing.
+9. Prompt writing.
+10. Self-repair: missing dialogue, BGM/SFX, character count, prop state, continuity, timing fit, movement path, position table, face stability, actor delivery, audio mix, or pacing must be fixed before output.
 ```
 
 ## Flow Pacing Rule
@@ -171,6 +174,32 @@ CUT-10 has two professional analysis lines. A literal 10-second single video wit
 Default repair: CUT-10A 7 seconds + CUT-10B 8 seconds, or one extended 15-16 second clip.
 ```
 
+## Movement Position Continuity Rule
+
+Background continuity is not enough. Every video prompt must include concrete character continuity.
+
+```text
+人物位置连续表：
+角色｜起点屏幕位置｜终点屏幕位置｜景深层级｜身体朝向｜视线方向｜状态锁定
+
+人物移动表：
+角色｜是否移动｜起点｜路径｜终点｜速度/步数｜镜头关系｜禁止事项
+
+镜头与人物运动关系：
+镜头怎么动；谁跟随镜头；谁保持世界位置不动；谁只允许微反应。
+```
+
+Hard rule:
+
+```text
+镜头运动不等于人物运动。
+位置锁定不等于木头人；锁定角色必须有眼神、呼吸、肩颈、手指、重心等微反应。
+移动角色必须写 start -> path -> end。
+上一节点终点必须等于下一节点起点，除非source明确说明画面外移动。
+```
+
+If the movement is vague, the prompt is invalid and must be repaired before output.
+
 ## Dialogue And Audio Rules
 
 Every spoken line must include:
@@ -211,6 +240,9 @@ A Jimeng / Seedance video prompt must include these sections:
 台词时长适配：
 台词时长判断：
 脸部稳定判断：
+人物位置连续表：
+人物移动表：
+镜头与人物运动关系：
 参考素材：
 画面性质：
 角色锁定：
@@ -226,7 +258,7 @@ continuity anchor：
 负面提示：
 ```
 
-If the user asks for prompt only, diagnosis may be hidden, but timing fit must still be applied. Do not silently pass/skip any beat without user approval.
+If the user asks for prompt only, diagnosis may be hidden, but timing fit and movement continuity must still be applied. Do not silently pass/skip any beat without user approval.
 
 ## Final Self-Check
 
@@ -242,6 +274,10 @@ If the user asks for prompt only, diagnosis may be hidden, but timing fit must s
 [ ] Every spoken line was checked against its assigned seconds.
 [ ] Unsafe timing was extended, split, supported by cutaway, or moved to separate dubbing.
 [ ] Long dialogue not forced into a short moving shot.
+[ ] Movement position continuity audit was applied.
+[ ] 人物位置连续表, 人物移动表, and 镜头与人物运动关系 are present.
+[ ] Camera movement is separated from character movement.
+[ ] No character teleports, drifts, changes order, or freezes without micro acting.
 [ ] Actor-style delivery included.
 [ ] Audio hierarchy included.
 [ ] Flow pacing decision made.
