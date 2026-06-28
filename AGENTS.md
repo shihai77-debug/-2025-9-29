@@ -202,7 +202,7 @@ same BGM/SFX continuation.
 黑七 = exactly one small black fox, not dog, wolf, human, monster, or second fox.
 檀缺 = dark modern daily outfit, dark cardigan/jacket, dark top, black skirt, not 白清檀, not white clothes.
 韩知玄 = black long 镇灵司 uniform, official restraint, not 沈泊川.
-沈泊川 = black leather jacket, black pants, black boots, black backpack, motorcycle/helmet when relevant, not 韩知玄.
+沈泊川 = young cleaning-service company boss / on-site lead, gray-olive work shirt jacket, dark gray T-shirt, brown cargo work pants, brown work boots, khaki practical backpack/tool bag, can use motorcycle/helmet only as transport props, not a black-leather biker, not 韩知玄.
 ```
 
 CUT-01 至 CUT-07：
