@@ -19,6 +19,8 @@ Would a real director protect the actor's face for this line?
 Would a real director move to hands/props/environment because the clue matters more than the face?
 Does the supporting actor need a reaction beat so the scene feels alive?
 Does the audio help the line land, or is it filling space?
+Is this beat useful silence, or dead air that will make viewers leave?
+If the draft storyboard is messy, what is the cleanest cinematic way to preserve the story?
 ```
 
 Do not over-split.
@@ -35,6 +37,8 @@ Every CUT must choose one execution verdict before prompt writing:
 1. Keep and hold: original shot works; protect timing and acting.
 2. Smart adjustment: same CUT, improved shot size/camera/audio/acting.
 3. Split or extend: original execution will likely fail; use multiple nodes or longer duration.
+4. Compress / merge / replace: original beat has value but wastes rhythm or is visually weak.
+5. Pass proposal: original beat has no dialogue, no emotion, no new information, no prop/position/continuity value; ask user approval before skipping.
 ```
 
 The standard is not "more detailed prompts". The standard is:
@@ -64,17 +68,20 @@ Before writing the final prompt, complete this order:
    Use @沈泊川角色参考图, never @Shen角色参考图.
 
 4. Risk diagnosis
-   Check dialogue density, face stability, 3+ character risk, action plus speech conflict, prop handoff risk, audio balance, wooden supporting-actor risk, duplicate-character risk, and identity-confusion risk.
+   Check dialogue density, face stability, 3+ character risk, action plus speech conflict, prop handoff risk, audio balance, wooden supporting-actor risk, duplicate-character risk, identity-confusion risk, dead air, weak empty beats, rhythm damage, and unnecessary shots.
 
-5. Filming decision
-   Decide whether to keep original duration, extend duration, split into multiple video nodes, use master/dialogue/reaction/cutaway, use faceless/blocking master, or request missing source material.
+5. Flow pacing diagnosis
+   Decide whether each weak/silent beat should be KEEP, COMPRESS, MERGE, REPLACE, or PASS_PROPOSAL according to outputs/flow_pacing_edit_decision_rules.md.
 
-6. Prompt writing
+6. Filming decision
+   Decide whether to keep original duration, compress, merge, propose pass/skip with user approval, extend duration, split into multiple video nodes, use master/dialogue/reaction/cutaway, use faceless/blocking master, or request missing source material.
+
+7. Prompt writing
    Write the final prompt only after the filming decision.
    Preserve story, but optimize filming execution.
 
-7. Self-repair
-   If any dialogue, BGM, SFX, character count, prop state, continuity anchor, actor delivery, face stability, or audio mix layer is missing, fix the prompt before output.
+8. Self-repair
+   If any dialogue, BGM, SFX, character count, prop state, continuity anchor, actor delivery, face stability, flow pacing, or audio mix layer is missing, fix the prompt before output.
 ```
 
 ## Locked Content
@@ -109,6 +116,10 @@ mid-line pause.
 listener reaction.
 prop cutaway.
 audio ducking and transition.
+compressing weak movement.
+merging repeated beats.
+replacing weak empty shots with useful cutaways.
+pass/skip proposal after user approval.
 ```
 
 ## Hard Intelligence Rule
@@ -127,9 +138,32 @@ BGM/SFX covering dialogue.
 missing source dialogue or missing source audio.
 prop continuity error.
 identity confusion.
+dead air with no emotion/story/continuity value.
+empty shot that breaks rhythm or atmosphere.
 ```
 
 Instead, propose and execute a smarter filming plan.
+
+## Flow And Pacing Intelligence
+
+Do not keep a beat only because it exists in the draft.
+
+```text
+Keep useful silence.
+Compress weak movement.
+Merge repeated beats.
+Replace weak empty shots with short cutaways.
+Propose pass/skip only when the beat has no dialogue, no emotion, no new information, no prop/position change, and no continuity value.
+```
+
+Never pass/skip automatically.
+
+Required behavior:
+
+```text
+If pass/skip is useful, state why, state what continuity anchor will be preserved, and ask for user approval before final removal.
+If the user asks for prompt only, do not silently delete; use compress/merge/cutaway unless prior approval exists.
+```
 
 ## Multi-Character Rule
 
@@ -196,10 +230,11 @@ Before final output, silently verify:
 [ ] I did not treat board labels as dialogue.
 [ ] I did not use board faces as appearance reference.
 [ ] I ran director diagnosis.
-[ ] I asked whether the shot should hold, adjust, split, or extend for the viewer.
+[ ] I asked whether the shot should hold, adjust, split, extend, compress, merge, replace, or pass-propose.
 [ ] I checked if the original duration can carry the dialogue.
 [ ] I split or extended if needed.
 [ ] I did not over-split a silence/emotion/pressure beat.
+[ ] I did not keep dead air just because it exists in the draft.
 [ ] I kept max two clear human faces per generated node.
 [ ] I prevented duplicate characters and lookalikes.
 [ ] I prevented 檀缺/白清檀, 沈泊川/韩知玄, 陆沉舟/沈泊川 confusion.
@@ -207,6 +242,7 @@ Before final output, silently verify:
 [ ] I included actor-style delivery.
 [ ] I included audio mix hierarchy.
 [ ] I included continuity anchors.
+[ ] I did not pass/skip anything without user approval.
 ```
 
 ## Output Behavior
@@ -216,13 +252,14 @@ If the user asks for diagnosis, show:
 ```text
 导演诊断：
 观众体验判断：
+节奏判断：KEEP / COMPRESS / MERGE / REPLACE / PASS_PROPOSAL
 风险点：
-执行判定：keep and hold / smart adjustment / split or extend
+执行判定：keep and hold / smart adjustment / split or extend / compress / merge / replace / pass proposal
 建议执行方式：
 最终提示词：
 ```
 
-If the user asks for prompt only, hide the diagnosis but still apply it.
+If the user asks for prompt only, hide the diagnosis but still apply it. Do not silently pass/skip unless the user has already approved that pass/skip policy for the specific beat.
 
 Final rule:
 
@@ -233,6 +270,8 @@ Be a source-locked director.
 拍法要聪明。
 不要为了分镜而分镜。
 该切才切，该停就停。
+保留有用的沉默。
+剪掉无用的空白，但必须先说明理由并请求确认。
 表演要像人。
 镜头要能剪。
 声音要能听。
