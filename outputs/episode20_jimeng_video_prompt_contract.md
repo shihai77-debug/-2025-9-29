@@ -1,129 +1,76 @@
-# EP20 Jimeng Video Prompt Contract｜第20集即梦视频提示词契约
+# EP20 Jimeng / Seedance Video Prompt Contract｜第20集视频提示词契约
 
-本文件规定当用户要求“@GitHub CUT-XX 批准板 기준 지멍 영상 프롬”时，最终回复必须如何生成。
+Use this contract every time the user asks for a Jimeng / Seedance video prompt from a CUT, storyboard board, clean keyframe, approved board, or GitHub source.
 
----
+The goal is not to copy the draft mechanically. The goal is to preserve locked story content while producing a video prompt that can actually generate stable, watchable footage.
 
-## 1. 必读顺序
+## Mandatory Read Order
 
-生成提示词前必须读取：
-
-```text
-1. outputs/episode20_final_cut_source_index.md
-2. outputs/episode20_master_prompt_rules.md
-3. 用户上传或指定的批准 storyboard reference board
-```
-
-`episode20_final_cut_source_index.md` 是对白 / BGM / SFX / 时长 / 情绪 / 声音的唯一来源。
-
-批准 storyboard reference board 只用于构图、站位、动线、镜头节奏、道具位置、空间关系。
-
----
-
-## 2. 绝对禁止
+Before writing the prompt, read these files from the current working branch:
 
 ```text
-禁止创作对白。
-禁止改写对白。
-禁止删减对白。
-禁止把board英文标签当台词。
-禁止把 board 标签（CASE BRIEFING / NO HANDOFF / DOCS WITH SHEN / DOCS WITH 沈泊川）当台词。
-禁止因为board上没有台词就写“无对白”。
-禁止因为board是静音参考图就删除BGM/SFX/环境声。
+outputs/episode20_final_cut_source_index.md
+outputs/episode20_master_prompt_rules.md
+outputs/smart_prompt_execution_protocol.md
+outputs/cinematic_shot_grammar_rules.md
+outputs/director_intelligence_layer_rules.md
+outputs/flow_pacing_edit_decision_rules.md
+outputs/faceless_style_reference_mode_rules.md
+outputs/exact_face_style_mode_rules.md
+outputs/stable_character_video_prompt_template.md
+outputs/character_positioning_image_usage_rules.md
+outputs/character_positioning_prompt_snippets.md
+outputs/legacy_prompt_files_do_not_use.md
 ```
 
----
+If the user provides a final CUT text in the current request, that pasted final CUT text overrides weaker storyboard labels.
 
-## 3. Storyboard board 外貌限制
-
-批准 storyboard reference board 不是角色外貌参考。
-
-外貌优先级：
+## Source Priority
 
 ```text
-1. 角色三面图 / 角色参考图 = 脸、发型、服装、体型、年龄、气质、轮廓最高优先级。
-2. 批准 storyboard board = 只参考站位、构图、动线、镜头、道具状态、连续空间。
-3. 如果board人物脸/服装与三面图不一致，必须以三面图为准。
+Dialogue / BGM / SFX / timing / emotion / voice = final CUT source index.
+Framing / blocking / camera path / prop placement / spatial continuity = approved storyboard board.
+Face / hair / outfit / body / silhouette / identity = character turnaround sheets / role reference images.
+Shot splitting = cinematic shot grammar.
+Director diagnosis = director intelligence layer.
+Flow damage / dead air / compress-merge-replace-pass proposal = flow pacing edit decision rules.
+Final I2V source image = clean 16:9 keyframe, not labeled storyboard board.
 ```
 
-最终视频提示词必须写：
+Do not generate a video prompt from an image alone if the source CUT text is available or required.
+
+## Storyboard Board Limit
+
+Approved storyboard boards are planning references only.
+
+```text
+Use storyboard board for blocking, camera, props, movement direction, and continuity.
+Do not use storyboard board face, temporary outfit, black-white style, labels, arrows, panel borders, or written notes as final video appearance.
+Do not feed a crowded labeled storyboard board directly as the final image-to-video source when face accuracy matters.
+Use or create a clean 16:9 color keyframe for final I2V.
+```
+
+Every video prompt that references a board must include:
 
 ```text
 注意：批准 storyboard reference board 只用于站位、构图、动线、镜头、道具状态和连续空间关系；不要参考该board里的人脸、五官、发型细节、服装细节或人物气质。所有角色外貌必须严格以各自三面图/角色参考图为准。
 ```
 
----
+## Legacy File Warning
 
-## 4. 人物数量与混淆检查
-
-每个提示词必须锁定角色数量。
-
-CUT-01 至 CUT-07：
+Old derived prompt packs may contain outdated terms such as `Shen`, `SHEN`, `motorcycle outfit`, `black leather biker`, `CASE BRIEFING`, `DOCS WITH SHEN`, or English storyboard labels.
 
 ```text
-画面只允许出现五个角色：陆沉舟、黑七、檀缺、韩知玄、沈泊川。每个角色只出现一次。不能出现第二个陆沉舟、第二个沈泊川、第二个韩知玄、第二个檀缺，不能出现第二只黑七。
+Old derived prompt files are not source of truth.
+If an old file says Shen or SHEN, treat it only as an alias for 沈泊川.
+Output must use 沈泊川 and @沈泊川角色参考图.
+Do not output @Shen角色参考图.
+Do not revive old black leather biker identity for 沈泊川.
 ```
 
-CUT-08 至 CUT-15：
+## Character Locks
 
-```text
-画面只允许出现四个角色：陆沉舟、黑七、檀缺、沈泊川。韩知玄已经离场，不再出现。每个角色只出现一次。
-```
-
-混淆禁止：
-
-```text
-陆沉舟不能变成沈泊川或韩知玄。
-沈泊川不能变成韩知玄。
-韩知玄不能变成沈泊川。
-檀缺不能变成白清檀，不能穿白衣，不能变成古风女王。
-黑七只能是一只小型黑色狐狸，不能变成人、狗、狼、黑狼，不能出现第二只狐狸。
-背景中不能出现长得像主角的额外人物。
-```
-
----
-
-## 5. Clean keyframe 规则
-
-如果用户要做图生视频，不能把带文字/箭头/分格的 storyboard board 直接当最终I2V图源。
-
-推荐流程：
-
-```text
-storyboard board = 只看站位/构图/动作/道具。
-clean keyframe = 真正输入即梦的16:9彩色真人电影关键帧。
-video prompt = 控制动作、台词、声音、镜头、连续性。
-```
-
-Clean keyframe 必须：
-
-```text
-16:9彩色真人电影画面。
-无文字、无箭头、无标签、无分镜边框。
-人物脸严格来自三面图，不来自storyboard board。
-说话者/动作主体脸部足够大，五官清晰稳定。
-无重复人物，无额外路人，角色数量正确。
-```
-
----
-
-## 6. 对白契约
-
-每句对白必须来自 source index，格式如下：
-
-```text
-开始-结束秒 @角色名：
-“原文台词”
-声线基准：
-音量连续性：
-语速：
-气息：
-情绪读法：
-停顿：
-口型与视线：
-```
-
-使用固定语音标签：
+Use exact speaker/role tags:
 
 ```text
 @陆沉舟
@@ -133,288 +80,161 @@ Clean keyframe 必须：
 @沈泊川
 ```
 
----
-
-## 7. CUT-02 当前强制规则
-
-CUT-02 批准板是 沈泊川 打开背包取出文件并说明委托。
-
-必须使用 source index 中 CUT-02 的两段原文对白：
+Per-character identity anchors:
 
 ```text
-@沈泊川：“看你们几个这脸色，跟天塌了半截似的。不过我今天不是来探你们私事的，有个棘手的委托。”
-@沈泊川：“城南老城区一栋老旧民宅，接连几个保洁工人进去打扫，全都莫名窒息心慌，拼了命从屋里冲出来，没人敢再踏进一步。”
+陆沉舟：男性，黑色皮夹克/黑色内搭/黑色长裤，沉郁疲惫，严格参考@陆沉舟三面图。
+黑七：一只小型黑色狐狸，黑色皮毛，尖耳，细长狐狸嘴，蓬松长尾，严格参考@黑七狐狸参考图；不是狗、狼、人。
+檀缺：女性，深色现代日常装，冷静克制，严格参考@檀缺三面图；不是白清檀，不穿白衣。
+韩知玄：男性，黑色长款镇灵司制服，公务式克制，严格参考@韩知玄三面图；不是沈泊川。
+沈泊川：男性，年轻清洁服务公司老板/现场负责人，灰绿或深灰工作衬衫外套、深灰T恤、棕色工装裤、棕色工作靴、卡其色实用背包/工具包，市井敏锐但不油滑，严格参考@沈泊川角色参考图；不是韩知玄，不是陆沉舟，不是黑皮骑手。
 ```
 
-禁止使用错误对白：
+## Character Count And Face Stability
 
 ```text
-“委托人只说，让我把这份情况带给你们。文件不外借。”
+CUT-01 to CUT-07: only 陆沉舟, 黑七, 檀缺, 韩知玄, 沈泊川. Each appears once.
+CUT-08 to CUT-15: 韩知玄 has exited. Only 陆沉舟, 黑七, 檀缺, 沈泊川. Each appears once.
 ```
 
-CUT-02 音频必须来自 source index：
+For generated images, clean keyframes, and video nodes:
 
 ```text
-BGM：无音乐，仅环境底噪。
-SFX / environment：背包拉链声。纸张翻动/抽出声。轻风声与低环境底噪。
+At most two clear human faces per generated frame or video node.
+3+ clear human faces in one generated frame = high face-break risk.
+3+ characters may appear only in faceless/blocking master shots.
+Important dialogue must move to a 1-person or 2-person dialogue shot.
 ```
 
-如果视频模型需要角色直接说台词，为保证语速和口型稳定，CUT-02 使用15秒安全版：
+Clear facial features are allowed only when:
 
 ```text
-总时长：15秒。
-0-6秒：沈泊川打开背包，取出文件，同时说第一段对白。
-6-15秒：沈泊川手持文件说明老宅案情，说第二段对白。
-不要压缩语速，不要为了11秒强行加速。
+character 三面图 / role reference is available.
+one clear human face, or at most two clear human faces.
+medium close-up / close-up / clean keyframe / dialogue shot / reaction shot.
+fixed camera, slow push, or minimal movement.
+no crowded blocking, no fast action, no long dialogue squeezed into one moving wide shot.
 ```
 
----
+## Smart Execution Order
 
-## 8. 声音连续性
+Before writing the final video prompt:
 
 ```text
-音量优先级：人声 > 核心音效 > 环境音 > BGM。
-同一角色跨CUT声线、音量基准、语速习惯保持一致。
-情绪通过气息、停顿、语速微调表现，不靠突然拔高音量。
-BGM、SFX、环境音必须承接上一CUT或明确渐入/渐弱/淡出。
+1. Source extraction: exact dialogue, speaker, BGM, SFX, environment, timing, props, emotion, continuity anchors.
+2. Board extraction: only blocking, camera, prop placement, movement direction, spatial continuity.
+3. Reference lock: turnaround sheets for face/hair/outfit/body/silhouette/identity.
+4. Risk diagnosis: dialogue density, face stability, 3+ character risk, action plus speech conflict, prop handoff risk, audio balance, wooden supporting-actor risk, duplicate-character risk, identity-confusion risk.
+5. Flow pacing diagnosis: KEEP / COMPRESS / MERGE / REPLACE / PASS_PROPOSAL for weak/silent beats.
+6. Filming decision: keep, compress, merge, replace cutaway, pass proposal, extend, split, master/dialogue/reaction/cutaway, faceless master, or clean keyframe.
+7. Prompt writing.
+8. Self-repair: missing dialogue, BGM/SFX, character count, prop state, continuity, face stability, actor delivery, audio mix, or pacing must be fixed before output.
 ```
 
----
+## Flow Pacing Rule
 
-## 9. 输出前自检
-
-最终回答前逐项检查：
+Classify weak or silent beats:
 
 ```text
-[ ] 已读取 source index。
-[ ] 对白逐字来自 source index，没有创作/改写/删减。
-[ ] BGM/SFX/环境声来自 source index。
-[ ] 批准board只用于构图/站位/道具/镜头，不用于人物外貌。
-[ ] 已写明人物外貌以三面图为准。
-[ ] 已锁定本CUT角色数量。
-[ ] 没有重复人物、额外路人、背景主角脸。
-[ ] 没有沈泊川/韩知玄混脸。
-[ ] 没有檀缺/白清檀混淆。
-[ ] 黑七是一只小型黑色狐狸，不是狗/狼/人。
-[ ] 道具交接状态正确。
-[ ] 若CUT-02含对白视频，已使用15秒安全版或明确不要压缩语速。
+KEEP：承载情绪、悬念、反应、空间、道具或continuity。
+COMPRESS：动作/移动有用但时长过长。
+MERGE：与前后CUT重复，可自然合并。
+REPLACE：原镜头弱，但需要用手、资料、门、灰尘、风声等cutaway保留连接。
+PASS_PROPOSAL：无对白、无情绪、无信息、无位置/道具变化、无continuity价值，建议跳过但必须用户确认。
 ```
 
-如果任何一项不满足，必须先修正提示词再输出。
-
----
-
-## 10. 每CUT台词时长与演员式读法自检
-
-生成视频提示词前，必须先判断该 CUT 的对白是否能被原时长自然承载。不能先写提示词再事后发现语速过快。
-
-每个 CUT 必须输出一行“台词时长判断”：
+Never pass/skip automatically.
 
 ```text
-台词时长判断：本CUT无台词，不需要台词时长调整。
-台词时长判断：原时长可承载台词，不需要延长。
-台词时长判断：台词偏密，建议延长到 X 秒。
-台词时长判断：台词过密，建议拆成 CUT-XX-A / CUT-XX-B 两个视频节点。
+提出跳过时必须说明原因。
+必须说明保留或转移哪些continuity anchor。
+必须等用户确认后才能最终删除/跳过。
 ```
 
-判断标准：
+## Dialogue And Audio Rules
 
-```text
-短句：1.5-3秒，含开口前吸气和句尾停顿。
-中等句：3-6秒，含自然断句。
-长句：6-10秒，必须有停顿点、重音词、换气。
-信息量很大的长台词：8-12秒；如果仍然挤，必须延长或拆节点。
-```
+Never invent, rewrite, summarize, shorten, merge, or replace dialogue.
 
-每句对白必须使用演员式读法格式：
+Every spoken line must include:
 
 ```text
 开始-结束秒 @角色名：
 “原文台词”
-声线基准：承接角色固定声线。
-音量连续性：承接上一CUT音量基准，不忽大忽小。
-语速：按情绪自然推进，不为赶时间加速。
-气息：开口前短吸气，长句中间自然换气。
-外层情绪：观众能听见的表层情绪。
-内层情绪：角色压在台词下面的心理。
-重音词：列出2-4个关键词。
-停顿点：标出自然停顿位置。
-尾音处理：收住、放轻、压低或断开。
-口型与视线：说话时看谁，是否移开视线。
-身体配合：手、肩、呼吸、眼神如何配合。
+声线基准：
+音量连续性：
+语速：
+气息：
+外层情绪：
+内层情绪：
+重音词：
+停顿点：
+尾音处理：
+口型与视线：
+身体配合：
 ```
 
-表演硬性规则：
+Dialogue feasibility:
 
 ```text
-演员必须像人在现场对话，不像读稿。
-同一角色跨CUT音色、音量、语速习惯保持连续。
-情绪靠呼吸、停顿、语速、重音、眼神、手部细节表达。
-禁止突然拔高音量。
-禁止全程平铺直叙。
-禁止长台词无停顿。
-禁止为压进原时长而机械快读。
+short line: 1.5-3 seconds plus breath/pause.
+medium line: 3-6 seconds plus breath/pause.
+long line: 6-10 seconds plus breath/pause.
+information-heavy exposition: 8-12 seconds or split into multiple nodes.
 ```
 
-新增输出前自检：
+If exact in-video speech causes rushed narration or broken lip sync, recommend visual-only generation plus separate dubbing/TTS using the exact source dialogue.
+
+Audio hierarchy:
 
 ```text
-[ ] 是否先做台词时长判断？
-[ ] 是否必要时延长或拆分视频节点？
-[ ] 每句对白是否有 @角色名？
-[ ] 每句对白是否有声线、音量、语速、气息、内外情绪、重音、停顿、尾音、视线、身体配合？
-[ ] 是否避免跨CUT声音忽高忽低？
-```
-
----
-
-## 11. 演员脸部稳定与防抖自检
-
-生成视频提示词前，必须判断该 CUT 是否有脸部漂移风险。脸部稳定不能只写“三面图优先”，必须同时控制源图、脸部大小、镜头运动、台词长度和节点拆分。
-
-每个视频提示词必须加入以下固定段落：
-
-```text
-演员脸部稳定锁：所有人物脸部严格以三面图/角色参考图为准，不参考storyboard board中的临时脸。说话者脸部清晰、五官稳定、身份不变；同一角色在整个CUT中保持同一张脸、同一发型、同一年龄感、同一气质。禁止脸部漂移、五官闪烁、换脸、混脸、脸部融化、背景复制主角脸。
-```
-
-脸部稳定判断必须输出一行：
-
-```text
-脸部稳定判断：本CUT说话者脸部足够清晰，可保持当前构图。
-脸部稳定判断：说话者脸偏小，建议先生成clean keyframe或改为中近景。
-脸部稳定判断：长台词叠加镜头运动，建议拆成动作节点和说话节点。
-脸部稳定判断：批准board只能作站位参考，不适合直接作为最终I2V源图。
-```
-
-防抖执行规则：
-
-```text
-长台词优先固定镜头、慢推或轻微呼吸感镜头。
-说话时避免大幅横移、快速跟拍、快速变焦、频繁切角度。
-动作复杂时先完成动作，再进入稳定说话构图。
-远景多人同框只用于站位，不适合承载长台词口型。
-脸部不清楚时，不要让模型同时承担口型、表情、走位和镜头运动。
-```
-
-新增输出前自检：
-
-```text
-[ ] 是否说明批准board不是最终人物外貌参考？
-[ ] 是否建议使用clean keyframe而不是带字分镜board直接I2V？
-[ ] 说话者脸是否足够大、清晰、稳定？
-[ ] 长台词是否避开大幅镜头运动？
-[ ] 必要时是否拆成动作节点和说话节点？
-[ ] 是否写入演员脸部稳定锁？
-[ ] 是否禁止脸部漂移、五官闪烁、换脸、混脸、背景复制主角脸？
-```
-
----
-
-## 12. 每CUT音频混音判断
-
-生成视频提示词前，必须判断该CUT的声音层级是否平衡。声音层级必须服务剧情，不允许BGM、SFX、环境音互相抢，也不允许把人声压低到听不清。
-
-每个视频提示词必须输出一行“音频混音判断”：
-
-```text
-音频混音判断：本CUT有对白，人声必须最前，BGM/SFX全部下压。
-音频混音判断：本CUT无对白，环境音和核心音效负责空间感，BGM只做低层情绪铺底。
-音频混音判断：source index写无音乐，本CUT只保留对白/音效/环境音，不新增BGM。
-音频混音判断：上一CUT声音需要淡出/承接，本CUT必须写明渐入、渐弱或留白。
-```
-
-每个视频提示词必须包含音频层级：
-
-```text
-音频层级：人声 > 核心音效 > 环境音 > BGM。
+人声 > 核心音效 > 环境音 > BGM。
 人声：清晰居前，音量稳定。
 核心音效：贴合动作点，不提前、不拖后，不盖人声。
 环境音：低层持续，保持场景空间连续。
-BGM：按source index使用；对白段自动下压，无对白段轻微托情绪。
+BGM：按source index使用；对白段自动下压。
 ```
 
-相对音量提示：
+## Required Output Sections
+
+A Jimeng / Seedance video prompt must include these sections:
 
 ```text
-人声：100。
-核心音效：50-70，关键瞬间可短暂到75。
-环境音：18-30。
-BGM对白段：8-18，必须ducking下压。
-BGM无对白段：18-35，不能突然煽情。
-静默/余韵段：保留空气感，不要把声音填满。
+导演诊断：
+节奏判断：KEEP / COMPRESS / MERGE / REPLACE / PASS_PROPOSAL
+台词时长判断：
+脸部稳定判断：
+参考素材：
+画面性质：
+角色锁定：
+场景与连续性：
+总时长与镜头：
+镜头路径：
+时间轴表演：
+台词与声音输入：
+声音设计：
+脸部与身份稳定：
+道具状态：
+continuity anchor：
+负面提示：
 ```
 
-禁止项：
+If the user asks for prompt only, diagnosis may be hidden, but the logic must still be applied. Do not silently pass/skip any beat without user approval.
+
+## Final Self-Check
 
 ```text
-禁止BGM盖住台词。
-禁止音效和环境音一样响。
-禁止声音忽大忽小。
-禁止人声发闷、发糊、太远、太空。
-禁止每个CUT环境底噪突然变化。
-禁止source index写无音乐时自行添加BGM。
+[ ] Source index read first.
+[ ] Exact dialogue preserved.
+[ ] BGM/SFX/environment preserved.
+[ ] Board used only for blocking, not appearance.
+[ ] Legacy files did not override current rules.
+[ ] Character count locked.
+[ ] Max two clear human faces per generated node.
+[ ] Clean keyframe recommended when face accuracy matters.
+[ ] Long dialogue not forced into a short moving shot.
+[ ] Actor-style delivery included.
+[ ] Audio hierarchy included.
+[ ] Flow pacing decision made.
+[ ] No pass/skip without approval.
+[ ] No Shen/Han, Tan/白清檀, Lu/沈泊川, Hei Qi dog/wolf/human errors.
 ```
-
-新增输出前自检：
-
-```text
-[ ] 是否读取source index里的BGM/SFX/环境音？
-[ ] 是否没有新增source index不存在的音乐或音效？
-[ ] 是否输出音频混音判断？
-[ ] 对白段人声是否始终最清楚？
-[ ] BGM是否在对白段下压？
-[ ] 核心音效是否贴合动作时间点？
-[ ] 环境音是否与上一CUT连续？
-[ ] 转场处是否写明淡入、淡出、延续或留白？
-[ ] 是否避免声音忽大忽小、发闷、发糊、BGM盖台词？
-```
-
----
-
-## 13. Storyboard 标签语言规则
-
-Storyboard reference board 可以使用短标签、箭头、编号，但必须使用中文角色全名或中文短标签，禁止使用英文简称。
-
-必须使用：
-
-```text
-陆沉舟
-黑七
-檀缺
-韩知玄
-沈泊川
-陆沉舟位置锁定
-黑七位置锁定
-檀缺位置锁定
-韩知玄位置锁定
-沈泊川入场
-沈泊川停下
-无沈泊川
-头盔戴着
-头盔摘下
-背包关闭
-无资料
-背景连续
-固定全景
-摩托车入场
-```
-
-禁止使用：
-
-```text
-LU
-TAN
-HAN
-SHEN
-HEIQI
-LU POS LOCK
-TAN POS LOCK
-HAN POS LOCK
-SHEN ENTER
-HEIQI POS LOCK
-```
-
-原因：英文简称会削弱角色身份绑定，容易造成檀缺/白清檀、沈泊川/韩知玄、陆沉舟/沈泊川混淆。
-
-Clean keyframe 与最终视频画面禁止出现任何标签、文字、箭头、编号或分镜边框。
