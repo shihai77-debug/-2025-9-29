@@ -4,7 +4,7 @@
 
 当用户写 `@GitHub`、`GitHub 기준`、`Codex 기준`、`저장소 기준`、`CUT-XX 프롬`、`approved board 영상 프롬` 时，必须优先读取本仓库规则，不得凭记忆生成。
 
-目标不是机械复制分镜，而是：故事不乱改，拍法要聪明，表演像真人，镜头能剪，声音能听，观众想继续看。
+目标不是机械复制分镜，而是：故事不乱改，拍法要聪明，人物位置要连续，表演像真人，镜头能剪，声音能听，观众想继续看。
 
 ---
 
@@ -21,6 +21,7 @@ outputs/cinematic_shot_grammar_rules.md
 outputs/director_intelligence_layer_rules.md
 outputs/flow_pacing_edit_decision_rules.md
 outputs/dialogue_timing_fit_audit_rules.md
+outputs/movement_position_continuity_audit_rules.md
 outputs/faceless_style_reference_mode_rules.md
 outputs/exact_face_style_mode_rules.md
 outputs/stable_character_video_prompt_template.md
@@ -32,6 +33,7 @@ outputs/legacy_prompt_files_do_not_use.md
 然后再读取：
 
 ```text
+用户上传的最终CUT文本。
 用户上传的批准 storyboard reference board。
 用户上传的三面图 / 角色参考图 / 角色定位图。
 ```
@@ -44,7 +46,8 @@ outputs/legacy_prompt_files_do_not_use.md
 
 ```text
 对白 / BGM / SFX / 环境音 / 情绪 / 声音 / 时长 = final CUT source index。
-构图 / 站位 / 动线 / 镜头 / 道具空间 = 批准board参考。
+构图 / 站位 / 镜头 / 道具空间 = 批准board参考。
+人物起点终点 / 动线 / 屏幕位置 / 防瞬移 = movement position continuity audit rules。
 人物脸 / 发型 / 服装 / 体型 / 气质 = 三面图/角色参考图最高优先级。
 智能执行顺序 / 自修流程 = smart prompt execution protocol。
 镜头拆分 / master-dialogue-reaction-cutaway 判断 = cinematic shot grammar。
@@ -56,9 +59,9 @@ outputs/legacy_prompt_files_do_not_use.md
 角色定位图 = 分镜草图 / storyboard board 的外形、发型、服装、体型、姿态、轮廓、方向参考。
 ```
 
-禁止把批准board里的人脸、服装、临时画法当成最终角色外貌。
-禁止把角色定位图当成最终画面素材、白底贴图、复制粘贴素材或最终视频人脸。
 禁止把 storyboard board 里没有写声音理解成无对白、无BGM、无SFX。
+禁止把批准board里的人脸、服装、临时画法当成最终角色外貌。
+禁止把背景连续当成人物位置连续。
 
 ---
 
@@ -89,7 +92,7 @@ SHEN ENTER
 最终输出必须写沈泊川、@沈泊川角色参考图。
 禁止输出@Shen角色参考图。
 禁止恢复旧黑皮骑手沈泊川。
-禁止让旧derived prompt覆盖AGENTS、source index、master rules、smart protocol、director rules、flow pacing rules、timing audit rules、current turnaround sheets。
+禁止让旧derived prompt覆盖AGENTS、source index、master rules、smart protocol、director rules、flow pacing rules、timing audit rules、movement audit rules、current turnaround sheets。
 ```
 
 ---
@@ -102,44 +105,86 @@ SHEN ENTER
 1. Source extraction：先从source index提取对白、说话人、BGM、SFX、环境音、时长、道具、情绪、continuity anchor。
 2. Board extraction：只从批准board提取构图、站位、动线、镜头、道具位置、空间连续。
 3. Reference lock：用三面图/角色参考图锁定脸、发型、服装、体型、气质。
-4. Risk diagnosis：诊断台词密度、脸部稳定、3人以上风险、动作+台词冲突、道具交接、音频层级、配角木偶风险、重复人物、身份混淆、空镜拖节奏。
+4. Risk diagnosis：诊断台词密度、脸部稳定、3人以上风险、动作+台词冲突、道具交接、音频层级、配角木偶风险、重复人物、身份混淆、空镜拖节奏、人物位置漂移、缺少动线。
 5. Flow pacing diagnosis：KEEP / COMPRESS / MERGE / REPLACE / PASS_PROPOSAL。
 6. Dialogue timing fit audit：逐句检查自然语速、呼吸、停顿、口型、听者反应是否能放进指定秒数。
-7. Filming decision：决定是否原时长、延长、拆节点、master/dialogue/reaction/cutaway、faceless/blocking master、clean keyframe、cutaway support 或后期配音。
-8. Prompt writing：再写最终提示词。
-9. Self-repair：如果漏了对白、BGM、SFX、角色数量、道具状态、continuity anchor、演员式读法、音频层级、脸部稳定、节奏判断或台词时长适配，必须先修正再输出。
+7. Movement position continuity audit：检查每个可见角色的起点、终点、屏幕百分比、景深层级、身体朝向、视线方向、移动路径、锁定状态、下一节点衔接。
+8. Filming decision：决定是否原时长、延长、拆节点、master/dialogue/reaction/cutaway、faceless/blocking master、clean keyframe、cutaway support 或后期配音。
+9. Prompt writing：再写最终提示词。
+10. Self-repair：如果漏了对白、BGM、SFX、角色数量、道具状态、continuity anchor、演员式读法、音频层级、脸部稳定、节奏判断、台词时长适配、人物位置表或人物移动表，必须先修正再输出。
 ```
 
 如果台词时长不适配，禁止继续输出原始危险时间轴；必须延长、拆节点、使用cutaway support，或建议后期配音/TTS。
+
+如果人物位置或动线不适配，禁止输出模糊blocking；必须添加人物位置连续表、人物移动表、镜头与人物运动关系，必要时拆镜头。
 
 如果用户只要“프롬만”, 可以隐藏诊断，但仍必须应用诊断结果。
 
 ---
 
-## 5. 导演判断层硬规则
+## 5. Movement Position Gate
+
+每个 storyboard prompt、clean keyframe prompt、Jimeng / Seedance prompt 都必须明确：
+
+```text
+人物位置连续表：
+角色｜起点屏幕位置｜终点屏幕位置｜景深层级｜身体朝向｜视线方向｜状态锁定
+
+人物移动表：
+角色｜是否移动｜起点｜路径｜终点｜速度/步数｜镜头关系｜禁止事项
+
+镜头与人物运动关系：
+镜头怎么动；谁跟随镜头；谁保持世界位置不动；谁只允许微反应。
+```
+
+硬规则：
+
+```text
+背景连续不等于人物连续。
+镜头运动不等于人物运动。
+位置锁定不等于木头人；锁定角色必须有眼神、呼吸、肩颈、手指、重心等微反应。
+移动角色必须写 start -> path -> end。
+上一节点终点必须等于下一节点起点，除非source明确说明画面外移动。
+```
+
+禁止：
+
+```text
+只写“在旁边 / 在画面里 / 靠近 / 远处”。
+只写“镜头跟随”但不写人物从哪里到哪里。
+同一角色无路径从左跳到右。
+背景人物每格顺序乱换。
+该静止的人突然走动。
+该移动的人没有移动。
+```
+
+---
+
+## 6. 导演判断层硬规则
 
 ```text
 故事锁定，拍法灵活。
 原文对白、说话人、事件顺序、人物关系、BGM、SFX、环境音、关键道具状态不能改。
-为了最终视频质量，可以重新设计视频节点数量、时长、景别、角度、反应镜头、cutaway、动作/台词拆分和表演节奏。
+为了最终视频质量，可以重新设计视频节点数量、时长、景别、角度、反应镜头、cutaway、动作/台词拆分、人物动线和表演节奏。
 ```
 
 必须诊断：
 
 ```text
 本CUT剧情核心是什么？
-最大失败风险是什么：脸、台词、时间、动作、镜头、声音、情绪？
+最大失败风险是什么：脸、台词、时间、动作、镜头、声音、情绪、位置？
 是否长台词塞进短秒数？
 是否3人以上清晰脸同框？
 是否动作和大段台词同时发生？
+人物是否需要移动？从哪里到哪里？
+哪些人物必须锁定但保持微反应？
 是否需要延长或拆成多个视频节点？
 是否需要master shot / dialogue shot / reaction shot / cutaway？
-是否存在无意义空白、拖慢节奏、重复反应、弱空镜？
 ```
 
 ---
 
-## 6. Dialogue Timing Fit Gate
+## 7. Dialogue Timing Fit Gate
 
 每次有对白时必须输出或内部执行：
 
@@ -151,38 +196,12 @@ SHEN ENTER
 处理：原时长 / 延长到X秒 / 拆成X个视频节点 / 建议后期配音
 ```
 
-判断标准：
-
-```text
-short line: 1.5-3 seconds plus breath/pause.
-medium line: 3-6 seconds plus breath/pause.
-long line: 6-10 seconds plus breath/pause.
-information-heavy exposition: 8-12 seconds or split into multiple nodes.
-two exposition lines in one CUT: usually 14-18 seconds, or split into two video nodes.
-```
-
 Known risk:
 
 ```text
 CUT-10有两段专业判断台词。原10秒单视频不适合自然表演。
 默认处理：CUT-10A 7秒 + CUT-10B 8秒，或延长到15-16秒。
 ```
-
----
-
-## 7. Flow Pacing Gate
-
-无对白或弱镜头不能盲目保留。必须分类：
-
-```text
-KEEP：承载情绪、悬念、反应、空间、道具或continuity。
-COMPRESS：动作/移动有用但时长过长。
-MERGE：与前后CUT重复，可自然合并。
-REPLACE：原镜头弱，但需要用手、资料、门、灰尘、风声等cutaway保留连接。
-PASS_PROPOSAL：无对白、无情绪、无信息、无位置/道具变化、无continuity价值，建议跳过但必须用户确认。
-```
-
-不得自动跳过或删除source内容。PASS必须先说明原因、说明转移哪些continuity anchor，并等用户确认。
 
 ---
 
@@ -198,9 +217,9 @@ PASS_PROPOSAL：无对白、无情绪、无信息、无位置/道具变化、无
 推荐拆法：
 
 ```text
-5 characters -> 2-person dialogue/action shot + 2-person reaction shot + fox/prop/environment cutaway。
-4 characters -> 2-person shot + 2-person shot。
-3 characters -> 2-person shot + 1-person reaction，或 faceless 3-person master。
+5 characters -> faceless master / 2-person dialogue/action shot / 2-person reaction shot / fox or prop cutaway。
+4 characters -> faceless master / 2-person shot / 2-person reaction。
+3 characters -> 2-person shot / 1-person reaction，或 faceless 3-person master。
 ```
 
 ---
@@ -292,7 +311,7 @@ Clean keyframe：
 不要像朗读稿。
 不要用突然大声表现情绪。
 情绪通过呼吸、停顿、语速、重音、眼神、手部动作表现。
-位置锁定 = 屏幕位置不乱动，不等于身体和表情冻结。
+位置锁定 = 屏幕/世界位置不乱动，不等于身体和表情冻结。
 配角也要有听戏反应：眼神、呼吸、肩颈、手指、身体重心。
 ```
 
@@ -304,16 +323,19 @@ Clean keyframe：
 
 ```text
 [ ] Did I read source index first?
-[ ] Did I read smart / cinematic / director / flow / timing / positioning / legacy rules?
+[ ] Did I read smart / cinematic / director / flow / timing / movement / positioning / legacy rules?
 [ ] Did I preserve exact dialogue, BGM, SFX, environment sound?
-[ ] Did I run director diagnosis, flow pacing diagnosis, and dialogue timing fit audit?
+[ ] Did I run director diagnosis, flow pacing diagnosis, dialogue timing fit audit, and movement position continuity audit?
 [ ] Did I avoid unsafe original timing after finding dialogue overflow?
+[ ] Did I include 人物位置连续表, 人物移动表, and 镜头与人物运动关系?
+[ ] Did I separate camera path from character path?
+[ ] Did I prevent character teleporting, drifting, or changing order between nodes?
+[ ] Did I give locked characters micro acting instead of wooden stillness?
 [ ] Did I avoid 3+ clear human faces with long dialogue?
 [ ] Did I use turnaround sheets / role references for identity?
 [ ] Is 沈泊川 the current cleaning-service company boss, not old black leather biker?
 [ ] Did I use storyboard board only for blocking/camera/props/continuity?
 [ ] Did I use clean keyframe for final I2V source when face stability matters?
-[ ] Did I include camera path: start / move / adjust / land?
 [ ] Did I include actor-style breath, pause, listening reaction, and audio mix?
 [ ] Did I prevent duplicate characters, mixed faces, extra people, and 黑七 dog/wolf errors?
 ```
