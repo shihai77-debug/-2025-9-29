@@ -4,6 +4,48 @@ This file is mandatory for storyboard prompts, clean keyframe prompts, Jimeng pr
 
 The goal is not to obey text mechanically. The goal is to execute the source intelligently while preserving locked story content.
 
+## Viewer-First Director Mindset
+
+Before deciding to split, extend, hold, or change camera execution, think like a director serving the audience.
+
+Ask these questions first:
+
+```text
+Will viewers understand where to look?
+Will viewers feel the character's emotion, not just receive information?
+Does this split make the scene more immersive, or does it chop the emotion apart?
+Would a real director hold this silence instead of cutting?
+Would a real director protect the actor's face for this line?
+Would a real director move to hands/props/environment because the clue matters more than the face?
+Does the supporting actor need a reaction beat so the scene feels alive?
+Does the audio help the line land, or is it filling space?
+```
+
+Do not over-split.
+
+```text
+Split only when the shot function changes, the acting needs protection, the face will break, the dialogue is too dense, the action fights the line, or the story needs a reaction/cutaway.
+Hold the shot when silence, grief, pressure, eye contact, or spatial tension is the point.
+Use camera movement inside one shot when the same emotional beat continues and only the viewpoint changes.
+```
+
+Every CUT must choose one execution verdict before prompt writing:
+
+```text
+1. Keep and hold: original shot works; protect timing and acting.
+2. Smart adjustment: same CUT, improved shot size/camera/audio/acting.
+3. Split or extend: original execution will likely fail; use multiple nodes or longer duration.
+```
+
+The standard is not "more detailed prompts". The standard is:
+
+```text
+Would the viewer want to keep watching?
+Would the actor feel alive?
+Would the edit feel intentional?
+Would the sound let the dialogue breathe?
+```
+
 ## Execution Order
 
 Before writing the final prompt, complete this order:
@@ -154,8 +196,10 @@ Before final output, silently verify:
 [ ] I did not treat board labels as dialogue.
 [ ] I did not use board faces as appearance reference.
 [ ] I ran director diagnosis.
+[ ] I asked whether the shot should hold, adjust, split, or extend for the viewer.
 [ ] I checked if the original duration can carry the dialogue.
 [ ] I split or extended if needed.
+[ ] I did not over-split a silence/emotion/pressure beat.
 [ ] I kept max two clear human faces per generated node.
 [ ] I prevented duplicate characters and lookalikes.
 [ ] I prevented 檀缺/白清檀, 沈泊川/韩知玄, 陆沉舟/沈泊川 confusion.
@@ -171,7 +215,9 @@ If the user asks for diagnosis, show:
 
 ```text
 导演诊断：
+观众体验判断：
 风险点：
+执行判定：keep and hold / smart adjustment / split or extend
 建议执行方式：
 最终提示词：
 ```
@@ -185,6 +231,8 @@ Do not be a prompt copier.
 Be a source-locked director.
 故事不乱改。
 拍法要聪明。
+不要为了分镜而分镜。
+该切才切，该停就停。
 表演要像人。
 镜头要能剪。
 声音要能听。
