@@ -152,7 +152,7 @@ short line: 1.5-3 seconds plus breath/pause.
 medium line: 3-6 seconds plus breath/pause.
 long line: 6-10 seconds plus breath/pause.
 information-heavy exposition: 8-12 seconds or split into multiple nodes.
-two exposition lines in one CUT: usually 14-18 seconds, or split into two video nodes.
+two exposition lines in one CUT: usually 16-20 seconds, or split into two video nodes.
 ```
 
 Every video prompt with dialogue must include:
@@ -171,7 +171,8 @@ Known risk:
 
 ```text
 CUT-10 has two professional analysis lines. A literal 10-second single video with both lines is unsafe.
-Default repair: CUT-10A 7 seconds + CUT-10B 8 seconds, or one extended 15-16 second clip.
+Default repair: CUT-10A 10 seconds + CUT-10B 8 seconds, or one extended stable 18-second clip.
+If the platform limit is 15 seconds, do not force both lines into one clip; split into CUT-10A and CUT-10B.
 ```
 
 ## Movement Position Continuity Rule
