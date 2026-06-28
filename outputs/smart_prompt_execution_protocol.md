@@ -217,7 +217,7 @@ short line: 1.5-3 seconds plus breath/pause.
 medium line: 3-6 seconds plus breath/pause.
 long line: 6-10 seconds plus breath/pause.
 information-heavy exposition: 8-12 seconds or split into multiple nodes.
-two exposition lines in one CUT: usually 14-18 seconds or split into two nodes.
+two exposition lines in one CUT: usually 16-20 seconds or split into two nodes.
 ```
 
 Mandatory behavior:
