@@ -15,6 +15,7 @@ outputs/smart_prompt_execution_protocol.md
 outputs/cinematic_shot_grammar_rules.md
 outputs/director_intelligence_layer_rules.md
 outputs/flow_pacing_edit_decision_rules.md
+outputs/dialogue_timing_fit_audit_rules.md
 outputs/faceless_style_reference_mode_rules.md
 outputs/exact_face_style_mode_rules.md
 outputs/stable_character_video_prompt_template.md
@@ -34,6 +35,7 @@ Face / hair / outfit / body / silhouette / identity = character turnaround sheet
 Shot splitting = cinematic shot grammar.
 Director diagnosis = director intelligence layer.
 Flow damage / dead air / compress-merge-replace-pass proposal = flow pacing edit decision rules.
+Dialogue timing fit / extension / split-node decision = dialogue timing fit audit rules.
 Final I2V source image = clean 16:9 keyframe, not labeled storyboard board.
 ```
 
@@ -106,16 +108,6 @@ At most two clear human faces per generated frame or video node.
 Important dialogue must move to a 1-person or 2-person dialogue shot.
 ```
 
-Clear facial features are allowed only when:
-
-```text
-character 三面图 / role reference is available.
-one clear human face, or at most two clear human faces.
-medium close-up / close-up / clean keyframe / dialogue shot / reaction shot.
-fixed camera, slow push, or minimal movement.
-no crowded blocking, no fast action, no long dialogue squeezed into one moving wide shot.
-```
-
 ## Smart Execution Order
 
 Before writing the final video prompt:
@@ -126,9 +118,10 @@ Before writing the final video prompt:
 3. Reference lock: turnaround sheets for face/hair/outfit/body/silhouette/identity.
 4. Risk diagnosis: dialogue density, face stability, 3+ character risk, action plus speech conflict, prop handoff risk, audio balance, wooden supporting-actor risk, duplicate-character risk, identity-confusion risk.
 5. Flow pacing diagnosis: KEEP / COMPRESS / MERGE / REPLACE / PASS_PROPOSAL for weak/silent beats.
-6. Filming decision: keep, compress, merge, replace cutaway, pass proposal, extend, split, master/dialogue/reaction/cutaway, faceless master, or clean keyframe.
-7. Prompt writing.
-8. Self-repair: missing dialogue, BGM/SFX, character count, prop state, continuity, face stability, actor delivery, audio mix, or pacing must be fixed before output.
+6. Dialogue timing fit audit: verify every spoken line fits its assigned seconds with natural speech, breath, pause, lip-sync, and listener reaction.
+7. Filming decision: keep, compress, merge, replace cutaway, pass proposal, extend, split, master/dialogue/reaction/cutaway, faceless master, clean keyframe, or separate dubbing.
+8. Prompt writing.
+9. Self-repair: missing dialogue, BGM/SFX, character count, prop state, continuity, timing fit, face stability, actor delivery, audio mix, or pacing must be fixed before output.
 ```
 
 ## Flow Pacing Rule
@@ -145,15 +138,40 @@ PASS_PROPOSAL：无对白、无情绪、无信息、无位置/道具变化、无
 
 Never pass/skip automatically.
 
+## Dialogue Timing Fit Rule
+
+Never invent, rewrite, summarize, shorten, merge, or replace dialogue.
+
+Dialogue feasibility:
+
 ```text
-提出跳过时必须说明原因。
-必须说明保留或转移哪些continuity anchor。
-必须等用户确认后才能最终删除/跳过。
+short line: 1.5-3 seconds plus breath/pause.
+medium line: 3-6 seconds plus breath/pause.
+long line: 6-10 seconds plus breath/pause.
+information-heavy exposition: 8-12 seconds or split into multiple nodes.
+two exposition lines in one CUT: usually 14-18 seconds, or split into two video nodes.
+```
+
+Every video prompt with dialogue must include:
+
+```text
+台词时长适配：
+原分镜时长：
+自然表演所需时长：
+判断：可用 / 不可用
+处理：原时长 / 延长到X秒 / 拆成X个视频节点 / 建议后期配音
+```
+
+If the timing is unsafe, the final prompt must not keep the unsafe original timing. It must extend, split into nodes, use cutaway support, or recommend separate dubbing/TTS.
+
+Known risk:
+
+```text
+CUT-10 has two professional analysis lines. A literal 10-second single video with both lines is unsafe.
+Default repair: CUT-10A 7 seconds + CUT-10B 8 seconds, or one extended 15-16 second clip.
 ```
 
 ## Dialogue And Audio Rules
-
-Never invent, rewrite, summarize, shorten, merge, or replace dialogue.
 
 Every spoken line must include:
 
@@ -173,17 +191,6 @@ Every spoken line must include:
 身体配合：
 ```
 
-Dialogue feasibility:
-
-```text
-short line: 1.5-3 seconds plus breath/pause.
-medium line: 3-6 seconds plus breath/pause.
-long line: 6-10 seconds plus breath/pause.
-information-heavy exposition: 8-12 seconds or split into multiple nodes.
-```
-
-If exact in-video speech causes rushed narration or broken lip sync, recommend visual-only generation plus separate dubbing/TTS using the exact source dialogue.
-
 Audio hierarchy:
 
 ```text
@@ -201,6 +208,7 @@ A Jimeng / Seedance video prompt must include these sections:
 ```text
 导演诊断：
 节奏判断：KEEP / COMPRESS / MERGE / REPLACE / PASS_PROPOSAL
+台词时长适配：
 台词时长判断：
 脸部稳定判断：
 参考素材：
@@ -218,7 +226,7 @@ continuity anchor：
 负面提示：
 ```
 
-If the user asks for prompt only, diagnosis may be hidden, but the logic must still be applied. Do not silently pass/skip any beat without user approval.
+If the user asks for prompt only, diagnosis may be hidden, but timing fit must still be applied. Do not silently pass/skip any beat without user approval.
 
 ## Final Self-Check
 
@@ -231,6 +239,8 @@ If the user asks for prompt only, diagnosis may be hidden, but the logic must st
 [ ] Character count locked.
 [ ] Max two clear human faces per generated node.
 [ ] Clean keyframe recommended when face accuracy matters.
+[ ] Every spoken line was checked against its assigned seconds.
+[ ] Unsafe timing was extended, split, supported by cutaway, or moved to separate dubbing.
 [ ] Long dialogue not forced into a short moving shot.
 [ ] Actor-style delivery included.
 [ ] Audio hierarchy included.
