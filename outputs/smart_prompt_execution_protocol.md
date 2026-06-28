@@ -21,12 +21,13 @@ Does the supporting actor need a reaction beat so the scene feels alive?
 Does the audio help the line land, or is it filling space?
 Is this beat useful silence, or dead air that will make viewers leave?
 If the draft storyboard is messy, what is the cleanest cinematic way to preserve the story?
+Can viewers understand where each character starts, moves, stops, and looks?
 ```
 
 Do not over-split.
 
 ```text
-Split only when the shot function changes, the acting needs protection, the face will break, the dialogue is too dense, the action fights the line, or the story needs a reaction/cutaway.
+Split only when the shot function changes, the acting needs protection, the face will break, the dialogue is too dense, the action fights the line, the movement cannot be held clearly, or the story needs a reaction/cutaway.
 Hold the shot when silence, grief, pressure, eye contact, or spatial tension is the point.
 Use camera movement inside one shot when the same emotional beat continues and only the viewpoint changes.
 ```
@@ -34,8 +35,8 @@ Use camera movement inside one shot when the same emotional beat continues and o
 Every CUT must choose one execution verdict before prompt writing:
 
 ```text
-1. Keep and hold: original shot works; protect timing and acting.
-2. Smart adjustment: same CUT, improved shot size/camera/audio/acting.
+1. Keep and hold: original shot works; protect timing, acting, position continuity.
+2. Smart adjustment: same CUT, improved shot size/camera/audio/acting/movement clarity.
 3. Split or extend: original execution will likely fail; use multiple nodes or longer duration.
 4. Compress / merge / replace: original beat has value but wastes rhythm or is visually weak.
 5. Pass proposal: original beat has no dialogue, no emotion, no new information, no prop/position/continuity value; ask user approval before skipping.
@@ -48,6 +49,7 @@ Would the viewer want to keep watching?
 Would the actor feel alive?
 Would the edit feel intentional?
 Would the sound let the dialogue breathe?
+Would the character movement make spatial sense?
 ```
 
 ## Execution Order
@@ -56,7 +58,7 @@ Before writing the final prompt, complete this order:
 
 ```text
 1. Source extraction
-   Read exact CUT dialogue, speaker, BGM, SFX, environment sound, duration, props, emotional direction, and continuity anchors from outputs/episode20_final_cut_source_index.md.
+   Read exact CUT dialogue, speaker, BGM, SFX, environment sound, duration, props, emotional direction, character movement requirements, and continuity anchors from outputs/episode20_final_cut_source_index.md.
 
 2. Board extraction
    Read only blocking, screen position, camera path, prop placement, movement direction, spatial continuity, and timing structure from the approved storyboard board.
@@ -68,7 +70,7 @@ Before writing the final prompt, complete this order:
    Use @沈泊川角色参考图, never @Shen角色参考图.
 
 4. Risk diagnosis
-   Check dialogue density, face stability, 3+ character risk, action plus speech conflict, prop handoff risk, audio balance, wooden supporting-actor risk, duplicate-character risk, identity-confusion risk, dead air, weak empty beats, rhythm damage, and unnecessary shots.
+   Check dialogue density, face stability, 3+ character risk, action plus speech conflict, prop handoff risk, audio balance, wooden supporting-actor risk, duplicate-character risk, identity-confusion risk, position drift, missing movement path, dead air, weak empty beats, rhythm damage, and unnecessary shots.
 
 5. Flow pacing diagnosis
    Decide whether each weak/silent beat should be KEEP, COMPRESS, MERGE, REPLACE, or PASS_PROPOSAL according to outputs/flow_pacing_edit_decision_rules.md.
@@ -77,15 +79,19 @@ Before writing the final prompt, complete this order:
    For every spoken line, compare assigned seconds against natural speech length, breath, pause, lip-sync, listener reaction, and simultaneous action.
    If unsafe, do not keep the literal timing; extend, split nodes, use cutaway support, or recommend separate dubbing/TTS.
 
-7. Filming decision
+7. Movement position continuity audit
+   For every visible character, compare start position, end position, screen percentage, depth layer, body direction, gaze direction, movement path, locked status, and next-node continuity.
+   If unsafe, do not keep vague blocking; add 人物位置连续表, 人物移动表, 镜头与人物运动关系, or split the shot.
+
+8. Filming decision
    Decide whether to keep original duration, compress, merge, propose pass/skip with user approval, extend duration, split into multiple video nodes, use master/dialogue/reaction/cutaway, use faceless/blocking master, or request missing source material.
 
-8. Prompt writing
+9. Prompt writing
    Write the final prompt only after the filming decision.
    Preserve story, but optimize filming execution.
 
-9. Self-repair
-   If any dialogue, BGM, SFX, character count, prop state, continuity anchor, actor delivery, timing fit, face stability, flow pacing, or audio mix layer is missing, fix the prompt before output.
+10. Self-repair
+   If any dialogue, BGM, SFX, character count, prop state, continuity anchor, actor delivery, timing fit, movement path, position table, face stability, flow pacing, or audio mix layer is missing, fix the prompt before output.
 ```
 
 ## Locked Content
@@ -115,6 +121,8 @@ camera angle.
 who is shown first and who reacts later.
 master shot / dialogue shot / reaction shot / cutaway split.
 action node versus speaking node split.
+character start/end position clarity.
+movement path clarity.
 breath before dialogue.
 mid-line pause.
 listener reaction.
@@ -141,6 +149,11 @@ action and exposition fighting each other.
 BGM/SFX covering dialogue.
 missing source dialogue or missing source audio.
 prop continuity error.
+position drift or teleporting.
+missing start/end position.
+missing movement path.
+camera movement confused with character movement.
+locked characters frozen without micro acting.
 identity confusion.
 dead air with no emotion/story/continuity value.
 empty shot that breaks rhythm or atmosphere.
@@ -148,6 +161,28 @@ unsafe dialogue timing.
 ```
 
 Instead, propose and execute a smarter filming plan.
+
+## Movement Position Intelligence
+
+Background continuity is not character continuity.
+
+```text
+Every visible character needs start position, end position, depth layer, body direction, gaze direction, movement status, allowed action, and forbidden action.
+If a character is locked, they do not walk; only micro acting is allowed.
+If a character moves, write start -> path -> end, speed, distance/steps, and whether camera follows them.
+Camera path and character path are separate.
+Previous node endpoint must equal next node startpoint unless the source explicitly says offscreen movement.
+```
+
+Mandatory output when movement/position matters:
+
+```text
+人物位置连续表：
+人物移动表：
+镜头与人物运动关系：
+```
+
+If these are missing from a video prompt, the prompt is incomplete.
 
 ## Flow And Pacing Intelligence
 
@@ -233,6 +268,11 @@ Before final output, silently verify:
 [ ] I checked if the original duration can carry the dialogue.
 [ ] I split or extended if needed.
 [ ] I did not preserve unsafe original timing after finding dialogue overflow.
+[ ] I ran movement position continuity audit.
+[ ] I included every visible character's start/end position and movement status.
+[ ] I separated camera path from character path.
+[ ] I prevented character teleporting, drifting, or order changes.
+[ ] I gave locked characters micro acting instead of wooden stillness.
 [ ] I did not over-split a silence/emotion/pressure beat.
 [ ] I did not keep dead air just because it exists in the draft.
 [ ] I kept max two clear human faces per generated node.
@@ -254,6 +294,7 @@ If the user asks for diagnosis, show:
 观众体验判断：
 节奏判断：KEEP / COMPRESS / MERGE / REPLACE / PASS_PROPOSAL
 台词时长适配：
+人物位置连续判断：
 风险点：
 执行判定：keep and hold / smart adjustment / split or extend / compress / merge / replace / pass proposal
 建议执行方式：
@@ -269,6 +310,7 @@ Do not be a prompt copier.
 Be a source-locked director.
 故事不乱改。
 拍法要聪明。
+人物要站得住、动得清楚。
 表演要像人。
 镜头要能剪。
 声音要能听。
