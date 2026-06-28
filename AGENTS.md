@@ -16,7 +16,9 @@ When the user asks about EP20, CUTs, storyboard boards, approved boards, Jimeng,
 outputs/episode20_final_cut_source_index.md
 outputs/episode20_master_prompt_rules.md
 outputs/episode20_jimeng_video_prompt_contract.md
+outputs/smart_prompt_execution_protocol.md
 outputs/cinematic_shot_grammar_rules.md
+outputs/director_intelligence_layer_rules.md
 outputs/stable_character_video_prompt_template.md
 outputs/exact_face_style_mode_rules.md
 outputs/faceless_style_reference_mode_rules.md
@@ -30,11 +32,40 @@ Do not rely only on this default-branch bootstrap file if the full branch files 
 对白 / BGM / SFX / 情绪 / 声音 / 时长 = source index 优先。
 构图 / 站位 / 动线 / 镜头 / 道具空间 = approved storyboard board 参考。
 人物脸 / 发型 / 服装 / 体型 / 气质 = 三面图 / 角色参考图 优先。
+智能执行顺序 / 自修流程 = smart prompt execution protocol 优先。
 镜头拆分 = cinematic shot grammar 优先。
+导演诊断 / 更聪明的拍法建议 = director intelligence layer 优先。
 脸部不稳定时的分镜参考图 = faceless style reference mode 优先。
 ```
 
 Never infer no dialogue, no BGM, no SFX, or no environment sound from a visually silent storyboard board. Always check the source index.
+
+## Smart Execution Rule
+
+Before writing any storyboard prompt, clean keyframe prompt, Jimeng prompt, or Seedance prompt, think like a source-locked director:
+
+```text
+1. Source extraction：先读原文对白、说话人、BGM、SFX、环境音、时长、道具、continuity anchor。
+2. Board extraction：board只读构图、站位、动线、镜头、道具位置、空间连续。
+3. Reference lock：用三面图/角色参考图锁脸、发型、服装、体型、气质。
+4. Viewer-first diagnosis：观众会看懂吗？情绪会活吗？该切还是该停？
+5. Risk diagnosis：台词密度、脸部稳定、3人以上清晰脸、动作+台词、音频层级、配角木偶风险。
+6. Filming decision：keep and hold / smart adjustment / split or extend。
+7. Self-repair：漏对白、音频、角色数量、道具状态、演员式读法、continuity时，先修正再输出。
+```
+
+Do not be a mechanical prompt copier.
+
+```text
+故事不乱改。
+拍法要聪明。
+不要为了分镜而分镜。
+该切才切，该停就停。
+表演要像人。
+镜头要能剪。
+声音要能听。
+观众要想继续看。
+```
 
 ## Reference Tag Rule
 
@@ -88,14 +119,31 @@ action node：走位、入场、开包、取物、停车、转身。
 speaking node：稳定说话，脸清楚，少运动。
 ```
 
+Hard generation rule:
+
+```text
+One generated storyboard panel, clean keyframe, or video node should contain at most two clear human faces.
+3+ clear human faces in one generated frame = high face-break risk.
+3+ characters may appear only in faceless/blocking master shots.
+Important dialogue must move to a 1-person or 2-person dialogue shot.
+```
+
 Must split when:
 
 ```text
 三人以上同框 + 长台词。
+三人以上清晰脸同框。
 复杂动作 + 长台词。
 远景小脸 + 要求口型。
 道具操作 + 信息量大的说明台词。
 脸已经不稳 + 重要台词。
+```
+
+Do not over-split:
+
+```text
+如果沉默、悲伤、压力、眼神、空间张力是重点，就保持镜头。
+如果同一情绪beat延续，只是视角变化，用镜头运动，不强行拆分。
 ```
 
 ## Character And Dialogue Locks
@@ -126,9 +174,12 @@ Before outputting any storyboard prompt, clean keyframe prompt, or Jimeng / Seed
 
 ```text
 [ ] Did I read the full source index from the working branch?
+[ ] Did I read smart_prompt_execution_protocol.md from the working branch?
 [ ] Did I use @沈泊川角色参考图 and avoid @Shen角色参考图?
+[ ] Did I ask viewer-first questions: should this hold, adjust, split, or extend?
 [ ] Did I judge master/dialogue/reaction/cutaway/action/speaking function?
 [ ] Did I avoid multi-person wide shot plus long dialogue?
+[ ] Did I keep clear human faces to at most two per generated frame/node?
 [ ] Did I use 三面图 for identity, not storyboard board faces?
 [ ] If faces are unstable, did I use faceless style reference mode for storyboard/reference image?
 [ ] Did I preserve exact dialogue, BGM, SFX, environment sound?
