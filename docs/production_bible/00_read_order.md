@@ -68,11 +68,13 @@ Use these files as supporting guidance only. They help with:
 reference video style analysis
 novel-before-storyboard workflow
 three-second hooks
+creative preflight audience story gate
 dialogue freshness
 dialogue clarity
 anti-drag pacing
 story density no-drag execution gate
 bad example quarantine and style do-not-copy
+director actor camera storyboard execution gate
 canon-over-reference priority
 AI short-drama gold standard
 CapCut timeline planning
@@ -86,8 +88,10 @@ docs/production_bible/story-production-kit/00_start_here_execution_guide.md
 docs/production_bible/story-production-kit/23_github_anchor_and_self_update_protocol.md
 docs/production_bible/story-production-kit/26_canon_character_priority_over_reference_video.md
 docs/production_bible/story-production-kit/27_novel_ai_short_drama_gold_standard.md
+docs/production_bible/story-production-kit/31_creative_preflight_audience_story_gate.md
 docs/production_bible/story-production-kit/29_story_density_no_drag_execution_gate.md
 docs/production_bible/story-production-kit/30_bad_example_quarantine_and_style_do_not_copy.md
+docs/production_bible/story-production-kit/32_director_actor_camera_storyboard_execution_gate.md
 docs/production_bible/story-production-kit/25_dialogue_clarity_and_global_quality_gate.md
 docs/production_bible/story-production-kit/24_dialogue_freshness_and_non_template_rules.md
 docs/production_bible/story-production-kit/20_anti_drag_story_pacing_rules.md

@@ -134,18 +134,20 @@ Before any production work, read in this order:
 8. Canon character priority over reference video
 9. Reference video style bible
 10. Novel AI short drama gold standard
-11. Story density no-drag execution gate
-12. Bad example quarantine and style do-not-copy
-13. Director/actor/camera simulation workflow
-14. Three second hook and character entry rules
-15. Anti-drag pacing rules
-16. Dialogue freshness and non-template rules
-17. Dialogue clarity and global quality gate
-18. Storyboard split rules
-19. Image/video prompt rules
-20. CUT editing authority rules
-21. CapCut timeline export rules
-22. Self update protocol
+11. Creative preflight audience story gate
+12. Story density no-drag execution gate
+13. Bad example quarantine and style do-not-copy
+14. Director actor camera storyboard execution gate
+15. Director/actor/camera simulation workflow
+16. Three second hook and character entry rules
+17. Anti-drag pacing rules
+18. Dialogue freshness and non-template rules
+19. Dialogue clarity and global quality gate
+20. Storyboard split rules
+21. Image/video prompt rules
+22. CUT editing authority rules
+23. CapCut timeline export rules
+24. Self update protocol
 
 If any rule conflicts, higher priority files win.
 Do not overwrite canon from lower priority notes.

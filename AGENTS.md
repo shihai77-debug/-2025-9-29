@@ -414,8 +414,10 @@ Before future novel, storyboard, image prompt, video prompt, or CapCut work, rea
 docs/production_bible/00_read_order.md
 docs/production_bible/story-production-kit/26_canon_character_priority_over_reference_video.md
 docs/production_bible/story-production-kit/27_novel_ai_short_drama_gold_standard.md
+docs/production_bible/story-production-kit/31_creative_preflight_audience_story_gate.md
 docs/production_bible/story-production-kit/29_story_density_no_drag_execution_gate.md
 docs/production_bible/story-production-kit/30_bad_example_quarantine_and_style_do_not_copy.md
+docs/production_bible/story-production-kit/32_director_actor_camera_storyboard_execution_gate.md
 docs/production_bible/story-production-kit/25_dialogue_clarity_and_global_quality_gate.md
 docs/production_bible/story-production-kit/24_dialogue_freshness_and_non_template_rules.md
 ```
