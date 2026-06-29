@@ -15,6 +15,7 @@
 outputs/episode20_final_cut_source_index.md
 outputs/dialogue_timing_fit_audit_rules.md
 outputs/movement_position_continuity_audit_rules.md
+outputs/storyboard_video_timing_bridge_rules.md
 outputs/smart_prompt_execution_protocol.md
 ```
 
@@ -25,6 +26,7 @@ outputs/smart_prompt_execution_protocol.md
 构图 / 站位 / 镜头 / 道具空间 = 批准 storyboard board。
 台词字数 / 安全语速 / 最低安全时长 = dialogue timing fit audit rules。
 人物起点终点 / 动线 / 屏幕位置 / 防瞬移 = movement position continuity audit rules。
+分镜图秒数 / 原文CUT秒数 / 最终视频节点秒数 = storyboard video timing bridge rules。
 人物脸 / 发型 / 服装 / 体型 / 气质 = 三面图 / 角色参考图。
 最终视频源图 = clean keyframe，不直接用带字 board。
 ```
@@ -38,6 +40,7 @@ SFX和环境音必须按source使用。
 不得创作、改写、增删、重排对白。
 不得因为storyboard board没写声音就删除对白、BGM、SFX或环境音。
 不得把背景连续当成人物连续。
+不得把分镜图面板秒数直接当成最终视频节点秒数。
 长台词不能硬塞进短秒数；必须延长、拆节点，或建议画面与配音分离。
 ```
 
@@ -55,9 +58,10 @@ SFX和环境音必须按source使用。
 5. Flow pacing diagnosis：KEEP / COMPRESS / MERGE / REPLACE / PASS_PROPOSAL。
 6. Dialogue timing fit audit：计算台词字数、安全语速、停顿/气口、动作占用、最低安全时长。
 7. Movement position continuity audit：检查每个可见角色的起点、终点、屏幕百分比、景深层级、身体朝向、视线方向、移动路径、锁定状态、下一节点衔接。
-8. Filming decision：决定原时长、延长、拆节点、master/dialogue/reaction/cutaway、faceless master、clean keyframe、cutaway support 或后期配音。
-9. Prompt writing：再写最终提示词。
-10. Self-repair：输出前补齐对白、BGM/SFX、角色数量、道具状态、continuity、演员式读法、音频层级、脸部稳定、台词时长适配、人物位置表、人物移动表。
+8. Storyboard-video timing bridge：分清分镜图视觉节拍秒数、原文CUT秒数、最终视频节点秒数；如果不同，必须说明 KEEP_SOURCE / COMPRESS / EXTEND / SPLIT_NODES / MERGE / REPLACE / PASS_PROPOSAL。
+9. Filming decision：决定原时长、延长、拆节点、master/dialogue/reaction/cutaway、faceless master、clean keyframe、cutaway support 或后期配音。
+10. Prompt writing：再写最终提示词。
+11. Self-repair：输出前补齐对白、BGM/SFX、角色数量、道具状态、continuity、演员式读法、音频层级、脸部稳定、台词时长适配、timing bridge、人物位置表、人物移动表。
 ```
 
 禁止机械复制分镜。必须像 source-locked director：故事不乱改，拍法要聪明。
@@ -164,7 +168,35 @@ CUT-10B：8秒，第二句29字，最低安全7.5-8秒。
 
 ---
 
-## 6. Movement Position Gate
+## 6. Storyboard-Video Timing Bridge Gate
+
+分镜图面板秒数和最终视频节点秒数不是同一个东西。
+
+每个从 storyboard board 转成视频提示词的任务必须写清：
+
+```text
+分镜-视频时间桥接表：
+原文CUT时长：
+分镜图标注时长：
+分镜图秒数性质：visual beat only / approved video duration
+台词自然表演所需时长：
+最终视频节点时长：
+采用原因：
+是否改变原文时长：否 / 是，原因
+```
+
+冲突处理：
+
+```text
+如果分镜图写3-4秒，但source写6秒：
+- 3-4秒只是visual beat时，最终视频保留source 6秒，除非flow pacing明确批准压缩。
+- 3-4秒已经是批准的视频压缩方案时，可以用3-4秒，但必须写COMPRESS并说明保留什么声音/连续性。
+- 台词、BGM、SFX或重要表演需要6秒时，不能缩成3-4秒。
+```
+
+---
+
+## 7. Movement Position Gate
 
 背景连续不等于人物连续。每个 storyboard board / clean keyframe / 视频 prompt 必须写清楚人物位置与动线。
 
@@ -201,7 +233,7 @@ source要求入场/停下/转身，但prompt没有人物移动路径。
 
 ---
 
-## 7. Storyboard Board And Clean Keyframe
+## 8. Storyboard Board And Clean Keyframe
 
 批准 storyboard board 只用于：
 
@@ -228,7 +260,7 @@ source要求入场/停下/转身，但prompt没有人物移动路径。
 
 ---
 
-## 8. Camera Path Rule
+## 9. Camera Path Rule
 
 如果只是摄像机移动，人物动作/情绪/道具/地点没有变化，不要硬拆多个面板。用镜头路径说明。
 
@@ -251,7 +283,7 @@ source要求入场/停下/转身，但prompt没有人物移动路径。
 
 ---
 
-## 9. Acting And Audio
+## 10. Acting And Audio
 
 所有人物都要像演员一样表演。
 
@@ -289,14 +321,15 @@ source要求入场/停下/转身，但prompt没有人物移动路径。
 
 ---
 
-## 10. Final Self-Check
+## 11. Final Self-Check
 
 输出前必须自检：
 
 ```text
 [ ] 是否先读source index？
 [ ] 是否保留原文对白、BGM、SFX、环境音？
-[ ] 是否跑过导演诊断、节奏判断、台词时长适配、人物位置动线检查？
+[ ] 是否跑过导演诊断、节奏判断、台词时长适配、人物位置动线检查、分镜-视频时间桥接？
+[ ] 是否分清分镜图视觉节拍秒数、原文CUT秒数、最终视频节点秒数？
 [ ] 是否计算了台词字数、安全语速、最低安全时长？
 [ ] 如果台词过密，是否延长、拆节点、cutaway support 或建议后期配音？
 [ ] 是否有 人物位置连续表 / 人物移动表 / 镜头与人物运动关系？
