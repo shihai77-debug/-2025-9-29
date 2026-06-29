@@ -58,6 +58,7 @@ outputs/story-production-kit/29_story_density_no_drag_execution_gate.md
 outputs/story-production-kit/30_bad_example_quarantine_and_style_do_not_copy.md
 outputs/story-production-kit/31_creative_preflight_audience_story_gate.md
 outputs/story-production-kit/32_director_actor_camera_storyboard_execution_gate.md
+outputs/story-production-kit/33_cultural_aesthetic_sensibility_gate.md
 ```
 
 ## 2. Codex가 매번 먼저 해야 할 일
