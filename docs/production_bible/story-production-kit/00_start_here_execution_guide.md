@@ -54,6 +54,7 @@ outputs/story-production-kit/24_dialogue_freshness_and_non_template_rules.md
 outputs/story-production-kit/25_dialogue_clarity_and_global_quality_gate.md
 outputs/story-production-kit/26_canon_character_priority_over_reference_video.md
 outputs/story-production-kit/27_novel_ai_short_drama_gold_standard.md
+outputs/story-production-kit/29_story_density_no_drag_execution_gate.md
 ```
 
 ## 2. Codex가 매번 먼저 해야 할 일

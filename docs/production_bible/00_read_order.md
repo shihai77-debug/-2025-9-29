@@ -71,6 +71,7 @@ three-second hooks
 dialogue freshness
 dialogue clarity
 anti-drag pacing
+story density no-drag execution gate
 canon-over-reference priority
 AI short-drama gold standard
 CapCut timeline planning
@@ -84,6 +85,7 @@ docs/production_bible/story-production-kit/00_start_here_execution_guide.md
 docs/production_bible/story-production-kit/23_github_anchor_and_self_update_protocol.md
 docs/production_bible/story-production-kit/26_canon_character_priority_over_reference_video.md
 docs/production_bible/story-production-kit/27_novel_ai_short_drama_gold_standard.md
+docs/production_bible/story-production-kit/29_story_density_no_drag_execution_gate.md
 docs/production_bible/story-production-kit/25_dialogue_clarity_and_global_quality_gate.md
 docs/production_bible/story-production-kit/24_dialogue_freshness_and_non_template_rules.md
 docs/production_bible/story-production-kit/20_anti_drag_story_pacing_rules.md
@@ -128,4 +130,3 @@ update_candidates
 ```
 
 `update_candidates` are not official rules until the user approves promotion into `docs/production_bible/`.
-
