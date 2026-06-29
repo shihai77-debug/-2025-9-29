@@ -22,6 +22,7 @@ outputs/director_intelligence_layer_rules.md
 outputs/flow_pacing_edit_decision_rules.md
 outputs/dialogue_timing_fit_audit_rules.md
 outputs/movement_position_continuity_audit_rules.md
+outputs/storyboard_video_timing_bridge_rules.md
 outputs/faceless_style_reference_mode_rules.md
 outputs/exact_face_style_mode_rules.md
 outputs/stable_character_video_prompt_template.md
@@ -48,6 +49,7 @@ outputs/legacy_prompt_files_do_not_use.md
 对白 / BGM / SFX / 环境音 / 情绪 / 声音 / 时长 = final CUT source index。
 构图 / 站位 / 镜头 / 道具空间 = 批准board参考。
 人物起点终点 / 动线 / 屏幕位置 / 防瞬移 = movement position continuity audit rules。
+分镜图秒数 / 原文CUT秒数 / 最终视频节点秒数 = storyboard video timing bridge rules。
 人物脸 / 发型 / 服装 / 体型 / 气质 = 三面图/角色参考图最高优先级。
 智能执行顺序 / 自修流程 = smart prompt execution protocol。
 镜头拆分 / master-dialogue-reaction-cutaway 判断 = cinematic shot grammar。
@@ -62,6 +64,7 @@ outputs/legacy_prompt_files_do_not_use.md
 禁止把 storyboard board 里没有写声音理解成无对白、无BGM、无SFX。
 禁止把批准board里的人脸、服装、临时画法当成最终角色外貌。
 禁止把背景连续当成人物位置连续。
+禁止把分镜图面板秒数直接当成最终视频节点秒数，除非已经通过 timing bridge 明确标为 approved video duration。
 
 ---
 
@@ -92,7 +95,7 @@ SHEN ENTER
 最终输出必须写沈泊川、@沈泊川角色参考图。
 禁止输出@Shen角色参考图。
 禁止恢复旧黑皮骑手沈泊川。
-禁止让旧derived prompt覆盖AGENTS、source index、master rules、smart protocol、director rules、flow pacing rules、timing audit rules、movement audit rules、current turnaround sheets。
+禁止让旧derived prompt覆盖AGENTS、source index、master rules、smart protocol、director rules、flow pacing rules、timing audit rules、movement audit rules、timing bridge rules、current turnaround sheets。
 ```
 
 ---
@@ -109,14 +112,17 @@ SHEN ENTER
 5. Flow pacing diagnosis：KEEP / COMPRESS / MERGE / REPLACE / PASS_PROPOSAL。
 6. Dialogue timing fit audit：逐句检查自然语速、呼吸、停顿、口型、听者反应是否能放进指定秒数。
 7. Movement position continuity audit：检查每个可见角色的起点、终点、屏幕百分比、景深层级、身体朝向、视线方向、移动路径、锁定状态、下一节点衔接。
-8. Filming decision：决定是否原时长、延长、拆节点、master/dialogue/reaction/cutaway、faceless/blocking master、clean keyframe、cutaway support 或后期配音。
-9. Prompt writing：再写最终提示词。
-10. Self-repair：如果漏了对白、BGM、SFX、角色数量、道具状态、continuity anchor、演员式读法、音频层级、脸部稳定、节奏判断、台词时长适配、人物位置表或人物移动表，必须先修正再输出。
+8. Storyboard-video timing bridge：分清分镜图视觉节拍秒数、原文CUT秒数、最终视频节点秒数；如果不同，必须说明 KEEP_SOURCE / COMPRESS / EXTEND / SPLIT_NODES / MERGE / REPLACE / PASS_PROPOSAL。
+9. Filming decision：决定是否原时长、延长、拆节点、master/dialogue/reaction/cutaway、faceless/blocking master、clean keyframe、cutaway support 或后期配音。
+10. Prompt writing：再写最终提示词。
+11. Self-repair：如果漏了对白、BGM、SFX、角色数量、道具状态、continuity anchor、演员式读法、音频层级、脸部稳定、节奏判断、台词时长适配、timing bridge、人物位置表或人物移动表，必须先修正再输出。
 ```
 
 如果台词时长不适配，禁止继续输出原始危险时间轴；必须延长、拆节点、使用cutaway support，或建议后期配音/TTS。
 
 如果人物位置或动线不适配，禁止输出模糊blocking；必须添加人物位置连续表、人物移动表、镜头与人物运动关系，必要时拆镜头。
+
+如果分镜图秒数和原文CUT秒数不同，禁止直接二选一；必须输出或内部执行分镜-视频时间桥接表。
 
 如果用户只要“프롬만”, 可以隐藏诊断，但仍必须应用诊断结果。
 
@@ -160,7 +166,46 @@ SHEN ENTER
 
 ---
 
-## 6. 导演判断层硬规则
+## 6. Timing Bridge Gate
+
+每个从 storyboard board 转成视频提示词的任务都必须明确：
+
+```text
+分镜-视频时间桥接表：
+原文CUT时长：
+分镜图标注时长：
+分镜图秒数性质：visual beat only / approved video duration
+台词自然表演所需时长：
+最终视频节点时长：
+采用原因：
+是否改变原文时长：否 / 是，原因
+```
+
+硬规则：
+
+```text
+分镜图秒数 = 动作节奏 / 构图参考，不自动等于视频节点秒数。
+原文CUT秒数 = source story timing。
+最终视频节点秒数 = source index + 台词适配 + 节奏判断 + 本次批准执行方案。
+3-4秒分镜beat不能无说明覆盖6秒原文CUT。
+6秒原文CUT也不能无说明覆盖已经批准的3-4秒压缩执行。
+长台词、BGM/SFX、重要表演需要6秒时，不能缩成3-4秒。
+```
+
+当分镜和视频秒数冲突时，必须输出或内部执行：
+
+```text
+时间冲突修正：
+分镜图秒数：
+原文秒数：
+最终视频秒数：
+判断：KEEP_SOURCE / COMPRESS / EXTEND / SPLIT_NODES / MERGE / REPLACE / PASS_PROPOSAL
+原因：
+```
+
+---
+
+## 7. 导演判断层硬规则
 
 ```text
 故事锁定，拍法灵活。
@@ -178,13 +223,14 @@ SHEN ENTER
 是否动作和大段台词同时发生？
 人物是否需要移动？从哪里到哪里？
 哪些人物必须锁定但保持微反应？
+分镜图秒数和视频节点秒数是否冲突？
 是否需要延长或拆成多个视频节点？
 是否需要master shot / dialogue shot / reaction shot / cutaway？
 ```
 
 ---
 
-## 7. Dialogue Timing Fit Gate
+## 8. Dialogue Timing Fit Gate
 
 每次有对白时必须输出或内部执行：
 
@@ -205,7 +251,7 @@ CUT-10有两段专业判断台词。原10秒单视频不适合自然表演。
 
 ---
 
-## 8. 多人脸稳定规则
+## 9. 多人脸稳定规则
 
 ```text
 一个生成用 storyboard panel、clean keyframe、video node 里最多两个清晰真人脸。
@@ -224,7 +270,7 @@ CUT-10有两段专业判断台词。原10秒单视频不适合自然表演。
 
 ---
 
-## 9. 角色锁定
+## 10. 角色锁定
 
 固定语音/角色标签必须使用：
 
@@ -258,7 +304,7 @@ CUT-08 至 CUT-15：只允许陆沉舟、黑七、檀缺、沈泊川，韩知玄
 
 ---
 
-## 10. Storyboard / Clean Keyframe
+## 11. Storyboard / Clean Keyframe
 
 Storyboard reference board：
 
@@ -279,7 +325,7 @@ Clean keyframe：
 
 ---
 
-## 11. 声音与表演
+## 12. 声音与表演
 
 每句对白必须包含：
 
@@ -317,16 +363,17 @@ Clean keyframe：
 
 ---
 
-## 12. Final Self-Check
+## 13. Final Self-Check
 
 输出前必须检查：
 
 ```text
 [ ] Did I read source index first?
-[ ] Did I read smart / cinematic / director / flow / timing / movement / positioning / legacy rules?
+[ ] Did I read smart / cinematic / director / flow / timing / movement / timing bridge / positioning / legacy rules?
 [ ] Did I preserve exact dialogue, BGM, SFX, environment sound?
-[ ] Did I run director diagnosis, flow pacing diagnosis, dialogue timing fit audit, and movement position continuity audit?
+[ ] Did I run director diagnosis, flow pacing diagnosis, dialogue timing fit audit, movement position continuity audit, and storyboard-video timing bridge?
 [ ] Did I avoid unsafe original timing after finding dialogue overflow?
+[ ] Did I separate storyboard visual beat seconds from source CUT duration and final video node duration?
 [ ] Did I include 人物位置连续表, 人物移动表, and 镜头与人物运动关系?
 [ ] Did I separate camera path from character path?
 [ ] Did I prevent character teleporting, drifting, or changing order between nodes?
