@@ -386,3 +386,34 @@ Clean keyframe：
 [ ] Did I include actor-style breath, pause, listening reaction, and audio mix?
 [ ] Did I prevent duplicate characters, mixed faces, extra people, and 黑七 dog/wolf errors?
 ```
+
+---
+
+## 14. Production Bible / Supporting Style Layer
+
+This repository now also contains a higher-level production bible for novel, storyboard, prompt, video, and CapCut workflow:
+
+```text
+docs/production_bible/00_read_order.md
+docs/production_bible/self_update_protocol.md
+docs/production_bible/story-production-kit/
+```
+
+Hard rule:
+
+```text
+Existing AGENTS / source index / master prompt rules / character settings / prohibition files remain higher priority.
+The story-production-kit files are a supporting style and quality-control layer only.
+They improve emotional retention, first-three-second hooks, dialogue rhythm, anti-drag pacing, episode continuity, AI video adaptation, and CapCut planning.
+They must not overwrite canon, character identity, character voice, relationship logic, reveal order, or existing contract rules.
+```
+
+Before future novel, storyboard, image prompt, video prompt, or CapCut work, read:
+
+```text
+docs/production_bible/00_read_order.md
+docs/production_bible/story-production-kit/26_canon_character_priority_over_reference_video.md
+docs/production_bible/story-production-kit/27_novel_ai_short_drama_gold_standard.md
+docs/production_bible/story-production-kit/25_dialogue_clarity_and_global_quality_gate.md
+docs/production_bible/story-production-kit/24_dialogue_freshness_and_non_template_rules.md
+```
