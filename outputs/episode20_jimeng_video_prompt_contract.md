@@ -17,6 +17,7 @@ outputs/director_intelligence_layer_rules.md
 outputs/flow_pacing_edit_decision_rules.md
 outputs/dialogue_timing_fit_audit_rules.md
 outputs/movement_position_continuity_audit_rules.md
+outputs/storyboard_video_timing_bridge_rules.md
 outputs/faceless_style_reference_mode_rules.md
 outputs/exact_face_style_mode_rules.md
 outputs/stable_character_video_prompt_template.md
@@ -33,6 +34,7 @@ If the user provides a final CUT text in the current request, that pasted final 
 Dialogue / BGM / SFX / timing / emotion / voice = final CUT source index.
 Framing / blocking / camera path / prop placement / spatial continuity = approved storyboard board.
 Character start/end screen position / movement path / no-teleport check = movement position continuity audit rules.
+Storyboard panel seconds / source CUT seconds / final video node seconds = storyboard video timing bridge rules.
 Face / hair / outfit / body / silhouette / identity = character turnaround sheets / role reference images.
 Shot splitting = cinematic shot grammar.
 Director diagnosis = director intelligence layer.
@@ -42,6 +44,7 @@ Final I2V source image = clean 16:9 keyframe, not labeled storyboard board.
 ```
 
 Do not generate a video prompt from an image alone if the source CUT text is available or required.
+Do not treat storyboard panel seconds as final video node seconds unless the timing bridge marks them as approved video duration.
 
 ## Storyboard Board Limit
 
@@ -58,6 +61,7 @@ Every video prompt that references a board must include:
 
 ```text
 注意：批准 storyboard reference board 只用于站位、构图、动线、镜头、道具状态和连续空间关系；不要参考该board里的人脸、五官、发型细节、服装细节或人物气质。所有角色外貌必须严格以各自三面图/角色参考图为准。
+注意：批准 storyboard board 的面板秒数只作为动作节奏和构图参考；最终视频节点时长以 source index、台词时长适配、节奏判断和本次批准的执行方案为准。
 ```
 
 ## Legacy File Warning
@@ -122,9 +126,10 @@ Before writing the final video prompt:
 5. Flow pacing diagnosis: KEEP / COMPRESS / MERGE / REPLACE / PASS_PROPOSAL for weak/silent beats.
 6. Dialogue timing fit audit: verify every spoken line fits its assigned seconds with natural speech, breath, pause, lip-sync, and listener reaction.
 7. Movement position continuity audit: verify every visible character's start position, end position, screen percentage, depth layer, body direction, gaze direction, movement path, locked status, and next-node continuity.
-8. Filming decision: keep, compress, merge, replace cutaway, pass proposal, extend, split, master/dialogue/reaction/cutaway, faceless master, clean keyframe, or separate dubbing.
-9. Prompt writing.
-10. Self-repair: missing dialogue, BGM/SFX, character count, prop state, continuity, timing fit, movement path, position table, face stability, actor delivery, audio mix, or pacing must be fixed before output.
+8. Storyboard-video timing bridge: separate storyboard panel / visual beat duration, source CUT duration, and final video node duration. If they differ, state KEEP_SOURCE / COMPRESS / EXTEND / SPLIT_NODES / MERGE / REPLACE / PASS_PROPOSAL.
+9. Filming decision: keep, compress, merge, replace cutaway, pass proposal, extend, split, master/dialogue/reaction/cutaway, faceless master, clean keyframe, or separate dubbing.
+10. Prompt writing.
+11. Self-repair: missing dialogue, BGM/SFX, character count, prop state, continuity, timing fit, timing bridge, movement path, position table, face stability, actor delivery, audio mix, or pacing must be fixed before output.
 ```
 
 ## Flow Pacing Rule
@@ -140,6 +145,30 @@ PASS_PROPOSAL：无对白、无情绪、无信息、无位置/道具变化、无
 ```
 
 Never pass/skip automatically.
+
+## Storyboard-Video Timing Bridge Rule
+
+Every video prompt made from a storyboard board must include:
+
+```text
+分镜-视频时间桥接表：
+原文CUT时长：
+分镜图标注时长：
+分镜图秒数性质：visual beat only / approved video duration
+台词自然表演所需时长：
+最终视频节点时长：
+采用原因：
+是否改变原文时长：否 / 是，原因
+```
+
+Conflict rule:
+
+```text
+If storyboard board says 3-4 seconds but source says 6 seconds:
+- If 3-4s is only a storyboard visual beat, keep source 6s unless flow pacing audit approves compression.
+- If 3-4s is an approved video edit decision, the final video may use 3-4s, but must state COMPRESS and explain what audio/continuity is preserved.
+- If dialogue, BGM, SFX, or important acting requires 6s, final video must not shrink to 3-4s.
+```
 
 ## Dialogue Timing Fit Rule
 
@@ -239,6 +268,7 @@ A Jimeng / Seedance video prompt must include these sections:
 导演诊断：
 节奏判断：KEEP / COMPRESS / MERGE / REPLACE / PASS_PROPOSAL
 台词时长适配：
+分镜-视频时间桥接表：
 台词时长判断：
 脸部稳定判断：
 人物位置连续表：
@@ -259,7 +289,7 @@ continuity anchor：
 负面提示：
 ```
 
-If the user asks for prompt only, diagnosis may be hidden, but timing fit and movement continuity must still be applied. Do not silently pass/skip any beat without user approval.
+If the user asks for prompt only, diagnosis may be hidden, but timing fit, timing bridge, and movement continuity must still be applied. Do not silently pass/skip any beat without user approval.
 
 ## Final Self-Check
 
@@ -274,6 +304,7 @@ If the user asks for prompt only, diagnosis may be hidden, but timing fit and mo
 [ ] Clean keyframe recommended when face accuracy matters.
 [ ] Every spoken line was checked against its assigned seconds.
 [ ] Unsafe timing was extended, split, supported by cutaway, or moved to separate dubbing.
+[ ] Storyboard visual beat seconds were separated from source CUT duration and final video node duration.
 [ ] Long dialogue not forced into a short moving shot.
 [ ] Movement position continuity audit was applied.
 [ ] 人物位置连续表, 人物移动表, and 镜头与人物运动关系 are present.
