@@ -415,6 +415,7 @@ docs/production_bible/00_read_order.md
 docs/production_bible/story-production-kit/26_canon_character_priority_over_reference_video.md
 docs/production_bible/story-production-kit/27_novel_ai_short_drama_gold_standard.md
 docs/production_bible/story-production-kit/33_cultural_aesthetic_sensibility_gate.md
+docs/production_bible/story-production-kit/34_lu_protagonist_voice_scene_leadership_gate.md
 docs/production_bible/story-production-kit/31_creative_preflight_audience_story_gate.md
 docs/production_bible/story-production-kit/29_story_density_no_drag_execution_gate.md
 docs/production_bible/story-production-kit/30_bad_example_quarantine_and_style_do_not_copy.md

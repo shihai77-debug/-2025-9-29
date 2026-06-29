@@ -135,20 +135,21 @@ Before any production work, read in this order:
 9. Reference video style bible
 10. Novel AI short drama gold standard
 11. Cultural aesthetic sensibility gate
-12. Creative preflight audience story gate
-13. Story density no-drag execution gate
-14. Bad example quarantine and style do-not-copy
-15. Director actor camera storyboard execution gate
-16. Director/actor/camera simulation workflow
-17. Three second hook and character entry rules
-18. Anti-drag pacing rules
-19. Dialogue freshness and non-template rules
-20. Dialogue clarity and global quality gate
-21. Storyboard split rules
-22. Image/video prompt rules
-23. CUT editing authority rules
-24. CapCut timeline export rules
-25. Self update protocol
+12. LU protagonist voice and scene leadership gate
+13. Creative preflight audience story gate
+14. Story density no-drag execution gate
+15. Bad example quarantine and style do-not-copy
+16. Director actor camera storyboard execution gate
+17. Director/actor/camera simulation workflow
+18. Three second hook and character entry rules
+19. Anti-drag pacing rules
+20. Dialogue freshness and non-template rules
+21. Dialogue clarity and global quality gate
+22. Storyboard split rules
+23. Image/video prompt rules
+24. CUT editing authority rules
+25. CapCut timeline export rules
+26. Self update protocol
 
 If any rule conflicts, higher priority files win.
 Do not overwrite canon from lower priority notes.
@@ -213,7 +214,7 @@ CapCut 편집표 양식
 ```text
 20화 마지막 문/숨소리/封气 판단에서 바로 이어진다.
 첫 3초는 老宅 안쪽 반응으로 질문을 만든다.
-陆沉舟는 감정을 설명하지 않고 판단으로 주인공성을 보여준다.
+陆沉舟는 말없는 쿨함이 아니라, 판단과 필요한 설명으로 사건의 방향을 잡으며 주인공성을 보여준다.
 黑七는 감각으로 먼저 이상함을 잡는다.
 檀缺는 짧게 찌르는 관찰로 균형을 잡는다.
 沈泊川는 현실적인 불안과 질문으로 시청자 몰입을 맡는다.
