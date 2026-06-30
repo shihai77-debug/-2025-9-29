@@ -136,20 +136,21 @@ Before any production work, read in this order:
 10. Novel AI short drama gold standard
 11. Cultural aesthetic sensibility gate
 12. LU protagonist voice and scene leadership gate
-13. Creative preflight audience story gate
-14. Story density no-drag execution gate
-15. Bad example quarantine and style do-not-copy
-16. Director actor camera storyboard execution gate
-17. Director/actor/camera simulation workflow
-18. Three second hook and character entry rules
-19. Anti-drag pacing rules
-20. Dialogue freshness and non-template rules
-21. Dialogue clarity and global quality gate
-22. Storyboard split rules
-23. Image/video prompt rules
-24. CUT editing authority rules
-25. CapCut timeline export rules
-26. Self update protocol
+13. Dialogue stage necessity gate
+14. Creative preflight audience story gate
+15. Story density no-drag execution gate
+16. Bad example quarantine and style do-not-copy
+17. Director actor camera storyboard execution gate
+18. Director/actor/camera simulation workflow
+19. Three second hook and character entry rules
+20. Anti-drag pacing rules
+21. Dialogue freshness and non-template rules
+22. Dialogue clarity and global quality gate
+23. Storyboard split rules
+24. Image/video prompt rules
+25. CUT editing authority rules
+26. CapCut timeline export rules
+27. Self update protocol
 
 If any rule conflicts, higher priority files win.
 Do not overwrite canon from lower priority notes.
@@ -215,9 +216,9 @@ CapCut 편집표 양식
 20화 마지막 문/숨소리/封气 판단에서 바로 이어진다.
 첫 3초는 老宅 안쪽 반응으로 질문을 만든다.
 陆沉舟는 말없는 쿨함이 아니라, 판단과 필요한 설명으로 사건의 방향을 잡으며 주인공성을 보여준다.
-黑七는 감각으로 먼저 이상함을 잡는다.
-檀缺는 짧게 찌르는 관찰로 균형을 잡는다.
-沈泊川는 현실적인 불안과 질문으로 시청자 몰입을 맡는다.
+黑七는 역할상 감각을 말하는 것이 아니라, 감각이 비정상적으로 끊길 때 말한다.
+檀缺는 역할상 찌르는 것이 아니라, 黑七의 허세/오판을 현장에서 끊을 이유가 있을 때만 말한다.
+沈泊川는 역할상 질문하는 것이 아니라, 책임/공포/행동 위험 때문에 말할 수밖에 없을 때 말한다.
 ```
 
 21화에서 피해야 할 것:
