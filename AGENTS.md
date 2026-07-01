@@ -25,6 +25,8 @@ outputs/exact_face_style_mode_rules.md
 outputs/faceless_style_reference_mode_rules.md
 outputs/character_positioning_image_usage_rules.md
 outputs/character_positioning_prompt_snippets.md
+voice_dialogue_video_prompt_reference.md
+jimeng_dialogue_voice_prompt_reference.md
 ```
 
 Do not rely only on this default-branch bootstrap file if the full branch files are available.
@@ -43,6 +45,23 @@ Do not rely only on this default-branch bootstrap file if the full branch files 
 ```
 
 Never infer no dialogue, no BGM, no SFX, or no environment sound from a visually silent storyboard board. Always check the source index.
+
+## Voice Prompt Reference Rule
+
+```text
+voice_dialogue_video_prompt_reference.md = general voice / lip-sync / dialogue-reading reference.
+jimeng_dialogue_voice_prompt_reference.md = Jimeng-specific compact dialogue voice prompt reference.
+```
+
+These files are formatting and performance references only. They never override the source index, canon, character identity, character voice, relationship logic, reveal order, or contract rules.
+
+```text
+Original dialogue meaning must be preserved.
+If dialogue timing is too dense, first split the CUT, extend duration, insert reaction/cutaway, or move delivery to voiceover/TTS planning.
+Do not shorten, rewrite, merge, replace, or summarize dialogue unless the user explicitly approves.
+If a wording change is needed for delivery, show Original / Proposed / Reason side by side.
+陆沉舟 is not a short-line notification machine. He may speak as much as needed to lead the scene while preserving the source meaning.
+```
 
 ## Smart Execution Rule
 
@@ -211,6 +230,7 @@ Before outputting any storyboard prompt, clean keyframe prompt, or Jimeng / Seed
 [ ] If faces are unstable, did I use faceless style reference mode for storyboard/reference image?
 [ ] Did I preserve exact dialogue, BGM, SFX, environment sound?
 [ ] Did I include actor-style voice directions and audio mixing?
+[ ] If using voice prompt references, did I preserve original dialogue meaning and prefer split/extend/reaction/cutaway over shortening?
 [ ] Did I prevent duplicate characters and character confusion?
 [ ] Did I avoid silent pass/skip without user approval?
 ```
