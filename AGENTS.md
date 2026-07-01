@@ -1,16 +1,55 @@
-# AGENTS.md｜《棺中檀色》EP20 默认规则入口
+# Repository Agent Rules
 
-This default-branch file exists so GitHub / Codex agents can discover the EP20 prompt workflow even when they do not automatically open the working branch.
+This repository is the official production source for the AI short drama
+`《棺中檀色》`. Use it for novel work, storyboard/CUT splitting, storyboard
+reference boards, clean keyframes, Jimeng/Seedance prompts, continuity checks,
+and production self-updates.
 
-## Important Branch Rule
+Do not treat this file as a replacement for the full rule set. It is the entry
+point that tells an agent what to read and how to avoid damaging canon.
 
-The complete EP20 rule set currently lives on this branch:
+## First Read Order
+
+Before writing or splitting any episode, first read the relevant source files
+from the current branch.
 
 ```text
-codex/refactor-shot-sequence-for-continuity
+AGENTS.md
+docs/production_bible/00_read_order.md
+docs/production_bible/README.md
+docs/production_bible/self_update_protocol.md
+docs/production_bible/story-production-kit/00_start_here_execution_guide.md
+01_세계관_최종설정.md
+02_캐릭터_최종설정.md
+06_폐기설정_충돌방지.md
+07_소설작성_규칙.md
 ```
 
-When the user asks about EP20, CUTs, storyboard boards, approved boards, Jimeng, Seedance, video prompts, clean keyframes, face stability, pacing, dead air, pass/skip decisions, or prompt extraction, first read the full files from that branch:
+For story quality, pacing, dialogue, and director logic, read these when the
+task touches novel, storyboard, or video production:
+
+```text
+docs/production_bible/story-production-kit/01_reference_video_style_bible.md
+docs/production_bible/story-production-kit/03_novel_to_storyboard_workflow.md
+docs/production_bible/story-production-kit/09_story_continuity_and_dialogue_rules.md
+docs/production_bible/story-production-kit/10_director_actor_camera_simulation_workflow.md
+docs/production_bible/story-production-kit/13_dialogue_character_emotion_story_rules.md
+docs/production_bible/story-production-kit/14_three_second_hook_and_character_entry_rules.md
+docs/production_bible/story-production-kit/20_anti_drag_story_pacing_rules.md
+docs/production_bible/story-production-kit/21_cut_editing_authority_rules.md
+docs/production_bible/story-production-kit/24_dialogue_freshness_and_non_template_rules.md
+docs/production_bible/story-production-kit/25_dialogue_clarity_and_global_quality_gate.md
+docs/production_bible/story-production-kit/26_canon_character_priority_over_reference_video.md
+docs/production_bible/story-production-kit/27_novel_ai_short_drama_gold_standard.md
+docs/production_bible/story-production-kit/29_story_density_no_drag_execution_gate.md
+docs/production_bible/story-production-kit/31_creative_preflight_audience_story_gate.md
+docs/production_bible/story-production-kit/32_director_actor_camera_storyboard_execution_gate.md
+docs/production_bible/story-production-kit/33_cultural_aesthetic_sensibility_gate.md
+docs/production_bible/story-production-kit/34_lu_protagonist_voice_scene_leadership_gate.md
+docs/production_bible/story-production-kit/35_dialogue_stage_necessity_gate.md
+```
+
+For EP20 / CUT / Jimeng / Seedance / prompt extraction tasks, read:
 
 ```text
 outputs/episode20_final_cut_source_index.md
@@ -20,217 +59,243 @@ outputs/smart_prompt_execution_protocol.md
 outputs/cinematic_shot_grammar_rules.md
 outputs/director_intelligence_layer_rules.md
 outputs/flow_pacing_edit_decision_rules.md
-outputs/stable_character_video_prompt_template.md
-outputs/exact_face_style_mode_rules.md
+outputs/dialogue_timing_fit_audit_rules.md
+outputs/movement_position_continuity_audit_rules.md
+outputs/storyboard_video_timing_bridge_rules.md
 outputs/faceless_style_reference_mode_rules.md
+outputs/exact_face_style_mode_rules.md
+outputs/stable_character_video_prompt_template.md
 outputs/character_positioning_image_usage_rules.md
 outputs/character_positioning_prompt_snippets.md
+outputs/legacy_prompt_files_do_not_use.md
 voice_dialogue_video_prompt_reference.md
 jimeng_dialogue_voice_prompt_reference.md
+docs/production_bible/story-production-kit/jimeng_dialogue_voice_prompt_reference.md
 ```
 
-Do not rely only on this default-branch bootstrap file if the full branch files are available.
+## Source Priority
 
-## Hard Source Priority
+Use this priority order whenever rules or files appear to conflict:
 
 ```text
-对白 / BGM / SFX / 情绪 / 声音 / 时长 = source index 优先。
-构图 / 站位 / 动线 / 镜头 / 道具空间 = approved storyboard board 参考。
-人物脸 / 发型 / 服装 / 体型 / 气质 = 三面图 / 角色参考图 优先。
-智能执行顺序 / 自修流程 = smart prompt execution protocol 优先。
-镜头拆分 = cinematic shot grammar 优先。
-导演诊断 / 更聪明的拍法建议 = director intelligence layer 优先。
-节奏空白 / 压缩合并 / 替换cutaway / 跳过建议 = flow pacing edit decision rules 优先。
-脸部不稳定时的分镜参考图 = faceless style reference mode 优先。
+1. User's latest instruction in the current chat.
+2. Exact episode/CUT source index or existing shot sequence source.
+3. Worldbuilding and character bible.
+4. Contract / anti-conflict / banned-setting files.
+5. Story-production-kit rules.
+6. Prompt platform rules and accumulated failure notes.
+7. Reference-video style analysis as a support layer only.
 ```
 
-Never infer no dialogue, no BGM, no SFX, or no environment sound from a visually silent storyboard board. Always check the source index.
+Reference videos and style-analysis files are emotional, pacing, hook, and
+dialogue-rhythm references. They never override canon, character identity,
+relationships, story order, reveal order, or confirmed dialogue.
+
+## Existing Shot Sequence Rule
+
+When the user says the storyboard split, shot sequence, `분진`, `CUT`, or
+episode material is already in Codex/GitHub, search the repository before asking
+for a novel manuscript.
+
+Search by episode and production keywords such as:
+
+```text
+EP21, 21화, 第二十一集, 第21集, CUT, shot sequence, storyboard, 분진, 老宅
+```
+
+If an existing shot sequence or source index is found, treat that file as the
+source for video splitting and prompt work. A novel manuscript is only required
+when rewriting or newly drafting story prose.
+
+If the source cannot be found, report the searched paths and keywords before
+asking the user to paste material. Do not invent episode content.
+
+## Dialogue Preservation Rule
+
+Dialogue must be copied from the source when the source provides dialogue.
+
+```text
+Do not invent dialogue.
+Do not rewrite dialogue.
+Do not summarize dialogue.
+Do not shorten dialogue.
+Do not merge or replace dialogue.
+Do not move a line to another speaker.
+```
+
+If a line is too dense for the time budget, first propose:
+
+```text
+CUT split
+duration extension
+reaction shot
+cutaway
+separate speaking node
+voiceover / TTS planning
+```
+
+Only change wording after user approval, and show:
+
+```text
+Original / Proposed / Reason
+```
 
 ## Voice Prompt Reference Rule
 
 ```text
 voice_dialogue_video_prompt_reference.md = general voice / lip-sync / dialogue-reading reference.
 jimeng_dialogue_voice_prompt_reference.md = Jimeng-specific compact dialogue voice prompt reference.
+docs/production_bible/story-production-kit/jimeng_dialogue_voice_prompt_reference.md = production-bible mirror for Jimeng voice prompting.
 ```
 
-These files are formatting and performance references only. They never override the source index, canon, character identity, character voice, relationship logic, reveal order, or contract rules.
+These files are performance-format references only. They do not grant permission
+to shorten, rewrite, replace, or simplify confirmed dialogue.
+
+Original dialogue meaning must be preserved. Lu Chenzhou / 陆沉舟 is not a
+short-line notification machine. He may speak as much as needed to lead the
+scene, explain the necessary rule, stop danger, and move the story while staying
+in character.
+
+## Dialogue Stage Gate
+
+Before writing or revising dialogue, lock the scene action first:
 
 ```text
-Original dialogue meaning must be preserved.
-If dialogue timing is too dense, first split the CUT, extend duration, insert reaction/cutaway, or move delivery to voiceover/TTS planning.
-Do not shorten, rewrite, merge, replace, or summarize dialogue unless the user explicitly approves.
-If a wording change is needed for delivery, show Original / Proposed / Reason side by side.
-陆沉舟 is not a short-line notification machine. He may speak as much as needed to lead the scene while preserving the source meaning.
+1. Who is in danger now?
+2. Who must speak first, and why?
+3. Who should act or stay silent instead of speaking?
+4. Would the scene fail to move if this line were removed?
 ```
 
-## Smart Execution Rule
-
-Before writing any storyboard prompt, clean keyframe prompt, Jimeng prompt, or Seedance prompt, think like a source-locked director:
+Delete or convert any line that exists only to deliver information. Do not fall
+into the mechanical order:
 
 ```text
-1. Source extraction：先读原文对白、说话人、BGM、SFX、环境音、时长、道具、continuity anchor。
-2. Board extraction：board只读构图、站位、动线、镜头、道具位置、空间连续。
-3. Reference lock：用三面图/角色参考图锁脸、发型、服装、体型、气质。
-4. Viewer-first diagnosis：观众会看懂吗？情绪会活吗？该切还是该停？
-5. Risk diagnosis：台词密度、脸部稳定、3人以上清晰脸、动作+台词、音频层级、配角木偶风险、无意义空白、节奏破坏。
-6. Filming decision：keep and hold / smart adjustment / split or extend / compress / merge / replace / pass proposal。
-7. Self-repair：漏对白、音频、角色数量、道具状态、演员式读法、continuity、节奏判断时，先修正再输出。
+Shen asks -> Hei Qi senses -> Tan Que corrects -> Lu summarizes
 ```
 
-Do not be a mechanical prompt copier.
+Use character need, danger, action, and emotional pressure to decide speech
+order.
+
+## Director Judgment Rule
+
+Storyboard/CUT work is not free rewriting. Director judgment may adjust filming
+structure, not source meaning.
+
+Allowed director decisions:
 
 ```text
-故事不乱改。
-拍法要聪明。
-不要为了分镜而分镜。
-该切才切，该停就停。
-保留有用的沉默。
-剪掉无用的空白，但跳过必须先说明理由并请求确认。
-表演要像人。
-镜头要能剪。
-声音要能听。
-观众要想继续看。
+split a dense CUT into A/B/C video nodes
+extend timing when dialogue cannot breathe
+insert reaction shot or cutaway
+choose master shot / dialogue shot / reaction shot / action node
+mark face-risk and use faceless blocking board
+compress dead air while preserving meaning
+report filming risks before changing anything
 ```
 
-## Flow Pacing Rule
-
-When a CUT, sub-shot, board panel, silence, movement, or empty beat may damage rhythm, classify it:
+Not allowed without user approval:
 
 ```text
-KEEP：承载情绪、悬念、反应、空间、道具或continuity。
-COMPRESS：动作/移动有用但时长过长。
-MERGE：与前后CUT重复，可自然合并。
-REPLACE：原镜头弱，但需要用手、资料、门、灰尘、风声等cutaway保留连接。
-PASS_PROPOSAL：无对白、无情绪、无信息、无位置/道具变化、无continuity价值，建议跳过但必须用户确认。
+change event order
+change speaker
+change relationship logic
+remove a source line
+replace source dialogue with a "better" line
+turn a quiet acting beat into a different plot point
 ```
 
-Never skip automatically.
+## Audio Source Rule
+
+Never infer silence from a visually quiet storyboard board.
+
+Always check source for:
 
 ```text
-提出跳过时必须说明原因。
-必须说明保留或转移哪些continuity anchor。
-必须等用户确认后才能最终删除/跳过。
+dialogue
+BGM
+SFX
+environment sound
+off-screen sound
+motorcycle / footsteps / wind / city ambience
 ```
 
-## Reference Tag Rule
+If audio is missing from source, report it as missing. Do not silently invent or
+delete it.
 
-Use Chinese character reference tags. Do not use English alias tags for character references.
+## Character Locks
+
+Use these labels consistently:
 
 ```text
-必须使用：@沈泊川角色参考图
-禁止使用：@Shen角色参考图
+LU = 陆沉舟
+SHEN = 沈泊川
+HAN = 韩知玄
+TAN = 檀缺
+HEIQI = 黑七
 ```
 
-Standard EP20 reference material header:
+Core locks:
 
 ```text
-参考素材：@陆沉舟三面图、@黑七狐狸参考图、@檀缺三面图、@韩知玄三面图、@沈泊川角色参考图、@第20集CUT-XX批准 storyboard reference board。
+陆沉舟: modern black leather jacket, black T-shirt, dark pants, boots. Scene leader and field judge.
+沈泊川: cleaning-company boss / realistic young man / motorcycle entry when source requires it. Must not look like 韩知玄.
+韩知玄: 镇灵司 uniform and public-duty restraint. Must not look like 陆沉舟.
+檀缺: dark modern daily outfit unless source says otherwise. Must not become 白清檀.
+黑七: always a small black fox body. Never human, wolf, dog, cat, or fox-boy.
+白清檀: black clothing / queen identity when present. Never turn her into a white-robed ghost.
 ```
 
-沈泊川 character description must use:
-
-```text
-沈泊川：严格参考@沈泊川角色参考图，清洁服务公司年轻老板/现场负责人，灰绿或深灰工作衬衫外套，深灰T恤，棕色工装裤，棕色工作靴，卡其色实用双肩包/工具包；摩托车和头盔只作为交通/入场道具，不是黑皮骑手。
-```
-
-## Faceless Style Reference Mode
-
-Use this mode when storyboard/reference board faces keep failing.
-
-```text
-人物脸部可以出现，但不要画清楚眼睛、鼻子、嘴巴。
-保留脸部外轮廓、头部方向、发型、体型、服装、姿势、位置。
-表演通过头部角度、肩膀、手部、身体重心、呼吸姿态表达。
-背景可以清楚，但人物保持浅灰、低对比、淡线 storyboard 风格。
-不要把本图当作角色脸部参考。
-```
-
-This is for storyboard/reference boards only. It is not a final video face rule.
-
-Final video faces must still follow character turnaround sheets / 三面图.
+All characters must follow the turnaround sheets / 三面图 when image or video
+work uses visual references. Do not redesign faces, hair, outfits, body
+proportions, age, temperament, or silhouette.
 
 ## Cinematic Shot Grammar
 
-Do not force every CUT into one image or one video node.
+Do not force every scene into one image or one generated video node.
 
 Use real filming logic:
 
 ```text
-master shot：空间、关系、站位、群体沉默。
-dialogue shot：重要台词，1-2人中近景，保护脸、口型、演员表演。
-reaction shot：听者反应，眼神、呼吸、手部、肩颈微动。
-cutaway：手、资料、背包、头盔、摩托、门、积灰、街角。
-action node：走位、入场、开包、取物、停车、转身。
-speaking node：稳定说话，脸清楚，少运动。
+master shot = geography, silence, group blocking
+dialogue shot = one or two speakers, clear face and voice
+reaction shot = emotional answer without changing source line
+cutaway = prop, door, bag, footprint, wind, city, animal, document state
+action node = body movement or camera movement, not both at once
+speaking node = dialogue timing and lip-sync stability
 ```
 
 Hard generation rule:
 
 ```text
-One generated storyboard panel, clean keyframe, or video node should contain at most two clear human faces.
-3+ clear human faces in one generated frame = high face-break risk.
-3+ characters may appear only in faceless/blocking master shots.
-Important dialogue must move to a 1-person or 2-person dialogue shot.
+At most two clear human faces in one generated frame.
+3+ clear human faces = high face-break risk.
+3+ characters may appear in faceless/blocking master shots only.
+Important dialogue should move to one-person or two-person dialogue shots.
 ```
 
-Must split when:
+## Faceless Style Reference Mode
 
-```text
-三人以上同框 + 长台词。
-三人以上清晰脸同框。
-复杂动作 + 长台词。
-远景小脸 + 要求口型。
-道具操作 + 信息量大的说明台词。
-脸已经不稳 + 重要台词。
-```
+Use `outputs/faceless_style_reference_mode_rules.md` when storyboard/reference
+board faces keep failing. It is for blocking, position, camera path, continuity,
+and actor movement. It is not a final video face rule.
 
-Do not over-split:
-
-```text
-如果沉默、悲伤、压力、眼神、空间张力是重点，就保持镜头。
-如果同一情绪beat延续，只是视角变化，用镜头运动，不强行拆分。
-```
-
-## Character And Dialogue Locks
-
-```text
-CUT-01 至 CUT-07：只允许陆沉舟、黑七、檀缺、韩知玄、沈泊川，每个角色一次。
-CUT-08 至 CUT-15：韩知玄已离场，只允许陆沉舟、黑七、檀缺、沈泊川，每个角色一次。
-檀缺不能变成白清檀，不能穿白衣。
-黑七只能是一只小型黑色狐狸，不是狗、狼、人。
-沈泊川不能变韩知玄，韩知玄不能变沈泊川。
-```
-
-Dialogue must be copied exactly from the source index. Never invent, rewrite, summarize, shorten, merge, or replace dialogue.
-
-Use exact speaker tags:
-
-```text
-@陆沉舟
-@黑七
-@檀缺
-@韩知玄
-@沈泊川
-```
+Final video faces still follow character turnaround sheets / 三面图.
 
 ## Output Checklist
 
-Before outputting any storyboard prompt, clean keyframe prompt, or Jimeng / Seedance video prompt, check:
+Before outputting any storyboard prompt, clean keyframe prompt, or Jimeng /
+Seedance prompt, check:
 
 ```text
-[ ] Did I read the full source index from the working branch?
-[ ] Did I read smart_prompt_execution_protocol.md from the working branch?
-[ ] Did I read flow_pacing_edit_decision_rules.md from the working branch when pacing/empty-beat risk exists?
-[ ] Did I use @沈泊川角色参考图 and avoid @Shen角色参考图?
-[ ] Did I ask viewer-first questions: should this hold, adjust, split, extend, compress, merge, replace, or pass-propose?
-[ ] Did I judge master/dialogue/reaction/cutaway/action/speaking function?
-[ ] Did I avoid multi-person wide shot plus long dialogue?
-[ ] Did I keep clear human faces to at most two per generated frame/node?
-[ ] Did I use 三面图 for identity, not storyboard board faces?
-[ ] If faces are unstable, did I use faceless style reference mode for storyboard/reference image?
-[ ] Did I preserve exact dialogue, BGM, SFX, environment sound?
-[ ] Did I include actor-style voice directions and audio mixing?
-[ ] If using voice prompt references, did I preserve original dialogue meaning and prefer split/extend/reaction/cutaway over shortening?
-[ ] Did I prevent duplicate characters and character confusion?
-[ ] Did I avoid silent pass/skip without user approval?
+[ ] Did I read the episode/CUT source or existing shot sequence first?
+[ ] Did I search the repo before asking for a novel manuscript?
+[ ] Did I preserve event order, speaker, dialogue meaning, BGM/SFX/environment sound?
+[ ] Did I lock worldbuilding, character identity, and banned settings?
+[ ] Did I diagnose first-3-second hook and story drag?
+[ ] Did I check whether the dialogue is actor-readable within the time budget?
+[ ] If timing is dense, did I prefer split/extend/reaction/cutaway over shortening?
+[ ] Did I avoid the mechanical role-order dialogue pattern?
+[ ] Did I prevent extra characters, duplicated people, and HEIQI form drift?
+[ ] Did I separate director judgment from content rewriting?
 ```

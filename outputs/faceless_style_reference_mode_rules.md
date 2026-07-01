@@ -1,16 +1,11 @@
-# Faceless Style Reference Mode｜无五官风格定位参考图规则
+# Faceless Style Reference Mode
 
-This mode is for storyboard reference boards and intermediate planning images when exact face generation is unstable.
+Use this mode for storyboard reference boards and intermediate planning images
+when exact face generation is unstable.
 
-It is not a final video face rule. It is a safer reference-image mode that keeps character identity through silhouette, hairstyle, outfit, body proportion, posture, screen position, and movement direction while avoiding broken facial details.
-
-## Core Rule
-
-```text
-脸可以出现，但不要画清楚眼睛、鼻子、嘴巴等五官细节。
-保留脸部外轮廓、头部方向、发型、发量、刘海、侧脸角度、下颌线大轮廓。
-人物身份通过发型、服装、身形、姿态、位置、道具和标签来锁定。
-```
+This is not a final video face rule. It is a safer reference-image mode that
+keeps identity through silhouette, hairstyle, outfit, body proportion, posture,
+screen position, and movement direction while avoiding broken facial details.
 
 ## Use When
 
@@ -18,10 +13,15 @@ Use this mode when:
 
 - generated faces drift, shake, melt, or mix characters.
 - storyboard boards produce wrong faces even with turnaround sheets.
-- the image is used mainly for blocking, actor position, camera path, props, and continuity.
+- the image is mainly for blocking, actor position, camera path, props, and continuity.
+- a wide master shot contains three or more characters.
 - Jimeng / Seedance will still receive character turnaround sheets in the final video prompt.
 
-## Allowed
+## Core Visual Rule
+
+The character is visible, but facial features are intentionally simplified.
+
+Allowed:
 
 - face outline.
 - head shape.
@@ -32,7 +32,7 @@ Use this mode when:
 - light sketch-like person rendering.
 - clear outfit, body proportion, posture, and position.
 
-## Not Allowed
+Not allowed:
 
 - detailed eyes.
 - detailed nose.
@@ -47,7 +47,7 @@ Use this mode when:
 
 Even without facial features, character identity must remain clear.
 
-Use the turnaround sheets for:
+Use the turnaround sheets / 三面图 for:
 
 - hairstyle and hair volume.
 - hair length and silhouette.
@@ -56,45 +56,81 @@ Use the turnaround sheets for:
 - temperament through posture.
 - recurring props.
 
-For EP20:
+Character locks:
 
 ```text
-陆沉舟：黑色皮夹克、黑T、黑裤、黑靴，疲惫坐姿或冷静风水师姿态，头发凌乱但轮廓固定。
-黑七：一只小型黑色狐狸，狐狸身体轮廓清楚，不是狗，不是狼，不是人。
-檀缺：深色现代日常装，深色开衫/外套、深色上衣、黑色裙装，安静克制，不穿白衣。
-韩知玄：黑色长款镇灵司制服，公务式站姿，胸前“镇灵司”标识可简化但身份明确。
-沈泊川：黑色皮夹克、黑裤、黑靴、黑色背包、摩托车相关动作，青年市井感。
+LU / 陆沉舟: modern black leather jacket, black T-shirt, dark pants, boots; calm field leader.
+SHEN / 沈泊川: realistic young cleaning-company boss; motorcycle/backpack when source requires; must not look like 韩知玄.
+HAN / 韩知玄: 镇灵司 uniform, public-duty restraint, official posture; must not look like 陆沉舟.
+TAN / 檀缺: dark modern daily clothing, restrained protector energy; must not become 白清檀.
+HEIQI / 黑七: small black fox body, four legs, black fur, pointed ears, long tail; never human, wolf, dog, cat, or fox-boy.
+白清檀: black clothing, queen identity, cold restrained presence; never white-robed ghost styling.
 ```
 
 ## Image Style
 
+For storyboard/reference images:
+
 ```text
-背景可以相对清楚、空间关系明确。
-人物线条和明暗要更轻，不要像最终照片一样重。
-人物可用浅灰、低对比、半写实草图感处理。
-衣服轮廓、发型轮廓、道具轮廓必须清楚。
-脸部只画轮廓，不画清楚五官。
-整体仍是导演参考图，不是最终彩色视频帧。
+black-and-white or low-saturation cinematic storyboard sketch.
+16:9 video frame composition.
+clear blocking, screen position, camera direction, movement arrow, and short labels.
+simple face planes, no detailed facial features.
+high readability of silhouette, outfit, prop, and spatial relation.
 ```
 
-## Acting Rule
+Do not let faceless style become abstract blobs. The board must still show who
+is who through clothing, body shape, posture, and position.
+
+## Blocking And Acting Rule
 
 Faceless style does not mean no acting.
 
+Acting must still be shown through:
+
+- head direction.
+- eye-line direction indicated by head angle, not detailed eyes.
+- shoulder tension.
+- hand position.
+- breath posture.
+- body lean.
+- distance between characters.
+- prop handling.
+- micro movement notes and arrows on storyboard boards.
+
+Write acting as body performance:
+
 ```text
-用头部角度、肩颈紧张、手部停顿、身体重心、呼吸姿态表现情绪，不依赖清晰五官表情。
+show silent grief through a still seated body, lowered shoulders, and a far head angle.
+show caution through a stopped hand, half-step back, and head turning toward the sound.
+show listening stillness through fixed feet, slight chest breath, and head angled toward the speaker.
 ```
+
+## When Not To Use
+
+Do not use this mode as the only source for:
+
+- final dialogue close-up.
+- final lip-sync face.
+- exact emotional facial performance.
+- final clean keyframe when a clear speaker face is required.
+
+For important dialogue, still create a clean keyframe or face lock image from
+the turnaround sheet.
 
 ## Prompt Snippet
 
+Use this snippet in storyboard/reference image prompts when face accuracy is
+failing:
+
 ```text
-启用无五官风格定位参考图模式：人物脸部可以出现，但只保留脸部外轮廓、头部方向和发型轮廓，不画清楚眼睛、鼻子、嘴巴。人物身份通过三面图对应的发型、服装、体型、姿态、道具和画面位置锁定。背景空间可以更清楚，人物线条和明暗更轻，低对比、半写实导演参考图风格，不要照片级面部细节。所有人物仍然要有演员式身体表演，用头部角度、肩颈、手部、呼吸姿态和身体重心表现情绪。
+Faceless storyboard reference mode: keep each character identity through silhouette, hairstyle, outfit, body proportion, posture, screen position, and movement direction. Simplify facial features into soft face planes with no detailed eyes, nose, or mouth. Do not redesign the characters. The board is only for blocking, camera path, actor position, and continuity. Final video faces must follow the character turnaround sheets.
 ```
 
 Negative prompt:
 
 ```text
-清晰五官，详细眼睛，详细鼻子，详细嘴巴，漂亮随机脸，换脸，混脸，五官闪烁，脸部融化，照片级人脸，过度写实人脸，人物重黑，人物抢过背景，模糊到无法识别服装和发型，丢失发型轮廓，丢失服装轮廓，角色身份不明。
+detailed face, realistic close-up face, wrong face, random beautiful face, copied face, extra character, duplicated character, humanized black fox, wolf, dog, cat, fox-boy, blurred blob body, missing hairstyle, missing outfit identity
 ```
 
 ## Final Video Prompt Reminder
@@ -102,7 +138,7 @@ Negative prompt:
 When using this reference board for Jimeng / Seedance:
 
 - state that the board is only for blocking and position.
-- state that final faces must follow the character turnaround sheets.
-- if exact face is needed, use exact face/style mode.
+- state that final faces must follow the character turnaround sheets / 三面图.
+- if exact face is needed, use `outputs/exact_face_style_mode_rules.md`.
 - if the shot is a master shot or action node, the faceless reference board is acceptable.
 - if the shot is a dialogue shot, use a clean keyframe with speaker face large enough.
