@@ -137,20 +137,21 @@ Before any production work, read in this order:
 11. Cultural aesthetic sensibility gate
 12. LU protagonist voice and scene leadership gate
 13. Dialogue stage necessity gate
-14. Creative preflight audience story gate
-15. Story density no-drag execution gate
-16. Bad example quarantine and style do-not-copy
-17. Director actor camera storyboard execution gate
-18. Director/actor/camera simulation workflow
-19. Three second hook and character entry rules
-20. Anti-drag pacing rules
-21. Dialogue freshness and non-template rules
-22. Dialogue clarity and global quality gate
-23. Storyboard split rules
-24. Image/video prompt rules
-25. CUT editing authority rules
-26. CapCut timeline export rules
-27. Self update protocol
+14. Jimeng dialogue voice prompt reference
+15. Creative preflight audience story gate
+16. Story density no-drag execution gate
+17. Bad example quarantine and style do-not-copy
+18. Director actor camera storyboard execution gate
+19. Director/actor/camera simulation workflow
+20. Three second hook and character entry rules
+21. Anti-drag pacing rules
+22. Dialogue freshness and non-template rules
+23. Dialogue clarity and global quality gate
+24. Storyboard split rules
+25. Image/video prompt rules
+26. CUT editing authority rules
+27. CapCut timeline export rules
+28. Self update protocol
 
 If any rule conflicts, higher priority files win.
 Do not overwrite canon from lower priority notes.

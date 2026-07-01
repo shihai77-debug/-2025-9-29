@@ -61,6 +61,7 @@ outputs/story-production-kit/32_director_actor_camera_storyboard_execution_gate.
 outputs/story-production-kit/33_cultural_aesthetic_sensibility_gate.md
 outputs/story-production-kit/34_lu_protagonist_voice_scene_leadership_gate.md
 outputs/story-production-kit/35_dialogue_stage_necessity_gate.md
+outputs/story-production-kit/jimeng_dialogue_voice_prompt_reference.md
 ```
 
 ## 2. Codex가 매번 먼저 해야 할 일
@@ -78,8 +79,9 @@ outputs/story-production-kit/35_dialogue_stage_necessity_gate.md
 8. 이전 화 마지막 대사와 현재 화 첫 장면 연결 확인
 9. 이번 화의 3초 후킹 확인
 10. 대사 전 현장 위험/말할 필연성 확인
-11. 대사 규칙 확인
-12. 질질 끌림 방지 체크
+11. Jimeng 대사 음성/연기 프롬프트 기준 확인
+12. 대사 규칙 확인
+13. 질질 끌림 방지 체크
 ```
 
 이 확인 없이 바로 소설이나 분경을 쓰면 안 된다.
