@@ -49,6 +49,7 @@ docs/production_bible/story-production-kit/34_lu_protagonist_voice_scene_leaders
 docs/production_bible/story-production-kit/35_dialogue_stage_necessity_gate.md
 docs/production_bible/story-production-kit/36_color_script_reference_image_gate.md
 docs/production_bible/story-production-kit/37_colored_background_prop_split_gate.md
+docs/production_bible/story-production-kit/38_reference_prompt_rebuild_camera_video_gate.md
 ```
 
 For EP20 / CUT / Jimeng / Seedance / prompt extraction tasks, read:
@@ -163,6 +164,43 @@ lighting, color script, and continuity.
 All background / prop split images must follow the approved color script and
 must not create a new location, new palette, or disconnected background unless
 the source explicitly changes location.
+
+## Reference Prompt Rebuild Camera / Video Rule
+
+Previous camera and video shooting method notes are legacy support only when the
+user provides a new high-quality reference prompt source. Do not use old camera
+or video filming methods as final authority if they conflict with the new
+reference-prompt rebuild workflow.
+
+Outside expert prompts may teach method only:
+
+```text
+prompt structure
+camera instruction grammar
+motion wording
+background / prop control
+color and lighting continuity
+AI stability wording
+platform compression style
+```
+
+Do not copy outside:
+
+```text
+story
+characters
+dialogue
+worldbuilding
+palette
+scene content
+relationships
+event order
+```
+
+The rebuilt camera / video method must be based on the user's new reference
+prompt material plus our actual 분진 source, approved color script, approved BG /
+PROP references, canon character rules, and platform rules. It becomes official
+only after user approval.
 
 ## Dialogue Preservation Rule
 
@@ -347,6 +385,7 @@ Seedance prompt, check:
 [ ] Did I preserve event order, speaker, dialogue meaning, BGM/SFX/environment sound?
 [ ] Did I create or follow the approved color script and color reference image?
 [ ] Did I decide background / prop split mode and keep characters out of split images by default?
+[ ] Did I use new reference-prompt-derived camera/video method instead of old legacy method when applicable?
 [ ] Did I lock worldbuilding, character identity, and banned settings?
 [ ] Did I diagnose first-3-second hook and story drag?
 [ ] Did I check whether the dialogue is actor-readable within the time budget?
