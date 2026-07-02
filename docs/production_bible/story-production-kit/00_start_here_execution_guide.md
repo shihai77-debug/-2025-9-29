@@ -66,6 +66,7 @@ outputs/story-production-kit/37_colored_background_prop_split_gate.md
 outputs/story-production-kit/38_reference_prompt_rebuild_camera_video_gate.md
 outputs/story-production-kit/39_expert_video_prompt_method_extraction.md
 outputs/story-production-kit/40_video_prompt_scene_input_card.md
+outputs/story-production-kit/41_max_quality_image_dialogue_voice_and_legacy_cleanup.md
 outputs/story-production-kit/jimeng_dialogue_voice_prompt_reference.md
 ```
 
@@ -212,6 +213,28 @@ Canonical path:
 docs/production_bible/story-production-kit/40_video_prompt_scene_input_card.md
 ```
 
+## Max Quality Image / Auto Voice / Legacy Cleanup Gate
+
+Before production image generation or final video prompts, apply the 41 gate.
+
+Required behavior:
+
+```text
+1. ChatGPT / image generation reference images use the maximum available quality.
+2. High image quality must not redesign canon, character, prop, location, or approved color logic.
+3. If 分镜 has dialogue but lacks AI-readable voice direction, create AUTO VOICE DIRECTION.
+4. AUTO VOICE DIRECTION may add tone / speed / pause / emphasis / listener reaction / sound mix only.
+5. It must not rewrite, shorten, move, or replace dialogue.
+6. Old unused camera / video materials are not deleted until 3 approved production cycles or explicit user approval.
+7. Never delete character references / 三面图, worldbuilding, source, confirmed 分镜, approved references, or contract files.
+```
+
+Canonical path:
+
+```text
+docs/production_bible/story-production-kit/41_max_quality_image_dialogue_voice_and_legacy_cleanup.md
+```
+
 ## 2. Codex가 매번 먼저 해야 할 일
 
 작업 전 자동 확인 순서:
@@ -233,8 +256,9 @@ docs/production_bible/story-production-kit/40_video_prompt_scene_input_card.md
 14. 새 참고 프롬 기반 카메라 / 영상 방식 재구축 여부 확인
 15. 39번 고수 영상 프롬 레이어 순서 적용 여부 확인
 16. 40번 장면 입력 카드 / 부족 참고자료 요청 여부 확인
-17. 대사 규칙 확인
-18. 질질 끌림 방지 체크
+17. 41번 최대화질 이미지 / 자동 대사 음성 / 레거시 정리 기준 확인
+18. 대사 규칙 확인
+19. 질질 끌림 방지 체크
 ```
 
 이 확인 없이 바로 소설이나 분경을 쓰면 안 된다.
@@ -257,6 +281,7 @@ docs/production_bible/story-production-kit/40_video_prompt_scene_input_card.md
 ```text
 이 소설을 기준으로 분경 만들어줘.
 CUT마다 화면, 배우 연기, 카메라, 대사, 소품, 금지사항, 다음 컷 연결까지 넣어줘.
+대사 읽는 방식이 없으면 AUTO VOICE DIRECTION으로 자동 보강하되 원문 대사는 바꾸지 마.
 참고 영상 분석 기준과 질질 끌림 방지 규칙도 적용해줘.
 ```
 
@@ -265,6 +290,8 @@ CUT마다 화면, 배우 연기, 카메라, 대사, 소품, 금지사항, 다음
 ```text
 이 분경을 영상 생성 프롬프트로 바꿔줘.
 먼저 40번 장면 입력 카드로 부족한 참고자료를 점검하고, 필요한 자료가 있으면 적극적으로 요구해줘.
+이미지 생성이 필요한 경우 ChatGPT/imagegen에서 가능한 최대 화질 기준으로 만들어줘.
+대사 읽는 방식이 분진에 없으면 AUTO VOICE DIRECTION으로 자동 생성해줘. 원문 대사는 절대 바꾸지 마.
 그다음 39번 고수 영상 프롬 레이어 순서대로 STYLE LOCK / REFERENCE LOCK / SOURCE LOCK / SHOT DESIGN / ACTION FLOW / ACTING / SOUND / CONTINUITY / FORBIDDEN / PLATFORM을 나눠줘.
 캐릭터 고정, 색도 고정, 배경/소품 연속성, 소품 공개 타이밍, 금지사항을 포함하고,
 자료나 반전이 너무 일찍 보이지 않게 해줘.
@@ -290,18 +317,20 @@ CUT별 시간, 화면, 대사 자막, 효과음, 음악, 전환, 편집 메모, 
 5. 소설 수정본
 6. CUT 분경
 7. 색도 카드 + approved color reference image
-8. 배경 / 소품 분할 판단
-9. 새 참고 프롬 방식 추출 / 카메라-영상 문법 재구축
-10. 39번 고수 영상 프롬 레이어 적용 체크
-11. 40번 장면 입력 카드 / 부족 자료 요청 체크
-12. 분할 이미지 프롬프트
-13. 영상 생성 프롬프트
-14. 저해상도 테스트 영상
-15. CapCut 타임라인 표
-16. 편집/재생성 판단
-17. 최종본
-18. 리뷰 문서 작성
-19. 업데이트 후보 기록
+8. 최대화질 이미지 생성 기준 확인
+9. 배경 / 소품 분할 판단
+10. 새 참고 프롬 방식 추출 / 카메라-영상 문법 재구축
+11. 39번 고수 영상 프롬 레이어 적용 체크
+12. 40번 장면 입력 카드 / 부족 자료 요청 체크
+13. 41번 AUTO VOICE DIRECTION / 레거시 정리 기준 체크
+14. 분할 이미지 프롬프트
+15. 영상 생성 프롬프트
+16. 저해상도 테스트 영상
+17. CapCut 타임라인 표
+18. 편집/재생성 판단
+19. 최종본
+20. 리뷰 문서 작성
+21. 업데이트 후보 기록
 ```
 
 ## 5. 절대 바로 하면 안 되는 것
@@ -312,12 +341,16 @@ CUT별 시간, 화면, 대사 자막, 효과음, 음악, 전환, 편집 메모, 
 이전 화 마지막 대사 무시하기
 대사를 무조건 짧게만 만들기
 색도 기준 없이 분할 이미지 만들기
+최대화질 기준 없이 공식 참고 이미지 만들기
 색도 기준 없이 영상 프롬프트 만들기
 분경 전체를 읽지 않고 배경을 임의 분할하기
+분경 대사를 읽는 방식 없이 최종 영상 프롬 만들기
+AUTO VOICE DIRECTION을 핑계로 대사 원문 바꾸기
 고수 참고 프롬의 내용/인물/스토리/색감을 베끼기
 고수 참고 프롬의 구조를 빼고 분위기만 흉내내기
 부족한 참고자료를 확인하지 않고 최종 영상 프롬 만들기
 옛 카메라/영상 방식을 새 참고 프롬보다 우선하기
+3화 검증/사용자 승인 없이 옛 자료 삭제하기
 분경 전에 영상 프롬프트부터 만들기
 영상 실패를 전부 재생성으로 해결하기
 참고 영상 스타일을 분위기만 베끼기
@@ -335,14 +368,17 @@ CapCut에서 사건 순서 바꾸기
 인물이 왜 거기 있는지 분명하다.
 대사가 캐릭터답고 알아듣기 쉽다.
 대사 안에 감정과 정보가 같이 있다.
+대사 읽는 방식이 AI가 알아듣게 분리되어 있다.
 10초마다 새 정보/위험/감정 변화가 있다.
 마지막 5초에 다음 화를 보고 싶은 질문이 남는다.
 색도 기준이 장면 주제와 감정에 맞다.
 분할 이미지가 색도 기준에서 벗어나지 않는다.
+공식 참고 이미지는 가능한 최대 화질로 만든다.
 분할 배경/소품 이미지가 영상의 실제 카메라 각도와 이어진다.
 새 참고 프롬에서 배운 카메라/영상 문법이 우리 분진에 맞게 재구축되어 있다.
 영상 프롬프트가 39번 레이어 순서를 따른다.
 40번 입력 카드로 부족 참고자료를 확인했다.
+41번 기준으로 AUTO VOICE DIRECTION과 레거시 정리 기준을 확인했다.
 분경에서 배우 연기와 카메라가 보인다.
 영상 프롬프트에서 금지사항이 명확하다.
 CapCut에서 편집할 것과 재생성할 것이 구분된다.
