@@ -53,6 +53,7 @@ docs/production_bible/story-production-kit/38_reference_prompt_rebuild_camera_vi
 docs/production_bible/story-production-kit/39_expert_video_prompt_method_extraction.md
 docs/production_bible/story-production-kit/40_video_prompt_scene_input_card.md
 docs/production_bible/story-production-kit/41_max_quality_image_dialogue_voice_and_legacy_cleanup.md
+docs/production_bible/story-production-kit/42_blocking_coordinate_character_position_gate.md
 ```
 
 For EP20 / CUT / Jimeng / Seedance / prompt extraction tasks, read:
@@ -296,6 +297,28 @@ or after explicit user approval. Never delete character references / 三面图,
 worldbuilding, source manuscripts, confirmed 分镜, approved visual references, or
 contract / banned-setting files.
 
+## Blocking Coordinate / Character Position Rule
+
+For character position, coordinates, movement paths, and reference-image handoff,
+use:
+
+```text
+docs/production_bible/story-production-kit/42_blocking_coordinate_character_position_gate.md
+```
+
+If a 分镜 already has coordinate / blocking rules, preserve them as the highest
+filming-space source. If a 分镜 lacks coordinates, create an `AUTO BLOCKING MAP`
+after reading the full 分镜, not only one CUT. Mark inferred positions as:
+
+```text
+ASSUMED / NEEDS USER APPROVAL
+```
+
+Before final video prompts, create a compact `CUT Blocking Card`, decide image
+needs after reading the full scene, and label each selected image by what it
+locks. Final video prompts must include a `REFERENCE LOCK` section when images
+are selected.
+
 ## Dialogue Preservation Rule
 
 Dialogue must be copied from the source when the source provides dialogue.
@@ -480,6 +503,9 @@ Seedance prompt, check:
 [ ] Did I create or follow the approved color script and color reference image?
 [ ] Did I use maximum available quality for production reference images?
 [ ] Did I decide background / prop split mode and keep characters out of split images by default?
+[ ] Did I preserve existing coordinate rules or create AUTO BLOCKING MAP when missing?
+[ ] Did every final CUT have a CUT Blocking Card?
+[ ] Did I label selected images by lock role and include REFERENCE LOCK in video prompts?
 [ ] Did I use new reference-prompt-derived camera/video method instead of old legacy method when applicable?
 [ ] Did I apply the 39 expert video prompt layer order for final video prompts?
 [ ] Did I use the 40 scene input card and request missing essential references?
