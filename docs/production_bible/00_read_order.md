@@ -80,6 +80,7 @@ expert video prompt method extraction
 video prompt scene input card / active reference request gate
 max quality image / auto dialogue voice / legacy cleanup gate
 blocking coordinate / character position gate
+cut-to-cut handoff continuity gate
 dialogue freshness
 dialogue clarity
 anti-drag pacing
@@ -109,6 +110,7 @@ docs/production_bible/story-production-kit/39_expert_video_prompt_method_extract
 docs/production_bible/story-production-kit/40_video_prompt_scene_input_card.md
 docs/production_bible/story-production-kit/41_max_quality_image_dialogue_voice_and_legacy_cleanup.md
 docs/production_bible/story-production-kit/42_blocking_coordinate_character_position_gate.md
+docs/production_bible/story-production-kit/43_cut_to_cut_handoff_continuity_gate.md
 docs/production_bible/story-production-kit/jimeng_dialogue_voice_prompt_reference.md
 docs/production_bible/story-production-kit/31_creative_preflight_audience_story_gate.md
 docs/production_bible/story-production-kit/29_story_density_no_drag_execution_gate.md
@@ -159,6 +161,7 @@ max_quality_image_check
 background_prop_split_decision
 blocking_coordinate_map
 cut_blocking_cards
+cut_handoff_cards
 reference_image_handoff
 reference_prompt_method_extraction
 expert_video_prompt_method_check
