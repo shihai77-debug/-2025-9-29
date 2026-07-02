@@ -50,6 +50,7 @@ docs/production_bible/story-production-kit/35_dialogue_stage_necessity_gate.md
 docs/production_bible/story-production-kit/36_color_script_reference_image_gate.md
 docs/production_bible/story-production-kit/37_colored_background_prop_split_gate.md
 docs/production_bible/story-production-kit/38_reference_prompt_rebuild_camera_video_gate.md
+docs/production_bible/story-production-kit/39_expert_video_prompt_method_extraction.md
 ```
 
 For EP20 / CUT / Jimeng / Seedance / prompt extraction tasks, read:
@@ -201,6 +202,36 @@ The rebuilt camera / video method must be based on the user's new reference
 prompt material plus our actual 분진 source, approved color script, approved BG /
 PROP references, canon character rules, and platform rules. It becomes official
 only after user approval.
+
+## Expert Video Prompt Method Rule
+
+The user-approved expert prompt method is stored in:
+
+```text
+docs/production_bible/story-production-kit/39_expert_video_prompt_method_extraction.md
+```
+
+For final video prompts, use that file as the working method after reading the
+actual 분진 source, approved color script, and approved BG / PROP references.
+
+Required prompt layers:
+
+```text
+STYLE LOCK
+REFERENCE LOCK
+SOURCE LOCK
+SHOT DESIGN
+ACTION FLOW
+ACTING / VOICE
+PROP / REVEAL
+SOUND
+CONTINUITY
+FORBIDDEN
+PLATFORM
+```
+
+This method is about production grammar only. It does not permit copying outside
+story, characters, dialogue, worldview, palette, or scene content.
 
 ## Dialogue Preservation Rule
 
@@ -386,6 +417,7 @@ Seedance prompt, check:
 [ ] Did I create or follow the approved color script and color reference image?
 [ ] Did I decide background / prop split mode and keep characters out of split images by default?
 [ ] Did I use new reference-prompt-derived camera/video method instead of old legacy method when applicable?
+[ ] Did I apply the 39 expert video prompt layer order for final video prompts?
 [ ] Did I lock worldbuilding, character identity, and banned settings?
 [ ] Did I diagnose first-3-second hook and story drag?
 [ ] Did I check whether the dialogue is actor-readable within the time budget?
