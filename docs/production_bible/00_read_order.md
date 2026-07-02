@@ -77,6 +77,7 @@ color script and approved color reference image gate
 colored background / prop split gate
 reference prompt rebuild camera / video gate
 expert video prompt method extraction
+video prompt scene input card / active reference request gate
 dialogue freshness
 dialogue clarity
 anti-drag pacing
@@ -103,6 +104,7 @@ docs/production_bible/story-production-kit/36_color_script_reference_image_gate.
 docs/production_bible/story-production-kit/37_colored_background_prop_split_gate.md
 docs/production_bible/story-production-kit/38_reference_prompt_rebuild_camera_video_gate.md
 docs/production_bible/story-production-kit/39_expert_video_prompt_method_extraction.md
+docs/production_bible/story-production-kit/40_video_prompt_scene_input_card.md
 docs/production_bible/story-production-kit/jimeng_dialogue_voice_prompt_reference.md
 docs/production_bible/story-production-kit/31_creative_preflight_audience_story_gate.md
 docs/production_bible/story-production-kit/29_story_density_no_drag_execution_gate.md
@@ -152,6 +154,8 @@ approved_color_reference_image
 background_prop_split_decision
 reference_prompt_method_extraction
 expert_video_prompt_method_check
+scene_input_audit
+missing_reference_request
 rebuilt_camera_video_prompt_method
 prompt_result_review
 update_candidates
