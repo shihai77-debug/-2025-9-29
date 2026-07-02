@@ -48,6 +48,7 @@ docs/production_bible/story-production-kit/33_cultural_aesthetic_sensibility_gat
 docs/production_bible/story-production-kit/34_lu_protagonist_voice_scene_leadership_gate.md
 docs/production_bible/story-production-kit/35_dialogue_stage_necessity_gate.md
 docs/production_bible/story-production-kit/36_color_script_reference_image_gate.md
+docs/production_bible/story-production-kit/37_colored_background_prop_split_gate.md
 ```
 
 For EP20 / CUT / Jimeng / Seedance / prompt extraction tasks, read:
@@ -138,6 +139,30 @@ Original color script / Required change / Story reason / Continuity risk
 ```
 
 Wait for user approval before changing the color standard.
+
+## Colored Background / Prop Split Rule
+
+After the color script is approved, split reference images should be colored
+background / prop / camera-angle references by default, not black-and-white
+character storyboard boards.
+
+Read the full 분진 / shot sequence first, then decide whether the scene needs:
+
+```text
+MASTER BACKGROUND
+ANGLE SET
+PROP INSERT SET
+HYBRID
+```
+
+Do not include characters in split reference images by default. Keep character
+movement, body position, acting, and dialogue inside the video prompt. Use
+background / prop split images to lock space, camera angle, object state,
+lighting, color script, and continuity.
+
+All background / prop split images must follow the approved color script and
+must not create a new location, new palette, or disconnected background unless
+the source explicitly changes location.
 
 ## Dialogue Preservation Rule
 
@@ -321,6 +346,7 @@ Seedance prompt, check:
 [ ] Did I search the repo before asking for a novel manuscript?
 [ ] Did I preserve event order, speaker, dialogue meaning, BGM/SFX/environment sound?
 [ ] Did I create or follow the approved color script and color reference image?
+[ ] Did I decide background / prop split mode and keep characters out of split images by default?
 [ ] Did I lock worldbuilding, character identity, and banned settings?
 [ ] Did I diagnose first-3-second hook and story drag?
 [ ] Did I check whether the dialogue is actor-readable within the time budget?
