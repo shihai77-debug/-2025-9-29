@@ -79,6 +79,7 @@ reference prompt rebuild camera / video gate
 expert video prompt method extraction
 video prompt scene input card / active reference request gate
 max quality image / auto dialogue voice / legacy cleanup gate
+blocking coordinate / character position gate
 dialogue freshness
 dialogue clarity
 anti-drag pacing
@@ -107,6 +108,7 @@ docs/production_bible/story-production-kit/38_reference_prompt_rebuild_camera_vi
 docs/production_bible/story-production-kit/39_expert_video_prompt_method_extraction.md
 docs/production_bible/story-production-kit/40_video_prompt_scene_input_card.md
 docs/production_bible/story-production-kit/41_max_quality_image_dialogue_voice_and_legacy_cleanup.md
+docs/production_bible/story-production-kit/42_blocking_coordinate_character_position_gate.md
 docs/production_bible/story-production-kit/jimeng_dialogue_voice_prompt_reference.md
 docs/production_bible/story-production-kit/31_creative_preflight_audience_story_gate.md
 docs/production_bible/story-production-kit/29_story_density_no_drag_execution_gate.md
@@ -155,6 +157,9 @@ color_script_card
 approved_color_reference_image
 max_quality_image_check
 background_prop_split_decision
+blocking_coordinate_map
+cut_blocking_cards
+reference_image_handoff
 reference_prompt_method_extraction
 expert_video_prompt_method_check
 scene_input_audit
