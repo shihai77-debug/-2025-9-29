@@ -68,6 +68,7 @@ outputs/story-production-kit/39_expert_video_prompt_method_extraction.md
 outputs/story-production-kit/40_video_prompt_scene_input_card.md
 outputs/story-production-kit/41_max_quality_image_dialogue_voice_and_legacy_cleanup.md
 outputs/story-production-kit/42_blocking_coordinate_character_position_gate.md
+outputs/story-production-kit/43_cut_to_cut_handoff_continuity_gate.md
 outputs/story-production-kit/jimeng_dialogue_voice_prompt_reference.md
 ```
 
@@ -263,6 +264,37 @@ Canonical path:
 docs/production_bible/story-production-kit/42_blocking_coordinate_character_position_gate.md
 ```
 
+## CUT To CUT Handoff Continuity Gate
+
+Before final split storyboard, image prompt, video prompt, or CapCut timeline,
+define how each CUT connects to the next CUT.
+
+Required handoff checks:
+
+```text
+previous CUT incoming state
+current CUT start frame
+current CUT end frame
+next CUT handoff
+visual handoff
+sound handoff
+action / emotion handoff
+prop state handoff
+character position handoff
+camera direction handoff
+```
+
+The expert prompt method connects shots through cause-and-effect: HARD CUT after
+a visible action, continuing sound bed, same gaze direction into POV, same prop
+state, same body condition, same color card, and reaction shots that answer the
+previous beat. If the source lacks a clear handoff, create `AUTO HANDOFF / filming continuity only` without adding new plot.
+
+Canonical path:
+
+```text
+docs/production_bible/story-production-kit/43_cut_to_cut_handoff_continuity_gate.md
+```
+
 ## 2. Codex가 매번 먼저 해야 할 일
 
 작업 전 자동 확인 순서:
@@ -282,13 +314,15 @@ docs/production_bible/story-production-kit/42_blocking_coordinate_character_posi
 12. 색도 / approved color reference image 확인
 13. 배경 / 소품 분할 방식 확인
 14. 좌표 / 인물 위치 / CUT Blocking Card 확인
-15. 새 참고 프롬 기반 카메라 / 영상 방식 재구축 여부 확인
-16. 39번 고수 영상 프롬 레이어 순서 적용 여부 확인
-17. 40번 장면 입력 카드 / 부족 참고자료 요청 여부 확인
-18. 41번 최대화질 이미지 / 자동 대사 음성 / 레거시 정리 기준 확인
-19. 42번 이미지 핸드오프 / REFERENCE LOCK 확인
-20. 대사 규칙 확인
-21. 질질 끌림 방지 체크
+15. 컷투컷 handoff / sound bridge / end-frame-to-start-frame 확인
+16. 새 참고 프롬 기반 카메라 / 영상 방식 재구축 여부 확인
+17. 39번 고수 영상 프롬 레이어 순서 적용 여부 확인
+18. 40번 장면 입력 카드 / 부족 참고자료 요청 여부 확인
+19. 41번 최대화질 이미지 / 자동 대사 음성 / 레거시 정리 기준 확인
+20. 42번 이미지 핸드오프 / REFERENCE LOCK 확인
+21. 43번 CUT Handoff Card / HANDOFF 섹션 확인
+22. 대사 규칙 확인
+23. 질질 끌림 방지 체크
 ```
 
 이 확인 없이 바로 소설이나 분경을 쓰면 안 된다.
@@ -312,6 +346,7 @@ docs/production_bible/story-production-kit/42_blocking_coordinate_character_posi
 이 소설을 기준으로 분경 만들어줘.
 CUT마다 화면, 배우 연기, 카메라, 대사, 소품, 금지사항, 다음 컷 연결까지 넣어줘.
 가능하면 좌표/인물 위치/동선 기준도 같이 만들어줘.
+각 CUT의 마지막 상태가 다음 CUT 첫 프레임/소리/시선/소품 상태로 어떻게 이어지는지 CUT Handoff Card도 만들어줘.
 좌표가 없으면 전체 분진을 읽고 AUTO BLOCKING MAP으로 자동 보강해줘.
 대사 읽는 방식이 없으면 AUTO VOICE DIRECTION으로 자동 보강하되 원문 대사는 바꾸지 마.
 참고 영상 분석 기준과 질질 끌림 방지 규칙도 적용해줘.
@@ -322,11 +357,12 @@ CUT마다 화면, 배우 연기, 카메라, 대사, 소품, 금지사항, 다음
 ```text
 이 분경을 영상 생성 프롬프트로 바꿔줘.
 먼저 전체 분진을 읽고 좌표/인물 위치/동선이 있는지 확인해줘. 없으면 AUTO BLOCKING MAP과 CUT Blocking Card를 만들어줘.
+각 CUT마다 previous ending / start frame / end frame / next handoff / sound bridge를 CUT Handoff Card로 정리해줘.
 먼저 40번 장면 입력 카드로 부족한 참고자료를 점검하고, 필요한 자료가 있으면 적극적으로 요구해줘.
 이미지 생성이 필요한 경우 ChatGPT/imagegen에서 가능한 최대 화질 기준으로 만들어줘.
 분할 이미지나 참고이미지가 선정되면 각 이미지가 무엇을 잠그는지 확정하고, 영상 프롬의 REFERENCE LOCK에 공유해줘.
 대사 읽는 방식이 분진에 없으면 AUTO VOICE DIRECTION으로 자동 생성해줘. 원문 대사는 절대 바꾸지 마.
-그다음 39번 고수 영상 프롬 레이어 순서대로 STYLE LOCK / REFERENCE LOCK / SOURCE LOCK / SHOT DESIGN / ACTION FLOW / ACTING / SOUND / CONTINUITY / FORBIDDEN / PLATFORM을 나눠줘.
+그다음 39번 고수 영상 프롬 레이어 순서대로 STYLE LOCK / REFERENCE LOCK / SOURCE LOCK / SHOT DESIGN / ACTION FLOW / ACTING / SOUND / CONTINUITY / HANDOFF / FORBIDDEN / PLATFORM을 나눠줘.
 캐릭터 고정, 색도 고정, 배경/소품 연속성, 소품 공개 타이밍, 금지사항을 포함하고,
 자료나 반전이 너무 일찍 보이지 않게 해줘.
 ```
@@ -351,23 +387,25 @@ CUT별 시간, 화면, 대사 자막, 효과음, 음악, 전환, 편집 메모, 
 5. 소설 수정본
 6. CUT 분경
 7. 좌표 / AUTO BLOCKING MAP / CUT Blocking Card 확인
-8. 색도 카드 + approved color reference image
-9. 최대화질 이미지 생성 기준 확인
-10. 배경 / 소품 분할 판단
-11. Reference Image Handoff 확정
-12. 새 참고 프롬 방식 추출 / 카메라-영상 문법 재구축
-13. 39번 고수 영상 프롬 레이어 적용 체크
-14. 40번 장면 입력 카드 / 부족 자료 요청 체크
-15. 41번 AUTO VOICE DIRECTION / 레거시 정리 기준 체크
-16. 42번 REFERENCE LOCK 공유 체크
-17. 분할 이미지 프롬프트
-18. 영상 생성 프롬프트
-19. 저해상도 테스트 영상
-20. CapCut 타임라인 표
-21. 편집/재생성 판단
-22. 최종본
-23. 리뷰 문서 작성
-24. 업데이트 후보 기록
+8. CUT Handoff Card / sound bridge / end-frame-to-start-frame 확인
+9. 색도 카드 + approved color reference image
+10. 최대화질 이미지 생성 기준 확인
+11. 배경 / 소품 분할 판단
+12. Reference Image Handoff 확정
+13. 새 참고 프롬 방식 추출 / 카메라-영상 문법 재구축
+14. 39번 고수 영상 프롬 레이어 적용 체크
+15. 40번 장면 입력 카드 / 부족 자료 요청 체크
+16. 41번 AUTO VOICE DIRECTION / 레거시 정리 기준 체크
+17. 42번 REFERENCE LOCK 공유 체크
+18. 43번 HANDOFF 섹션 공유 체크
+19. 분할 이미지 프롬프트
+20. 영상 생성 프롬프트
+21. 저해상도 테스트 영상
+22. CapCut 타임라인 표
+23. 편집/재생성 판단
+24. 최종본
+25. 리뷰 문서 작성
+26. 업데이트 후보 기록
 ```
 
 ## 5. 절대 바로 하면 안 되는 것
@@ -380,6 +418,9 @@ CUT별 시간, 화면, 대사 자막, 효과음, 음악, 전환, 편집 메모, 
 좌표/인물 위치 확인 없이 영상 프롬 만들기
 분진 전체를 읽지 않고 AUTO BLOCKING MAP 만들기
 좌표를 핑계로 인물 위치나 사건 순서 바꾸기
+CUT Handoff Card 없이 최종 영상 프롬 만들기
+이전 컷 마지막 상태와 다음 컷 첫 프레임 연결 없이 컷 분할하기
+sound bridge를 확인하지 않고 BGM/SFX를 끊거나 새로 넣기
 색도 기준 없이 분할 이미지 만들기
 최대화질 기준 없이 공식 참고 이미지 만들기
 이미지 선정 후 REFERENCE LOCK 없이 영상 프롬 만들기
@@ -408,6 +449,7 @@ CapCut에서 사건 순서 바꾸기
 이전 화 마지막 감정과 바로 이어진다.
 인물이 왜 거기 있는지 분명하다.
 좌표/인물 위치/동선이 촬영 가능하게 정리되어 있다.
+각 CUT의 끝과 다음 CUT의 시작이 시선/소리/소품/감정/공간으로 연결된다.
 대사가 캐릭터답고 알아듣기 쉽다.
 대사 안에 감정과 정보가 같이 있다.
 대사 읽는 방식이 AI가 알아듣게 분리되어 있다.
@@ -423,6 +465,7 @@ CapCut에서 사건 순서 바꾸기
 40번 입력 카드로 부족 참고자료를 확인했다.
 41번 기준으로 AUTO VOICE DIRECTION과 레거시 정리 기준을 확인했다.
 42번 기준으로 AUTO BLOCKING MAP / CUT Blocking Card / Reference Image Handoff를 확인했다.
+43번 기준으로 CUT Handoff Card / HANDOFF / sound bridge를 확인했다.
 분경에서 배우 연기와 카메라가 보인다.
 영상 프롬프트에서 금지사항이 명확하다.
 CapCut에서 편집할 것과 재생성할 것이 구분된다.
