@@ -73,6 +73,7 @@ cultural aesthetic sensibility gate
 LU protagonist voice and scene leadership gate
 dialogue stage necessity gate
 Jimeng dialogue voice prompt reference
+color script and approved color reference image gate
 dialogue freshness
 dialogue clarity
 anti-drag pacing
@@ -95,6 +96,7 @@ docs/production_bible/story-production-kit/27_novel_ai_short_drama_gold_standard
 docs/production_bible/story-production-kit/33_cultural_aesthetic_sensibility_gate.md
 docs/production_bible/story-production-kit/34_lu_protagonist_voice_scene_leadership_gate.md
 docs/production_bible/story-production-kit/35_dialogue_stage_necessity_gate.md
+docs/production_bible/story-production-kit/36_color_script_reference_image_gate.md
 docs/production_bible/story-production-kit/jimeng_dialogue_voice_prompt_reference.md
 docs/production_bible/story-production-kit/31_creative_preflight_audience_story_gate.md
 docs/production_bible/story-production-kit/29_story_density_no_drag_execution_gate.md
@@ -139,6 +141,8 @@ Every episode should include:
 
 ```text
 story_logic_check
+color_script_card
+approved_color_reference_image
 prompt_result_review
 update_candidates
 ```

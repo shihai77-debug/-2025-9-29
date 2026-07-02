@@ -47,6 +47,7 @@ docs/production_bible/story-production-kit/32_director_actor_camera_storyboard_e
 docs/production_bible/story-production-kit/33_cultural_aesthetic_sensibility_gate.md
 docs/production_bible/story-production-kit/34_lu_protagonist_voice_scene_leadership_gate.md
 docs/production_bible/story-production-kit/35_dialogue_stage_necessity_gate.md
+docs/production_bible/story-production-kit/36_color_script_reference_image_gate.md
 ```
 
 For EP20 / CUT / Jimeng / Seedance / prompt extraction tasks, read:
@@ -109,6 +110,34 @@ when rewriting or newly drafting story prose.
 
 If the source cannot be found, report the searched paths and keywords before
 asking the user to paste material. Do not invent episode content.
+
+## Color Script Reference Image Rule
+
+Before final storyboard splitting, storyboard reference board generation,
+clean keyframe prompting, or Jimeng / Seedance prompting, confirm the approved
+episode or CUT color script.
+
+```text
+No approved color script = do not proceed to final split storyboard / image prompt / video prompt.
+```
+
+The color script must be created from the actual 분진 / shot sequence source and
+episode theme, not from production-bible theory alone. After approval, all later
+storyboard, image, video, and CapCut outputs must follow the approved palette,
+lighting, contrast, saturation, and atmosphere.
+
+After the color script is approved, create one accurate color reference image
+for the episode or CUT block. This image is a required video-production
+reference. Do not redesign characters, outfits, faces, props, or location logic
+while creating it.
+
+If a later prompt needs a color change, show:
+
+```text
+Original color script / Required change / Story reason / Continuity risk
+```
+
+Wait for user approval before changing the color standard.
 
 ## Dialogue Preservation Rule
 
@@ -291,6 +320,7 @@ Seedance prompt, check:
 [ ] Did I read the episode/CUT source or existing shot sequence first?
 [ ] Did I search the repo before asking for a novel manuscript?
 [ ] Did I preserve event order, speaker, dialogue meaning, BGM/SFX/environment sound?
+[ ] Did I create or follow the approved color script and color reference image?
 [ ] Did I lock worldbuilding, character identity, and banned settings?
 [ ] Did I diagnose first-3-second hook and story drag?
 [ ] Did I check whether the dialogue is actor-readable within the time budget?

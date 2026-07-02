@@ -61,7 +61,36 @@ outputs/story-production-kit/32_director_actor_camera_storyboard_execution_gate.
 outputs/story-production-kit/33_cultural_aesthetic_sensibility_gate.md
 outputs/story-production-kit/34_lu_protagonist_voice_scene_leadership_gate.md
 outputs/story-production-kit/35_dialogue_stage_necessity_gate.md
+outputs/story-production-kit/36_color_script_reference_image_gate.md
 outputs/story-production-kit/jimeng_dialogue_voice_prompt_reference.md
+```
+
+## Color Script Gate
+
+Before final storyboard splitting, storyboard reference board generation, clean
+keyframe prompting, video prompting, or CapCut planning, create or confirm the
+approved color script.
+
+Required order:
+
+```text
+1. Read the actual 분진 / shot sequence source.
+2. Identify the episode theme and emotional temperature.
+3. Create the color script card.
+4. Check whether the palette fits the theme and source.
+5. Create one approved color reference image.
+6. Use that image as the color / lighting / atmosphere reference for later video work.
+7. Do not let later split storyboard or video prompts deviate from the approved color script.
+```
+
+No approved color script means do not proceed to final split storyboard, image
+prompt, or video prompt. See
+`docs/production_bible/story-production-kit/36_color_script_reference_image_gate.md`.
+
+Canonical path:
+
+```text
+docs/production_bible/story-production-kit/36_color_script_reference_image_gate.md
 ```
 
 ## 2. Codex가 매번 먼저 해야 할 일
