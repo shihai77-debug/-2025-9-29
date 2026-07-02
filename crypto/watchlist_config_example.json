@@ -1,0 +1,11 @@
+{
+  "symbols": ["ETHUSDT", "BTCUSDT"],
+  "intervals": ["5m", "15m", "1h", "4h", "1d"],
+  "candle_limit": 200,
+  "validation_minutes": {
+    "ultra_short": 60,
+    "short": 240,
+    "mid": 1440,
+    "long": 10080
+  }
+}
