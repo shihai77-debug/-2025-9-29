@@ -52,6 +52,7 @@ docs/production_bible/story-production-kit/37_colored_background_prop_split_gate
 docs/production_bible/story-production-kit/38_reference_prompt_rebuild_camera_video_gate.md
 docs/production_bible/story-production-kit/39_expert_video_prompt_method_extraction.md
 docs/production_bible/story-production-kit/40_video_prompt_scene_input_card.md
+docs/production_bible/story-production-kit/41_max_quality_image_dialogue_voice_and_legacy_cleanup.md
 ```
 
 For EP20 / CUT / Jimeng / Seedance / prompt extraction tasks, read:
@@ -263,6 +264,38 @@ If the user wants to continue without a missing item, mark it as:
 ASSUMED / NEEDS USER APPROVAL
 ```
 
+## Max Quality Image / Auto Voice / Legacy Cleanup Rule
+
+For production image, dialogue voice, and old material cleanup, use:
+
+```text
+docs/production_bible/story-production-kit/41_max_quality_image_dialogue_voice_and_legacy_cleanup.md
+```
+
+Production reference images should use the maximum available image quality in the
+current tool or platform. High quality must not redesign canon, character faces,
+outfits, props, or approved color logic.
+
+When 分镜 or video prompts contain dialogue but lack AI-readable delivery notes,
+add `AUTO VOICE DIRECTION` without rewriting the line. Voice direction may add:
+
+```text
+tone
+speed
+volume
+breath
+pause
+emphasis
+listener reaction
+sound mix priority
+```
+
+Legacy camera / video materials may only be archived or deleted after 3
+consecutive approved episode-production cycles using the new 39 / 40 / 41 method,
+or after explicit user approval. Never delete character references / 三面图,
+worldbuilding, source manuscripts, confirmed 分镜, approved visual references, or
+contract / banned-setting files.
+
 ## Dialogue Preservation Rule
 
 Dialogue must be copied from the source when the source provides dialogue.
@@ -445,10 +478,14 @@ Seedance prompt, check:
 [ ] Did I search the repo before asking for a novel manuscript?
 [ ] Did I preserve event order, speaker, dialogue meaning, BGM/SFX/environment sound?
 [ ] Did I create or follow the approved color script and color reference image?
+[ ] Did I use maximum available quality for production reference images?
 [ ] Did I decide background / prop split mode and keep characters out of split images by default?
 [ ] Did I use new reference-prompt-derived camera/video method instead of old legacy method when applicable?
 [ ] Did I apply the 39 expert video prompt layer order for final video prompts?
 [ ] Did I use the 40 scene input card and request missing essential references?
+[ ] Did I add AUTO VOICE DIRECTION when source dialogue lacks AI-readable delivery notes?
+[ ] Did I keep dialogue clear above SFX / BGM?
+[ ] Did I avoid deleting legacy files before 3 approved cycles or user approval?
 [ ] Did I lock worldbuilding, character identity, and banned settings?
 [ ] Did I diagnose first-3-second hook and story drag?
 [ ] Did I check whether the dialogue is actor-readable within the time budget?
