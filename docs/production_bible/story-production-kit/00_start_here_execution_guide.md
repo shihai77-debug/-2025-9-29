@@ -62,6 +62,7 @@ outputs/story-production-kit/33_cultural_aesthetic_sensibility_gate.md
 outputs/story-production-kit/34_lu_protagonist_voice_scene_leadership_gate.md
 outputs/story-production-kit/35_dialogue_stage_necessity_gate.md
 outputs/story-production-kit/36_color_script_reference_image_gate.md
+outputs/story-production-kit/37_colored_background_prop_split_gate.md
 outputs/story-production-kit/jimeng_dialogue_voice_prompt_reference.md
 ```
 
@@ -91,6 +92,28 @@ Canonical path:
 
 ```text
 docs/production_bible/story-production-kit/36_color_script_reference_image_gate.md
+```
+
+## Colored Background / Prop Split Gate
+
+After the color script is approved, decide how to create background and prop
+reference images before making final split storyboard or video prompts.
+
+Required order:
+
+```text
+1. Read the full 분진 / shot sequence source.
+2. Decide whether the location needs MASTER BACKGROUND, ANGLE SET, PROP INSERT SET, or HYBRID.
+3. Create colored background / prop reference prompts using the approved color script.
+4. Do not include characters in split reference images by default.
+5. Keep character movement, acting, and position in the video prompt.
+6. Use approved BG / PROP references to keep video prompts in the same space and color.
+```
+
+Canonical path:
+
+```text
+docs/production_bible/story-production-kit/37_colored_background_prop_split_gate.md
 ```
 
 ## 2. Codex가 매번 먼저 해야 할 일
