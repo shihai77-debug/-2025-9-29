@@ -63,6 +63,7 @@ outputs/story-production-kit/34_lu_protagonist_voice_scene_leadership_gate.md
 outputs/story-production-kit/35_dialogue_stage_necessity_gate.md
 outputs/story-production-kit/36_color_script_reference_image_gate.md
 outputs/story-production-kit/37_colored_background_prop_split_gate.md
+outputs/story-production-kit/38_reference_prompt_rebuild_camera_video_gate.md
 outputs/story-production-kit/jimeng_dialogue_voice_prompt_reference.md
 ```
 
@@ -116,6 +117,34 @@ Canonical path:
 docs/production_bible/story-production-kit/37_colored_background_prop_split_gate.md
 ```
 
+## Reference Prompt Rebuild Camera / Video Gate
+
+When the user provides a high-quality outside video prompt, director prompt, or
+platform prompt, do not keep using the old camera / video shooting method as the
+final authority. Treat old camera and video prompt notes as legacy support only,
+then rebuild the active method from the new reference.
+
+Required order:
+
+```text
+1. Read the full outside reference prompt or source provided by the user.
+2. Separate content from method.
+3. Reject outside story, characters, dialogue, worldview, palette, and scene content.
+4. Extract only reusable method: prompt structure, camera grammar, motion control, BG / PROP control, color continuity, and platform stability wording.
+5. Rebuild our camera / video prompt method from the actual 분진, approved color script, approved BG / PROP references, canon character / worldview files, and platform rules.
+6. Mark the rebuilt method as candidate until the user approves it.
+```
+
+Old camera / video shooting notes may explain past failures, but they must not
+override the new reference-prompt-derived method after this gate is active. See
+`docs/production_bible/story-production-kit/38_reference_prompt_rebuild_camera_video_gate.md`.
+
+Canonical path:
+
+```text
+docs/production_bible/story-production-kit/38_reference_prompt_rebuild_camera_video_gate.md
+```
+
 ## 2. Codex가 매번 먼저 해야 할 일
 
 작업 전 자동 확인 순서:
@@ -132,8 +161,11 @@ docs/production_bible/story-production-kit/37_colored_background_prop_split_gate
 9. 이번 화의 3초 후킹 확인
 10. 대사 전 현장 위험/말할 필연성 확인
 11. Jimeng 대사 음성/연기 프롬프트 기준 확인
-12. 대사 규칙 확인
-13. 질질 끌림 방지 체크
+12. 색도 / approved color reference image 확인
+13. 배경 / 소품 분할 방식 확인
+14. 새 참고 프롬 기반 카메라 / 영상 방식 재구축 여부 확인
+15. 대사 규칙 확인
+16. 질질 끌림 방지 체크
 ```
 
 이 확인 없이 바로 소설이나 분경을 쓰면 안 된다.
@@ -186,14 +218,17 @@ CUT별 시간, 화면, 대사 자막, 효과음, 음악, 전환, 편집 메모, 
 4. 스토리/대사/캐릭터 검사
 5. 소설 수정본
 6. CUT 분경
-7. 분할 이미지 프롬프트
-8. 영상 생성 프롬프트
-9. 저해상도 테스트 영상
-10. CapCut 타임라인 표
-11. 편집/재생성 판단
-12. 최종본
-13. 리뷰 문서 작성
-14. 업데이트 후보 기록
+7. 색도 카드 + approved color reference image
+8. 배경 / 소품 분할 판단
+9. 새 참고 프롬 방식 추출 / 카메라-영상 문법 재구축
+10. 분할 이미지 프롬프트
+11. 영상 생성 프롬프트
+12. 저해상도 테스트 영상
+13. CapCut 타임라인 표
+14. 편집/재생성 판단
+15. 최종본
+16. 리뷰 문서 작성
+17. 업데이트 후보 기록
 ```
 
 ## 5. 절대 바로 하면 안 되는 것
@@ -203,6 +238,11 @@ CUT별 시간, 화면, 대사 자막, 효과음, 음악, 전환, 편집 메모, 
 캐릭터 카드 안 보고 대사 쓰기
 이전 화 마지막 대사 무시하기
 대사를 무조건 짧게만 만들기
+색도 기준 없이 분할 이미지 만들기
+색도 기준 없이 영상 프롬프트 만들기
+분경 전체를 읽지 않고 배경을 임의 분할하기
+고수 참고 프롬의 내용/인물/스토리/색감을 베끼기
+옛 카메라/영상 방식을 새 참고 프롬보다 우선하기
 분경 전에 영상 프롬프트부터 만들기
 영상 실패를 전부 재생성으로 해결하기
 참고 영상 스타일을 분위기만 베끼기
@@ -222,6 +262,10 @@ CapCut에서 사건 순서 바꾸기
 대사 안에 감정과 정보가 같이 있다.
 10초마다 새 정보/위험/감정 변화가 있다.
 마지막 5초에 다음 화를 보고 싶은 질문이 남는다.
+색도 기준이 장면 주제와 감정에 맞다.
+분할 이미지가 색도 기준에서 벗어나지 않는다.
+분할 배경/소품 이미지가 영상의 실제 카메라 각도와 이어진다.
+새 참고 프롬에서 배운 카메라/영상 문법이 우리 분진에 맞게 재구축되어 있다.
 분경에서 배우 연기와 카메라가 보인다.
 영상 프롬프트에서 금지사항이 명확하다.
 CapCut에서 편집할 것과 재생성할 것이 구분된다.
