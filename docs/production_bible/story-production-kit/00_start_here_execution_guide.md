@@ -65,6 +65,7 @@ outputs/story-production-kit/36_color_script_reference_image_gate.md
 outputs/story-production-kit/37_colored_background_prop_split_gate.md
 outputs/story-production-kit/38_reference_prompt_rebuild_camera_video_gate.md
 outputs/story-production-kit/39_expert_video_prompt_method_extraction.md
+outputs/story-production-kit/40_video_prompt_scene_input_card.md
 outputs/story-production-kit/jimeng_dialogue_voice_prompt_reference.md
 ```
 
@@ -178,6 +179,39 @@ Canonical path:
 docs/production_bible/story-production-kit/39_expert_video_prompt_method_extraction.md
 ```
 
+## Video Prompt Scene Input Card Gate
+
+Before final video prompts, run a scene input audit and actively request missing
+materials if they affect output quality.
+
+Required check:
+
+```text
+Episode / CUT number
+source file or pasted source
+previous CUT ending
+next CUT handoff
+must happen / must not happen
+characters present
+location
+exact dialogue source
+visible props / hidden props
+approved color reference
+BG / PROP split status
+platform target
+duration target
+```
+
+If a needed item is missing, ask the user for it. If the user wants to proceed
+without it, mark the field as ASSUMED / NEEDS USER APPROVAL. See
+`docs/production_bible/story-production-kit/40_video_prompt_scene_input_card.md`.
+
+Canonical path:
+
+```text
+docs/production_bible/story-production-kit/40_video_prompt_scene_input_card.md
+```
+
 ## 2. Codex가 매번 먼저 해야 할 일
 
 작업 전 자동 확인 순서:
@@ -198,8 +232,9 @@ docs/production_bible/story-production-kit/39_expert_video_prompt_method_extract
 13. 배경 / 소품 분할 방식 확인
 14. 새 참고 프롬 기반 카메라 / 영상 방식 재구축 여부 확인
 15. 39번 고수 영상 프롬 레이어 순서 적용 여부 확인
-16. 대사 규칙 확인
-17. 질질 끌림 방지 체크
+16. 40번 장면 입력 카드 / 부족 참고자료 요청 여부 확인
+17. 대사 규칙 확인
+18. 질질 끌림 방지 체크
 ```
 
 이 확인 없이 바로 소설이나 분경을 쓰면 안 된다.
@@ -229,7 +264,8 @@ CUT마다 화면, 배우 연기, 카메라, 대사, 소품, 금지사항, 다음
 
 ```text
 이 분경을 영상 생성 프롬프트로 바꿔줘.
-39번 고수 영상 프롬 레이어 순서대로 STYLE LOCK / REFERENCE LOCK / SOURCE LOCK / SHOT DESIGN / ACTION FLOW / ACTING / SOUND / CONTINUITY / FORBIDDEN / PLATFORM을 나눠줘.
+먼저 40번 장면 입력 카드로 부족한 참고자료를 점검하고, 필요한 자료가 있으면 적극적으로 요구해줘.
+그다음 39번 고수 영상 프롬 레이어 순서대로 STYLE LOCK / REFERENCE LOCK / SOURCE LOCK / SHOT DESIGN / ACTION FLOW / ACTING / SOUND / CONTINUITY / FORBIDDEN / PLATFORM을 나눠줘.
 캐릭터 고정, 색도 고정, 배경/소품 연속성, 소품 공개 타이밍, 금지사항을 포함하고,
 자료나 반전이 너무 일찍 보이지 않게 해줘.
 ```
@@ -257,14 +293,15 @@ CUT별 시간, 화면, 대사 자막, 효과음, 음악, 전환, 편집 메모, 
 8. 배경 / 소품 분할 판단
 9. 새 참고 프롬 방식 추출 / 카메라-영상 문법 재구축
 10. 39번 고수 영상 프롬 레이어 적용 체크
-11. 분할 이미지 프롬프트
-12. 영상 생성 프롬프트
-13. 저해상도 테스트 영상
-14. CapCut 타임라인 표
-15. 편집/재생성 판단
-16. 최종본
-17. 리뷰 문서 작성
-18. 업데이트 후보 기록
+11. 40번 장면 입력 카드 / 부족 자료 요청 체크
+12. 분할 이미지 프롬프트
+13. 영상 생성 프롬프트
+14. 저해상도 테스트 영상
+15. CapCut 타임라인 표
+16. 편집/재생성 판단
+17. 최종본
+18. 리뷰 문서 작성
+19. 업데이트 후보 기록
 ```
 
 ## 5. 절대 바로 하면 안 되는 것
@@ -279,6 +316,7 @@ CUT별 시간, 화면, 대사 자막, 효과음, 음악, 전환, 편집 메모, 
 분경 전체를 읽지 않고 배경을 임의 분할하기
 고수 참고 프롬의 내용/인물/스토리/색감을 베끼기
 고수 참고 프롬의 구조를 빼고 분위기만 흉내내기
+부족한 참고자료를 확인하지 않고 최종 영상 프롬 만들기
 옛 카메라/영상 방식을 새 참고 프롬보다 우선하기
 분경 전에 영상 프롬프트부터 만들기
 영상 실패를 전부 재생성으로 해결하기
@@ -304,6 +342,7 @@ CapCut에서 사건 순서 바꾸기
 분할 배경/소품 이미지가 영상의 실제 카메라 각도와 이어진다.
 새 참고 프롬에서 배운 카메라/영상 문법이 우리 분진에 맞게 재구축되어 있다.
 영상 프롬프트가 39번 레이어 순서를 따른다.
+40번 입력 카드로 부족 참고자료를 확인했다.
 분경에서 배우 연기와 카메라가 보인다.
 영상 프롬프트에서 금지사항이 명확하다.
 CapCut에서 편집할 것과 재생성할 것이 구분된다.
