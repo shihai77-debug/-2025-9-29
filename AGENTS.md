@@ -54,6 +54,7 @@ docs/production_bible/story-production-kit/39_expert_video_prompt_method_extract
 docs/production_bible/story-production-kit/40_video_prompt_scene_input_card.md
 docs/production_bible/story-production-kit/41_max_quality_image_dialogue_voice_and_legacy_cleanup.md
 docs/production_bible/story-production-kit/42_blocking_coordinate_character_position_gate.md
+docs/production_bible/story-production-kit/43_cut_to_cut_handoff_continuity_gate.md
 ```
 
 For EP20 / CUT / Jimeng / Seedance / prompt extraction tasks, read:
@@ -319,6 +320,31 @@ needs after reading the full scene, and label each selected image by what it
 locks. Final video prompts must include a `REFERENCE LOCK` section when images
 are selected.
 
+## CUT To CUT Handoff Continuity Rule
+
+For next-CUT connection and shot-to-shot continuity, use:
+
+```text
+docs/production_bible/story-production-kit/43_cut_to_cut_handoff_continuity_gate.md
+```
+
+Every final CUT or video node must define:
+
+```text
+previous CUT incoming state
+start frame
+end frame
+next CUT handoff
+visual handoff
+sound handoff
+action / emotion handoff
+prop state handoff
+character position handoff
+camera direction handoff
+```
+
+If the source lacks a clear connection, create `AUTO HANDOFF / filming continuity only` using held sound, gaze, prop state, body position, same camera direction, empty frame, or reaction silence. Do not add new plot information without user approval.
+
 ## Dialogue Preservation Rule
 
 Dialogue must be copied from the source when the source provides dialogue.
@@ -506,6 +532,9 @@ Seedance prompt, check:
 [ ] Did I preserve existing coordinate rules or create AUTO BLOCKING MAP when missing?
 [ ] Did every final CUT have a CUT Blocking Card?
 [ ] Did I label selected images by lock role and include REFERENCE LOCK in video prompts?
+[ ] Did every final CUT have previous ending / start frame / end frame / next handoff?
+[ ] Did I preserve sound bridge, space bridge, prop state, and emotion bridge between CUTs?
+[ ] Did I avoid adding new plot while creating AUTO HANDOFF?
 [ ] Did I use new reference-prompt-derived camera/video method instead of old legacy method when applicable?
 [ ] Did I apply the 39 expert video prompt layer order for final video prompts?
 [ ] Did I use the 40 scene input card and request missing essential references?
