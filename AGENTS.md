@@ -51,6 +51,7 @@ docs/production_bible/story-production-kit/36_color_script_reference_image_gate.
 docs/production_bible/story-production-kit/37_colored_background_prop_split_gate.md
 docs/production_bible/story-production-kit/38_reference_prompt_rebuild_camera_video_gate.md
 docs/production_bible/story-production-kit/39_expert_video_prompt_method_extraction.md
+docs/production_bible/story-production-kit/40_video_prompt_scene_input_card.md
 ```
 
 For EP20 / CUT / Jimeng / Seedance / prompt extraction tasks, read:
@@ -232,6 +233,35 @@ PLATFORM
 
 This method is about production grammar only. It does not permit copying outside
 story, characters, dialogue, worldview, palette, or scene content.
+
+## Video Prompt Scene Input Card Rule
+
+Before final video prompts, use:
+
+```text
+docs/production_bible/story-production-kit/40_video_prompt_scene_input_card.md
+```
+
+If a scene lacks essential input, actively request it instead of guessing.
+Essential inputs include:
+
+```text
+approved color reference
+character references / 三面图
+location reference
+plot-critical prop reference
+exact dialogue source
+platform target
+duration target
+hidden-prop / reveal timing
+previous / next CUT continuity
+```
+
+If the user wants to continue without a missing item, mark it as:
+
+```text
+ASSUMED / NEEDS USER APPROVAL
+```
 
 ## Dialogue Preservation Rule
 
@@ -418,6 +448,7 @@ Seedance prompt, check:
 [ ] Did I decide background / prop split mode and keep characters out of split images by default?
 [ ] Did I use new reference-prompt-derived camera/video method instead of old legacy method when applicable?
 [ ] Did I apply the 39 expert video prompt layer order for final video prompts?
+[ ] Did I use the 40 scene input card and request missing essential references?
 [ ] Did I lock worldbuilding, character identity, and banned settings?
 [ ] Did I diagnose first-3-second hook and story drag?
 [ ] Did I check whether the dialogue is actor-readable within the time budget?
