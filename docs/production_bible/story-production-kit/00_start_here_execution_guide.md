@@ -64,6 +64,7 @@ outputs/story-production-kit/35_dialogue_stage_necessity_gate.md
 outputs/story-production-kit/36_color_script_reference_image_gate.md
 outputs/story-production-kit/37_colored_background_prop_split_gate.md
 outputs/story-production-kit/38_reference_prompt_rebuild_camera_video_gate.md
+outputs/story-production-kit/39_expert_video_prompt_method_extraction.md
 outputs/story-production-kit/jimeng_dialogue_voice_prompt_reference.md
 ```
 
@@ -145,6 +146,38 @@ Canonical path:
 docs/production_bible/story-production-kit/38_reference_prompt_rebuild_camera_video_gate.md
 ```
 
+## Expert Video Prompt Method Gate
+
+For final video prompts, use the user-approved expert prompt method extraction
+after the color and BG / PROP gates.
+
+Required video prompt layer order:
+
+```text
+1. STYLE LOCK
+2. REFERENCE LOCK
+3. SOURCE LOCK
+4. SHOT DESIGN
+5. ACTION FLOW
+6. ACTING / VOICE
+7. PROP / REVEAL
+8. SOUND
+9. CONTINUITY
+10. FORBIDDEN
+11. PLATFORM
+```
+
+This method improves prompt structure, camera grammar, actor behavior, sound
+layering, color stability, and failure prevention. It does not allow copying
+outside story, characters, dialogue, worldview, palette, or scene content. See
+`docs/production_bible/story-production-kit/39_expert_video_prompt_method_extraction.md`.
+
+Canonical path:
+
+```text
+docs/production_bible/story-production-kit/39_expert_video_prompt_method_extraction.md
+```
+
 ## 2. Codex가 매번 먼저 해야 할 일
 
 작업 전 자동 확인 순서:
@@ -164,8 +197,9 @@ docs/production_bible/story-production-kit/38_reference_prompt_rebuild_camera_vi
 12. 색도 / approved color reference image 확인
 13. 배경 / 소품 분할 방식 확인
 14. 새 참고 프롬 기반 카메라 / 영상 방식 재구축 여부 확인
-15. 대사 규칙 확인
-16. 질질 끌림 방지 체크
+15. 39번 고수 영상 프롬 레이어 순서 적용 여부 확인
+16. 대사 규칙 확인
+17. 질질 끌림 방지 체크
 ```
 
 이 확인 없이 바로 소설이나 분경을 쓰면 안 된다.
@@ -195,7 +229,8 @@ CUT마다 화면, 배우 연기, 카메라, 대사, 소품, 금지사항, 다음
 
 ```text
 이 분경을 영상 생성 프롬프트로 바꿔줘.
-캐릭터 고정, 장소 연속성, 소품 공개 타이밍, 금지사항을 포함하고,
+39번 고수 영상 프롬 레이어 순서대로 STYLE LOCK / REFERENCE LOCK / SOURCE LOCK / SHOT DESIGN / ACTION FLOW / ACTING / SOUND / CONTINUITY / FORBIDDEN / PLATFORM을 나눠줘.
+캐릭터 고정, 색도 고정, 배경/소품 연속성, 소품 공개 타이밍, 금지사항을 포함하고,
 자료나 반전이 너무 일찍 보이지 않게 해줘.
 ```
 
@@ -221,14 +256,15 @@ CUT별 시간, 화면, 대사 자막, 효과음, 음악, 전환, 편집 메모, 
 7. 색도 카드 + approved color reference image
 8. 배경 / 소품 분할 판단
 9. 새 참고 프롬 방식 추출 / 카메라-영상 문법 재구축
-10. 분할 이미지 프롬프트
-11. 영상 생성 프롬프트
-12. 저해상도 테스트 영상
-13. CapCut 타임라인 표
-14. 편집/재생성 판단
-15. 최종본
-16. 리뷰 문서 작성
-17. 업데이트 후보 기록
+10. 39번 고수 영상 프롬 레이어 적용 체크
+11. 분할 이미지 프롬프트
+12. 영상 생성 프롬프트
+13. 저해상도 테스트 영상
+14. CapCut 타임라인 표
+15. 편집/재생성 판단
+16. 최종본
+17. 리뷰 문서 작성
+18. 업데이트 후보 기록
 ```
 
 ## 5. 절대 바로 하면 안 되는 것
@@ -242,6 +278,7 @@ CUT별 시간, 화면, 대사 자막, 효과음, 음악, 전환, 편집 메모, 
 색도 기준 없이 영상 프롬프트 만들기
 분경 전체를 읽지 않고 배경을 임의 분할하기
 고수 참고 프롬의 내용/인물/스토리/색감을 베끼기
+고수 참고 프롬의 구조를 빼고 분위기만 흉내내기
 옛 카메라/영상 방식을 새 참고 프롬보다 우선하기
 분경 전에 영상 프롬프트부터 만들기
 영상 실패를 전부 재생성으로 해결하기
@@ -266,6 +303,7 @@ CapCut에서 사건 순서 바꾸기
 분할 이미지가 색도 기준에서 벗어나지 않는다.
 분할 배경/소품 이미지가 영상의 실제 카메라 각도와 이어진다.
 새 참고 프롬에서 배운 카메라/영상 문법이 우리 분진에 맞게 재구축되어 있다.
+영상 프롬프트가 39번 레이어 순서를 따른다.
 분경에서 배우 연기와 카메라가 보인다.
 영상 프롬프트에서 금지사항이 명확하다.
 CapCut에서 편집할 것과 재생성할 것이 구분된다.
